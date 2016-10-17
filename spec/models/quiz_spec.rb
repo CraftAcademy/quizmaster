@@ -16,4 +16,11 @@ RSpec.describe Quiz, type: :model do
       expect(FactoryGirl.create(:quiz)).to be_valid
     end
   end
+
+  describe 'Code' do
+    let(:quiz) { FactoryGirl.create(:quiz) }
+    it 'should not have more than 4 characters' do
+      expect(quiz.code.length).to eq(4)
+    end
+  end
 end
