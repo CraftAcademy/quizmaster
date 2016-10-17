@@ -1,0 +1,84 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/viktoria_blok/projects/quizmaster-1/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/controllers/application_controller.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/helpers/application_helper.rb": [
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1476707689
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/viktoria_blok/projects/quizmaster-1/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/controllers/application_controller.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/helpers/application_helper.rb": [
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/viktoria_blok/projects/quizmaster-1/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1476707718
+  }
+}
