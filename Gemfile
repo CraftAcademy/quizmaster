@@ -12,7 +12,6 @@ gem 'haml-rails'
 
 
 group :development, :test do
-    gem 'listen', '~> 3.0.5'
     gem 'rspec-rails'
     gem 'shoulda-matchers'
     gem 'factory_girl_rails'
