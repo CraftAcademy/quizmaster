@@ -8,4 +8,4 @@ Background:
 Scenario: Viewing my quiz page
   Given I am on the quiz page for "Trivia"
   Then I should see "Trivia"
-  And I should see "1234"
+  And I should see a quiz code

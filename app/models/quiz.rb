@@ -1,6 +1,6 @@
 class Quiz < ApplicationRecord
   validates_presence_of :name, :code
-  before_save :generate_random_code
+  before_validation :generate_random_code
 
   private
 
