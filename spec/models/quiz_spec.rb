@@ -8,19 +8,12 @@ RSpec.describe Quiz, type: :model do
 
   describe 'Validations' do
     it { is_expected.to validate_presence_of :name }
-    it { is_expected.to validate_presence_of :code }
+    it { is_expected.to validate_length_of(:code).is_equal_to(4) }
   end
 
   describe 'Factory' do
     it 'should have a valid Factory' do
       expect(FactoryGirl.create(:quiz)).to be_valid
-    end
-  end
-
-  describe 'Code' do
-    let(:quiz) { FactoryGirl.create(:quiz) }
-    it 'should not have more than 4 characters' do
-      expect(quiz.code.length).to eq(4)
     end
   end
 end
