@@ -4,6 +4,10 @@ Feature: As a Quizmaster
 
 Background:
   Given there is a quiz called "Trivia"
+  And the following questions exist:
+  | body            | answer     |
+  | What is 2+2?    | Four       |
+  | Who is awesome? | Not Thomas |
 
 Scenario: Viewing my quiz page
   Given I am on the quiz page for "Trivia"
