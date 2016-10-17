@@ -3,9 +3,9 @@ Feature: As a Quizmaster
   I need to generate a code where Players can access the Quiz.
 
 Background:
-  Given I create a quiz "Trivia"
+  Given there is a quiz called "Trivia"
 
 Scenario: Viewing my quiz page
-Given I am on the quiz page
-Then I should see "Trivia"
-And I should see "1234"
+  Given I am on the quiz page for "Trivia"
+  Then I should see "Trivia"
+  And I should see "1234"

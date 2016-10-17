@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  get '/quizmaster', controller: :quizzes, action: :index
+  namespace :quizmaster do
+    resources :quiz, controller: :quizzes, only: [:show]
+  end
 end
