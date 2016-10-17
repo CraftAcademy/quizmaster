@@ -12,7 +12,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 
-module Quizmaster1
+module Quizmaster
   class Application < Rails::Application
     config.generators do |generate|
       generate.helper false
