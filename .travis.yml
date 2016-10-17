@@ -1,0 +1,23 @@
+language: ruby
+rvm:
+  - 2.3.0
+before_script:
+  - bundle exec rake db:create --all
+  - bundle exec rake db:migrate
+script:
+  - bundle exec rake ci:tests
+services:
+  - postgresql
+notifications:
+    email: false
+
+deploy:
+    provider: heroku
+    api_key:
+      secure: L1vETIs0i4SmFMdCY1L+Jx2WzG1OT9zIzHL0ibEXqRPQMqRJZY2hF4VLSz6pvar5bHJGd0H7CHW9x7FK01eJXmqt0bxkLz47IlpQxusymYUe/jpo3U8np1+OjRzDzsvq8tIo5zv5khM6CBseZV93KfsCuFwi3jUs1IOskiqTn2pG2D0GpQ7xmFmZwGb69M/NGpmMrpd9fjApLo99gmgLJS9xhuIaF6pWlIgpxNZnCy+cV7Ryjip67CN3R2ecCHnDu6RYcnihlpFwQDRLCug9YsTYlo9E10RjqBEqYcv0s4Oc8pfaX39Eo3sgOvajnRVUNwnt30ANTQN9rMjpeylBH68X6UHHEjmPvnX94qCxQqJPPnXuDu+rt5zAs9XtX0oxp/8WiIjVi3bHbZZgrz917BEJRD8lO9s7tMV1HiVLKAap+ID5xC8LQlUV3yBz551ZrXoKFQdRSTsUC+MIJTP/2VSCwyOUbR5aNvpyz8Vmt8GwN56LkJzZNbO6mdBfhCYVD1SQOGWqxyoAN1Yp2MCKValwTpTlRA8jhAysQ8jCvMUIR2oxV+Pmh4mxOzv4TGJkEAs5YJiTdKn/SOfLmahBQQf7WtyMmpyMWcsf2BQc0vVfrZ0l+o4wrjApyv93aV7PxEhJk3w2N+YFFtfliBQiIFof98e2BLU5kZssQevfv0k=
+    app:
+      develop: quizmasterone
+    on:
+      repo: CraftAcademy/quizmaster
+    run:
+      - "rails db:migrate"

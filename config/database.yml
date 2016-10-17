@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: quizmaster_development
+
+test: &test
+  <<: *default
+  database: quizmaster_test
+
+production:
+  <<: *default
+  database: quizmaster_production
+  username: quizmaster
+  password: <%= ENV['QUIZMASTER_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
