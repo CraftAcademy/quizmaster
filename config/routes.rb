@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   post 'access_quiz' , controller: :games, action: :access_quiz, as: :access_quiz
 
+  mount ActionCable.server => '/cable'
+
 end

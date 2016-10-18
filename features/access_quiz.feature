@@ -1,3 +1,4 @@
+@javascript
 Feature: As a Team
   in order to play Quizmaster
   I need to be able to access the Quiz interface.
