@@ -16,7 +16,7 @@ module Quizmaster
   class Application < Rails::Application
     config.generators do |generate|
       generate.helper false
-      generate.assets false
+      #generate.assets false
       generate.view_specs false
       generate.helper_specs false
       generate.routing_specs false
