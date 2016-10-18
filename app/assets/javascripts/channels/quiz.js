@@ -1,18 +1,26 @@
-App.quiz = App.cable.subscriptions.create("QuizChannel", {
-  connected: function() {
-    // Called when the subscription is ready for use on the server
-  },
+App.cable.subscriptions.create("QuizChannel", {
+    collection: function () {
+        return $("#message");
+    },
 
-  disconnected: function() {
-    // Called when the subscription has been terminated by the server
-  },
+    connected: function () {
+        // Called when the subscription is ready for use on the server
+        //return this.collection().append('We are connected');
+    },
 
-  received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
+    disconnected: function () {
+        // Called when the subscription has been terminated by the server
+    },
 
-      var message = data.message;
-      $('#message').append(message);
-      console.log(data.message);
+    received: function (data) {
+        // Called when there's incoming data on the websocket for this channel
+        return this.printMessage(data)
 
-  }
+    },
+
+    printMessage: function(data) {
+        var message = data.message;
+        console.log(message);
+        return this.collection().append("<p>" + message + "</p>");
+    }
 });
