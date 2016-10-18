@@ -2,6 +2,7 @@ class Quiz < ApplicationRecord
   validates_presence_of :name, :code
   validates_length_of :code, is: 4
   before_validation :generate_random_code
+  has_many :questions
 
   private
 
