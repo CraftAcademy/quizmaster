@@ -9,9 +9,10 @@ App.quiz = App.cable.subscriptions.create("QuizChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-      debugger;
 
-      $('#message').html(data.message);
+      var message = data.message;
+      $('#message').append(message);
       console.log(data.message);
+
   }
 });

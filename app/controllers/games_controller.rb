@@ -6,8 +6,8 @@ class GamesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     message = "Welcome to quiz: #{@quiz.name}"
-    ActionCable.server.broadcast 'quiz_channel',
-                                 message: message
+    BroadcastQuizJob.perform_now(message: message)
+
     #head :ok
   end
 
