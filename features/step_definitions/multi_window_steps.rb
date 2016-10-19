@@ -20,5 +20,8 @@ end
 
 Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
   switch_to_window(windows[index.to_i - 1])
+  # steps %{
+  #   Then show me the page
+  # }
   expect(page).to have_content content
 end
