@@ -5,6 +5,7 @@ Feature: As a Team
 
   Background:
     Given there is a quiz called "Trivia"
+    And there is a quiz called "Trivia 2"
 
   Scenario: Access quiz and subscribe to channel
     Given I am on the quiz "landing" page
@@ -32,8 +33,8 @@ Feature: As a Team
     And I should see "Welcome back team"
 
 
-  Scenario: Dealing with two windows
-    Given I am on the quiz "landing" page
-    And  I open a new window
-    And I am on the quiz page for "Trivia" within window "1"
+  Scenario: Accessing two quizzes in separate windows
+    Given I am on the quiz page for "Trivia" within window "1"
+    And I open a new window
+    And I am on the quiz page for "Trivia 2" within window "2"
     Then I should have "2" active windows

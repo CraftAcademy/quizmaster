@@ -14,24 +14,18 @@ end
 
 Given(/^I open a new window$/) do
   open_new_window
-  @window_1 = windows.first
-  @window_2 = windows.last
 end
 
+
+And(/^I am on the quiz page for "([^"]*)" within window "([^"]*)"$/) do |quiz_name, window|
+  index = window.to_i - 1
+  quiz = Quiz.find_by(name: quiz_name)
+  within_window(switch_to_window(windows[index])) do
+    visit quizmaster_quiz_path(quiz)
+    save_screenshot("#{index}.png")
+  end
+end
 
 Then(/^I should have "([^"]*)" active windows$/) do |count|
-  puts @window_1.session.body
-  puts @window_2.session.body
   expect(windows.count).to eq count.to_i
-end
-
-And(/^I am on the quiz page for "([^"]*)" within window "([^"]*)"$/) do |name, window|
-  index = window.to_i - 1
-  within_window windows[index] do
-    visit '/quiz'
-    # steps %Q{
-    #     Given I am on the quiz page for "#{name}"
-    #       }
-  end
-  puts windows[index].session.body
 end
