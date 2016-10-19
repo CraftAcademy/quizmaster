@@ -14,3 +14,35 @@
  *= require_self
  */
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Creepster');
+html, body { height: 100%; }
+body {
+  background: #ffaf4b;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: -moz-linear-gradient(top, #ffaf4b 0%, #ff920a 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffaf4b), color-stop(100%, #ff920a));
+  background: -webkit-linear-gradient(top, #ffaf4b 0%, #ff920a 100%);
+  background: -o-linear-gradient(top, #ffaf4b 0%, #ff920a 100%);
+  background: -ms-linear-gradient(top, #ffaf4b 0%, #ff920a 100%);
+  background: linear-gradient(to bottom, #ffaf4b 0%, #ff920a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=0 );
+}
+.box {
+  max-width:400px;
+  margin: 70px auto;
+  padding:20px;
+  border: 4px solid #FFa500;
+  border-radius: 10px;
+  background:#FFF;
+}
+.code {
+  margin-bottom:10px;
+}
+.box h1 {
+  font-family: 'Creepster', sans-serif;
+  font-size: 60px;
+}
+
