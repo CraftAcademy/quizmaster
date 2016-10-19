@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :quizmaster do
     resources :quiz, controller: :quizzes, only: [:show]
+    post '/quiz/:id', controller: :quizzes, action: :start_quiz
   end
 
   resources :quiz, controller: :games, only: [:index, :show] do

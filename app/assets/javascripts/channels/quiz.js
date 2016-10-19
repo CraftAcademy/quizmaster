@@ -5,7 +5,8 @@ App.cable.subscriptions.create("QuizChannel", {
 
     connected: function () {
         // Called when the subscription is ready for use on the server
-        //return this.collection().append('We are connected');
+        // console.log('Connected')
+        // return this.collection().append('We are connected');
     },
 
     disconnected: function () {
@@ -19,8 +20,9 @@ App.cable.subscriptions.create("QuizChannel", {
     },
 
     printMessage: function(data) {
-        var message = data.message;
-        console.log(message);
-        return this.collection().append("<p>" + message + "</p>");
+        // console.log(message);
+        return this.collection().html(
+          "<p>" + data + "</p>"
+        );
     }
 });

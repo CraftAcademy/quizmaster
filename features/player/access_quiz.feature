@@ -21,3 +21,11 @@ Feature: As a Team
     Then I should be on the quiz page for "Trivia"
     And I should see "Welcome to quiz: Trivia"
     And I should see "Welcome back team"
+
+  Scenario: Receive initial "Quiz is starting" message
+    Given there is a "team_id" cookie set to "1"
+    And I am on the quiz "landing" page
+    And I enter the code for "Trivia"
+    Then I should be on the quiz page for "Trivia"
+    # When the quizmaster starts the quiz
+    # Then I should see "The Quiz is starting!"     

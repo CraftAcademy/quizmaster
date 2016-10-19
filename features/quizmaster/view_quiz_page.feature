@@ -8,9 +8,13 @@ Background:
   | body            | answer     |
   | What is 2+2?    | Four       |
   | Who is awesome? | Not Thomas |
+  And I am on the quiz page for "Trivia"
 
 Scenario: Viewing my quiz page
-  Given I am on the quiz page for "Trivia"
   Then I should see "Trivia"
   And I should see a quiz code
   And I should see "Who is awesome?"
+
+Scenario: Starting the quiz
+  When I click the "Start the Quiz" button
+  # Then I should send a message to Teams
