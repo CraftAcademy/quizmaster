@@ -19,7 +19,7 @@ Given(/^I am on the quiz page for "([^"]*)" in window "([^"]*)"$/) do |quiz, ind
 end
 
 Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
-  switch_to_window(windows[index.to_i - 1])
+  # switch_to_window(windows[index.to_i - 1])
   # steps %{
   #   Then show me the page
   # }

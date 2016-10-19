@@ -40,10 +40,12 @@ Feature: As a Team
     Then I should see "Trivia"
     Then I should have "2" active windows
 
+@action_cable
   Scenario: Receive initial Quiz welcome message
-    Given I am on the quiz page for "Trivia" in window "1"
+    Given I am on the quiz page for "Trivia"
     And I switch to a new window
     And I am on the quizmaster page for "Trivia"
-    Then I should have "2" active windows
     When I fill in "message" with "The Quiz begins!"
-    Then I should see "The Quiz begins!" within window "1"
+    And I click the "Start the Quiz" button
+    And I switch to window "1"
+    Then I should see "The Quiz begins!"
