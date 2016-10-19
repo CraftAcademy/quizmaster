@@ -2,7 +2,8 @@
 %p Find me in app/views/games/show.html.haml
 - if cookies['team_id'].blank?
   = form_tag '#', id: 'create_team', remote: true do
-    = text_field_tag :name
+    = hidden_field_tag 'team[quiz_id]', @quiz.id
+    = text_field_tag 'team[name]'
     = submit_tag 'Create Team'
 - else
   %p Welcome back team
