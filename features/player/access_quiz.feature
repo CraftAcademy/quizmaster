@@ -28,4 +28,12 @@ Feature: As a Team
     And I enter the code for "Trivia"
     Then I should be on the quiz page for "Trivia"
     # When the quizmaster starts the quiz
-    # Then I should see "The Quiz is starting!"     
+    # Then I should see "The Quiz is starting!"
+    And I should see "Welcome back team"
+
+
+  Scenario: Dealing with two windows
+    Given I am on the quiz "landing" page
+    And  I open a new window
+    And I am on the quiz page for "Trivia" within window "1"
+    Then I should have "2" active windows
