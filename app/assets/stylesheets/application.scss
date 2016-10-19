@@ -30,6 +30,14 @@ body {
   background: linear-gradient(to bottom, #ffaf4b 0%, #ff920a 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=0 );
 }
+.big-box {
+  margin: 10px auto;
+  padding:20px;
+  border: 4px solid #FFa500;
+  border-radius: 10px;
+  background:#FFF;
+  width:90%;
+}
 .box {
   max-width:400px;
   margin: 70px auto;
@@ -41,8 +49,7 @@ body {
 .code {
   margin-bottom:10px;
 }
-.box h1 {
+.box h1, .big-box h1  {
   font-family: 'Creepster', sans-serif;
-  font-size: 60px;
 }
 
