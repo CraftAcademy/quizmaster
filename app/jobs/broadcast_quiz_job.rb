@@ -3,5 +3,6 @@ class BroadcastQuizJob < ApplicationJob
 
   def perform(message)
     ActionCable.server.broadcast 'quiz_channel', message
+    binding.pry
   end
 end

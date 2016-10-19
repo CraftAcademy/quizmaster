@@ -48,4 +48,5 @@ Feature: As a Team
     When I fill in "message" with "The Quiz begins!"
     And I click the "Start the Quiz" button
     And I switch to window "1"
+    # And show me the page
     Then I should see "The Quiz begins!"
