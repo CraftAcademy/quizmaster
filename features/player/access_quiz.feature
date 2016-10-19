@@ -43,10 +43,13 @@ Feature: As a Team
 @action_cable
   Scenario: Receive initial Quiz welcome message
     Given I am on the quiz page for "Trivia"
+    And I fill in "team[name]" with "Awesome"
+    Then I should see my text "Awesome"
     And I switch to a new window
     And I am on the quizmaster page for "Trivia"
     When I fill in "message" with "The Quiz begins!"
     And I click the "Start the Quiz" button
     And I switch to window "1"
+    Then I should see my text "Awesome"
     # And show me the page
     Then I should see "The Quiz begins!"

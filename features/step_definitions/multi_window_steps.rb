@@ -19,6 +19,11 @@ Given(/^I am on the quiz page for "([^"]*)" in window "([^"]*)"$/) do |quiz, ind
   expect(page).to have_content quiz.name
 end
 
-Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
-  expect(page).to have_content content
+Then(/^I should see my text "([^"]*)"$/) do |text|
+  field = find_field('team[name]')
+  expect(field.value).to eq text
 end
+
+# Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
+#   expect(windows[index.to_i - 1]).to have_content content
+# end
