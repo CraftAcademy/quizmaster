@@ -9,17 +9,21 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
+gem 'redis'
 
 
 group :development, :test do
-    gem 'rspec-rails'
-    gem 'shoulda-matchers'
-    gem 'factory_girl_rails'
-    gem 'pry'
-    gem 'pry-byebug'
-    gem 'cucumber-rails', require: false
-    gem 'database_cleaner'
-    gem 'coveralls', require: false
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'coveralls', require: false
+  gem 'launchy'
+  gem 'poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
 end
 
 group :development do

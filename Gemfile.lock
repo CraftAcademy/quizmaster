@@ -49,6 +49,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cliver (0.3.2)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     coveralls (0.8.15)
@@ -111,6 +112,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.0.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -130,6 +133,11 @@ GEM
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
+    phantomjs (2.1.1.0)
+    poltergeist (1.10.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -168,6 +176,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redis (3.3.1)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -250,12 +259,16 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
+  launchy
   listen (~> 3.0.5)
   pg (~> 0.18)
+  phantomjs
+  poltergeist
   pry
   pry-byebug
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
+  redis
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
