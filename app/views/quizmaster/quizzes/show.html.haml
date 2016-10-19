@@ -1,7 +1,8 @@
-%h1= @quiz.name
-%h3= @quiz.code
+.big-box
+  %h1= @quiz.name
+  %h3= @quiz.code
 
-.questions
-  - @questions.each do |question|
-    %h3= question.body
-    
+  .questions
+    - @questions.each do |question|
+      %h3= question.body
+
