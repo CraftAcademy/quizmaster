@@ -30,8 +30,6 @@ Feature: As a Team
     Then I should be on the quiz page for "Trivia"
     # When the quizmaster starts the quiz
     # Then I should see "The Quiz is starting!"
-    And I should see "Welcome back team"
-
 
   Scenario: Accessing two quizzes in separate windows
     Given I am on the quiz page for "Trivia"
@@ -41,3 +39,11 @@ Feature: As a Team
     And I switch to window "1"
     Then I should see "Trivia"
     Then I should have "2" active windows
+
+  Scenario: Receive initial Quiz welcome message
+    Given I am on the quiz page for "Trivia" in window "1"
+    And I switch to a new window
+    And I am on the quizmaster page for "Trivia"
+    Then I should have "2" active windows
+    When I fill in "message" with "The Quiz begins!"
+    Then I should see "The Quiz begins!" within window "1"
