@@ -40,9 +40,11 @@ Feature: As a Team
     Then I should see "Trivia"
     Then I should have "2" active windows
 
-@action_cable
+  @action_cable
   Scenario: Receive initial Quiz welcome message
-    Given I am on the quiz page for "Trivia"
+    Given I am on the quiz "landing" page
+    And I enter the code for "Trivia"
+    Then I should be on the quiz page for "Trivia"
     And I fill in "team[name]" with "Awesome"
     Then I should see my text "Awesome"
     And I switch to a new window
