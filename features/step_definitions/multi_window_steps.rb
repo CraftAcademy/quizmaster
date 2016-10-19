@@ -19,5 +19,6 @@ Given(/^I am on the quiz page for "([^"]*)" in window "([^"]*)"$/) do |quiz, ind
 end
 
 Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
-  expect(windows[index.to_i - 1]).to have_content content
+  switch_to_window(windows[index.to_i - 1])
+  expect(page).to have_content content
 end
