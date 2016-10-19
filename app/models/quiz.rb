@@ -3,6 +3,7 @@ class Quiz < ApplicationRecord
   validates_length_of :code, is: 4
   before_validation :generate_random_code
   has_many :questions
+  has_many :teams
 
   private
 
