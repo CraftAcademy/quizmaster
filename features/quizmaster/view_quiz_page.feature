@@ -15,6 +15,7 @@ Scenario: Viewing my quiz page
   And I should see a quiz code
   And I should see "Who is awesome?"
 
+@javascript
 Scenario: Starting the quiz
   When I click the "Start the Quiz" button
   # Then I should send a message to Teams
