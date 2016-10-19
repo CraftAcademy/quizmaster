@@ -1,7 +1,7 @@
 Given(/^I am on the quiz "([^"]*)" page$/) do |page|
   case page
-    when 'landing'
-      visit quiz_index_path
+  when 'landing'
+    visit quiz_index_path
   end
 end
 
@@ -22,14 +22,14 @@ end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
   case Capybara.current_session.driver
-    when Capybara::Poltergeist::Driver
-      page.driver.set_cookie(key, value)
-    when Capybara::RackTest::Driver
-      headers = {}
-      Rack::Utils.set_cookie_header!(headers, key, vvalue)
-      cookie_string = headers['Set-Cookie']
-      Capybara.current_session.driver.browser.set_cookie(cookie_string)
-    else
-      raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
+  when Capybara::Poltergeist::Driver
+    page.driver.set_cookie(key, value)
+  when Capybara::RackTest::Driver
+    headers = {}
+    Rack::Utils.set_cookie_header!(headers, key, vvalue)
+    cookie_string = headers['Set-Cookie']
+    Capybara.current_session.driver.browser.set_cookie(cookie_string)
+  else
+    raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
   end
 end

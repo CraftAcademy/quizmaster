@@ -5,6 +5,7 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def broadcast_content
-    BroadcastQuizJob.perform_now('Whatup??')
+    # This method will broadcast content to Team
+    # BroadcastQuizJob.perform_now('')
   end
 end
