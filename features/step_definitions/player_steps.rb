@@ -6,7 +6,6 @@ Given(/^I am on the quiz "([^"]*)" page$/) do |page|
 end
 
 And(/^I enter the code for "([^"]*)"$/) do |quiz|
-  puts windows.last
   quiz = Quiz.find_by(name: quiz)
   fill_in :code, with: quiz.code
   click_link_or_button 'Submit'
