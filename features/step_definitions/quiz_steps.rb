@@ -11,19 +11,13 @@ Then(/^I should see a quiz code$/) do
   expect(page).to have_content @quiz.code
 end
 
-
-Given(/^I open a new window$/) do
-  open_new_window
+Given(/^I switch to a new window$/) do
+  window = open_new_window
+  switch_to_window(window)
 end
 
-
-And(/^I am on the quiz page for "([^"]*)" within window "([^"]*)"$/) do |quiz_name, window|
-  index = window.to_i - 1
-  quiz = Quiz.find_by(name: quiz_name)
-  within_window(switch_to_window(windows[index])) do
-    visit quizmaster_quiz_path(quiz)
-    save_screenshot("#{index}.png")
-  end
+Given(/^I switch to window "([^"]*)"$/) do |index|
+  switch_to_window(windows[index.to_i - 1])
 end
 
 Then(/^I should have "([^"]*)" active windows$/) do |count|

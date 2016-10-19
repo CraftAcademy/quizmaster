@@ -34,7 +34,10 @@ Feature: As a Team
 
 
   Scenario: Accessing two quizzes in separate windows
-    Given I am on the quiz page for "Trivia" within window "1"
-    And I open a new window
-    And I am on the quiz page for "Trivia 2" within window "2"
+    Given I am on the quiz page for "Trivia"
+    And I switch to a new window
+    And I am on the quiz page for "Trivia 2"
+    Then I should see "Trivia 2"
+    And I switch to window "1"
+    Then I should see "Trivia"
     Then I should have "2" active windows
