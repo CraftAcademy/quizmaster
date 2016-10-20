@@ -25,7 +25,6 @@ end
 
 
 When(/^I click the "([^"]*)" button$/) do |button|
-puts current_path
   click_link_or_button button
 end
 
