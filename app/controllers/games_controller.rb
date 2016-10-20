@@ -13,6 +13,13 @@ class GamesController < ApplicationController
     redirect_to quiz_path(quiz)
   end
 
+  def create_team
+    team = Team.create(name: params[:team][:name], quiz_id: params[:team][:quiz_id])
+    quiz = Quiz.find(params[:team][:quiz_id])
+    cookies['team_id'] = team.id
+    redirect_to quiz_path(quiz)
+  end
+
   private
   def get_quiz
     @quiz = Quiz.find(params[:id])

@@ -38,3 +38,9 @@ Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
     raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
   end
 end
+
+Then(/^there should be a "([^"]*)" cookie set to the ID of "([^"]*)"$/) do |key, team_name|
+  cookie = Capybara.current_session.driver.request.cookies.[]('team_id')
+  team_id = Team.find_by(name: team_name).id
+  expect(cookie.to_i).to eq team_id
+end

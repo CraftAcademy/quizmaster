@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :quiz, controller: :games, only: [:index, :show] do
-    resources :teams, controller: :teams, only: [:create]
+    post '/', controller: :games, action: :create_team
   end
 
   post 'access_quiz' , controller: :games, action: :access_quiz, as: :access_quiz
