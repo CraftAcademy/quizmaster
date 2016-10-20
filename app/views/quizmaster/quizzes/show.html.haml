@@ -1,22 +1,28 @@
 .big-box
   %h1= @quiz.name
   %h3= @quiz.code
+  .activate_quiz
+    = form_tag '#', id: 'start_quiz', controller: :quizzes, action: :start_quiz, method: :post, remote: true do
+      = hidden_field_tag 'id', @quiz.id
+      = hidden_field_tag 'welcome', true
+      = text_field_tag 'message', 'Welcome message', class: 'form-control code'
+      = submit_tag 'Start the Quiz', id: 'start_button', class: 'btn btn-primary btn-lg btn-block', onclick: 'showSuccess();'
+  .quiz_started
+    %p You have started the quiz!
 
   .questions
-    - @questions.each do |question|
-      %h3= question.body
+    - @questions.each_with_index do |question, index|
+      .question{id: "question#{index}"}
+        %p= question.body
+        = form_tag '/quizmaster/send_question', id: 'send_question', controller: :quizzes, action: :send_question, remote: true do
+          = hidden_field_tag 'id', @quiz.id
+          = hidden_field_tag 'welcome', false
+          = hidden_field_tag 'index', (index.to_i + 1) 
+          = hidden_field_tag 'question_id', question.id
+          .btn-group
+          = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success'
 
-.questions
-  - @questions.each do |question|
-    %h3= question.body
 
-.activate_quiz
-  = form_tag '#', id: 'start_quiz', controller: :quizzes, action: :start_quiz, method: :post, remote: true do
-    = hidden_field_tag 'id', @quiz.id
-    = text_field_tag 'message'
-    = submit_tag 'Start the Quiz', id: 'start_button', onclick: 'showSuccess();'
-.quiz_started
-  %h3 You have started the quiz!
 
 :javascript
   $(document).ready( function() {

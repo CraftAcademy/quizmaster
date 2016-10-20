@@ -7,5 +7,6 @@
       = submit_tag 'Create Team', class: 'btn btn-primary btn-lg btn-block'
   - else
     %p Get ready for the quiz, #{@team.name}!
-#message
-  Questions will appear here.
+    %hr/
+    #message.question_container
+      Questions will appear here.

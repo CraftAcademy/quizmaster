@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :quizmaster do
     resources :quiz, controller: :quizzes, only: [:show]
     post '/quiz/:id', controller: :quizzes, action: :start_quiz
+    post '/send_question', controller: :quizzes, action: :send_question
   end
 
   resources :quiz, controller: :games, only: [:index, :show] do
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
-  root 'quiz#index'
+  root 'games#index'
 end
