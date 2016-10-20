@@ -23,6 +23,7 @@ App.cable.subscriptions.create("QuizChannel", {
           "<p>" + data.message + "</p>"
         );
       } else {
+          console.log(data);
         return this.collection().html(
           data
           // "<p>" + data.index + ". " + data.question + "</p>"

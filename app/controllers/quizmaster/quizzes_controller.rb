@@ -7,8 +7,8 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def start_quiz
     @questions = @quiz.questions
-    content = {message: params[:message], welcome: params[:welcome]}
-    broadcast_content(content)
+    content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
+    BroadcastMessageJob.perform_now(content)
     render :show
   end
 
