@@ -1,4 +1,4 @@
-App.cable.subscriptions.create("QuizChannel", {
+App.quiz = App.cable.subscriptions.create("QuizChannel", {
     collection: function () {
         return $("#message");
     },
@@ -25,5 +25,25 @@ App.cable.subscriptions.create("QuizChannel", {
         } else {
             return this.collection().html(data);
         }
+    },
+    submitAnswer: function (message) {
+        return this.perform('submit_answer', {
+            message: message
+        });
     }
 });
+
+$('#answer').submit(function (e) {
+    var $this, textarea;
+    $this = $(this);
+    textarea = $this.find('#body');
+    if ($.trim(textarea.val()).length > 1) {
+        App.quiz.submitAnswer({message: textarea.val(), answer_id: 2});
+        textarea.val('');
+    }
+    e.preventDefault();
+    return false;
+});
+
+
+

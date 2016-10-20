@@ -1,18 +1,32 @@
 .answer_form
   = data[:question]
-  = form_tag quiz_send_answer_path(quiz_id: data[:quiz_id]), id: 'answer', remote: true do
-    = hidden_field_tag 'question_id', data[:question_id]
-    = hidden_field_tag 'team_id', data[:team_id]
-    = text_field_tag 'body', '', class: 'form-control code'
-    = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block', onclick: 'submitAnswer();'
+  =# form_tag quiz_send_answer_path(quiz_id: data[:quiz_id]), id: 'answer', remote: true do
+  =# form_tag '#', id: 'answer', remote: true do
+  = hidden_field_tag 'quiz_id', data[:quiz_id]
+  = hidden_field_tag 'question_id', data[:question_id]
+  = hidden_field_tag 'team_id', data[:team_id]
+  = text_field_tag 'body', '', class: 'form-control code'
+  = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block', onclick: 'submitAnswer();'
 .wait
   The next question is coming soon!
 
 :javascript
-  $(document).ready( function() {
+  $(document).ready(function () {
     $('.wait').hide();
-    this.submitAnswer = function() {
+    this.submitAnswer = function (e) {
+      var $this, quiz, answer, question, team ;
+      $this = $(this);
       $('.answer_form').hide();
       $('.wait').show();
+      quiz = $this.find('#quiz_id');
+      team = $this.find('#team_id');
+      answer = $this.find('#body');
+      question = $this.find('#question_id');
+      if ($.trim(answer.val()).length > 1) {
+        App.quiz.submitAnswer({answer: answer.val(), team_id: team.val(), quiz_id: quiz.val(), question_id: question.val()});
+        answer.val('');
+      }
+      e.preventDefault();
+      return false;
     };
   });
