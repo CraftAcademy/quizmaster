@@ -2,9 +2,9 @@ language: ruby
 rvm:
   - 2.3.0
 before_script:
+  - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
   - bundle exec rake db:create --all
   - bundle exec rake db:migrate
-  - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
 script:
   - bundle exec rake ci:tests
 services:
