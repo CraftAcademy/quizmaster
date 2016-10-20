@@ -1,6 +1,6 @@
 .answer_form
   = data[:question]
-  = form_tag quiz_send_answer_path(data[:quiz_id]), id: 'answer', remote: true do
+  = form_tag quiz_send_answer_path(quiz_id: data[:quiz_id]), id: 'answer', remote: true do
     = hidden_field_tag 'question_id', data[:question_id]
     = hidden_field_tag 'team_id', data[:team_id]
     = text_field_tag 'body', '', class: 'form-control code'

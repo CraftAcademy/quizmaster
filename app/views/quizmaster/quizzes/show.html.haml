@@ -13,7 +13,7 @@
     - @questions.each_with_index do |question, index|
       .question{id: "question#{index}"}
         %p= question.body
-        = form_tag url: {controller: :quizzes, action: :send_question}, id: 'send_question', remote: true do
+        = form_tag quizmaster_send_question_path, id: 'send_question', remote: true do
           = hidden_field_tag 'id', @quiz.id
           = hidden_field_tag 'welcome', false
           = hidden_field_tag 'index', (index.to_i + 1)
