@@ -24,6 +24,7 @@ group :development, :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
+  gem 'redis_test'
 end
 
 group :development do

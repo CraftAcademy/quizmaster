@@ -16,6 +16,11 @@ Then(/^I should be on the quiz page for "([^"]*)"$/) do |quiz|
   expect(current_path).to eq quiz_path(quiz)
 end
 
+Then(/^I am on the quiz page for "([^"]*)"$/) do |quiz|
+  quiz = Quiz.find_by(name: quiz)
+  visit quiz_path(quiz)
+end
+
 And(/^I should see a Create Team form$/) do
   expect(page).to have_css('form#create_team')
 end
