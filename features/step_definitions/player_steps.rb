@@ -26,12 +26,13 @@ And(/^I should see a Create Team form$/) do
 end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
+  team_id = Team.find_by(name: value).id
   case Capybara.current_session.driver
   when Capybara::Poltergeist::Driver
-    page.driver.set_cookie(key, value)
+    page.driver.set_cookie(key, team_id)
   when Capybara::RackTest::Driver
     headers = {}
-    Rack::Utils.set_cookie_header!(headers, key, vvalue)
+    Rack::Utils.set_cookie_header!(headers, key, team_id)
     cookie_string = headers['Set-Cookie']
     Capybara.current_session.driver.browser.set_cookie(cookie_string)
   else
@@ -40,7 +41,12 @@ Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
 end
 
 Then(/^there should be a "([^"]*)" cookie set to the ID of "([^"]*)"$/) do |key, team_name|
-  cookie = Capybara.current_session.driver.request.cookies.[]('team_id')
+  binding.pry
+  cookie = Capybara.current_session.driver.request.cookies.[](key)
   team_id = Team.find_by(name: team_name).id
   expect(cookie.to_i).to eq team_id
+end
+
+And(/^there is a team named "([^"]*)"$/) do |name|
+  FactoryGirl.create(:team, name: name)
 end

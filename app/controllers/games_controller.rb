@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @team = Team.find(cookies['team_id']) unless cookies['team_id'].blank?
+    @team = Team.find(cookies['team_id']) unless cookies['team_id'].nil?
     render :show, locals:{message: "Welcome to quiz: #{@quiz.name}"}
   end
 
@@ -15,8 +15,8 @@ class GamesController < ApplicationController
   end
 
   def create_team
-    team = Team.create(name: params[:team][:name], quiz_id: params[:team][:quiz_id])
-    quiz = Quiz.find(params[:team][:quiz_id])
+    team = Team.create(name: params[:team][:name], quiz_id: params[:quiz_id])
+    quiz = Quiz.find(params[:quiz_id])
     cookies['team_id'] = team.id
     redirect_to quiz_path(quiz)
   end
