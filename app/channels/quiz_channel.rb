@@ -2,8 +2,6 @@
 class QuizChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'quiz_channel'
-    binding.pry
-    puts 'We are subscribing to QuizChannel'
   end
 
   def unsubscribed

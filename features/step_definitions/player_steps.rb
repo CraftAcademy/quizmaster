@@ -38,3 +38,8 @@ Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
     raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
   end
 end
+
+
+And(/^I broadcast to the Qiz channel$/) do
+  ActionCable.server.broadcast 'quiz_channel', 'The Quiz begins!'
+end

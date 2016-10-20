@@ -6,7 +6,6 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def start_quiz
-    # @quiz = Quiz.find(params[:format])
     @questions = @quiz.questions
     content = params[:message]
     broadcast_content(content)

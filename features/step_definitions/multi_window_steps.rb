@@ -16,7 +16,8 @@ Given(/^I am on the quiz page for "([^"]*)" in window "([^"]*)"$/) do |quiz, ind
   quiz = Quiz.find_by(name: quiz)
   switch_to_window(windows[index.to_i - 1])
   visit quiz_path(quiz)
-  expect(page).to have_content quiz.name
+
+
 end
 
 Then(/^I should see my text "([^"]*)"$/) do |text|
@@ -25,9 +26,19 @@ Then(/^I should see my text "([^"]*)"$/) do |text|
 end
 
 When(/^I refresh the page$/) do
-  page.evaluate_script("window.location.reload()")
+  #page.evaluate_script("window.location.reload()")
+  #binding.pry
 end
 
-# Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
-#   expect(windows[index.to_i - 1]).to have_content content
-# end
+Then(/^I should see "([^"]*)" within window "([^"]*)"$/) do |content, index|
+  within_window(switch_to_window(windows[index.to_i - 1])) do
+    page.execute_script("App.cable.subscriptions.consumer.connection.close()")
+    page.execute_script("App.cable.subscriptions.create('QuizChannel')")
+    #sleep(0.01) until page.evaluate_script("App.cable.connection.getState() == 'open'")
+    #puts windows[index.to_i - 1].socket
+    #binding.pry
+    #sleep(0.01) until page.evaluate_script("App.cable.connection.getState() == 'open'")
+    sleep(3)
+    expect(page).to have_content content
+  end
+end
