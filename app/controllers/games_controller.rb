@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @team = Team.find(cookies['team_id']) unless cookies['team_id'].blank?
     render :show, locals:{message: "Welcome to quiz: #{@quiz.name}"}
   end
 

@@ -11,4 +11,4 @@ Feature: As a Player
     And I click the "Create Team" button
     Then there should be a "team_id" cookie set to the ID of "Eliten"
     And I should not see "Create Team"
-    Then I should see "Successfully created team!"
+    Then I should see "Get ready for the quiz, Eliten!"
