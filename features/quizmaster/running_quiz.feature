@@ -1,7 +1,7 @@
 @javascript @action_cable
 Feature: As a Quizmaster
-  in order to give out my Quiz
-  I need to generate a code where Players can access the Quiz.
+  in order to show individual Questions
+  I need to be able to push Questions one by one to the Question page.
 
 Background:
   Given there is a quiz called "Trivia"
@@ -9,15 +9,12 @@ Background:
     | body            | answer       |
     | What is 2+2?    | Four         |
     | Who is awesome? | Thomas is ok |
-  And I am on the quiz page for "Trivia"
+  And I am on the quizmaster page for "Trivia"
 
-Scenario: Viewing my quiz page
-  Then I should see "Welcome to quiz: Trivia"
-
-Scenario: Starting the quiz
+Scenario: I send the first question
+  When I am on the quiz page for "Trivia"
   And I switch to a new window
   And I am on the quizmaster page for "Trivia"
-  When I fill in "message" with "The Quiz begins!"
-  And I click the "Start the Quiz" button
+  When I press the "Send to Teams" button for question "1"
   And I switch to window "1"
-  Then I should see "The Quiz begins!"
+  Then I should see "What is 2+2?"
