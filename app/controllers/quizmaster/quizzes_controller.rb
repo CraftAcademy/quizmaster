@@ -7,7 +7,7 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def start_quiz
     @questions = @quiz.questions
-    content = params[:message]
+    content = {message: params[:message], welcome: params[:welcome]}
     broadcast_content(content)
     render :show
   end

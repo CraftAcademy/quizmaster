@@ -8,12 +8,14 @@
         %h3= question.body
         = form_tag '/quizmaster/send_question', id: 'send_question', controller: :quizzes, action: :send_question, remote: true do
           = hidden_field_tag 'id', @quiz.id
+          = hidden_field_tag 'welcome', false
           = hidden_field_tag 'question_id', question.id
           = submit_tag 'Send to Teams', id: 'send_button'
 
   .activate_quiz
     = form_tag '#', id: 'start_quiz', controller: :quizzes, action: :start_quiz, method: :post, remote: true do
       = hidden_field_tag 'id', @quiz.id
+      = hidden_field_tag 'welcome', true
       = text_field_tag 'message'
       = submit_tag 'Start the Quiz', id: 'start_button', onclick: 'showSuccess();'
   .quiz_started
