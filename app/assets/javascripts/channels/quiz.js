@@ -24,7 +24,9 @@ App.cable.subscriptions.create("QuizChannel", {
         );
       } else {
         return this.collection().html(
-          "<p>" + data.index + ". " + data.question + "</p>"
+          data
+          // "<p>" + data.index + ". " + data.question + "</p>"
+
         );
       }
     }
