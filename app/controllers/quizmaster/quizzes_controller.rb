@@ -14,7 +14,7 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def send_question
     question = Question.find(params[:question_id])
-    content = {question: question.body}
+    content = {question: question.body, index: params[:index]}
     broadcast_content(content)
   end
 
