@@ -17,17 +17,13 @@ App.cable.subscriptions.create("QuizChannel", {
 
     },
 
-    printMessage: function(data) {
-      if(data.welcome == "true") {
-        return this.collection().html(
-          "<p>" + data.message + "</p>"
-        );
-      } else {
-        return this.collection().html(
-          data
-          // "<p>" + data.index + ". " + data.question + "</p>"
-
-        );
-      }
+    printMessage: function (data) {
+        if (data.welcome == "true") {
+            return this.collection().html(
+                "<p>" + data.message + "</p>"
+            );
+        } else {
+            return this.collection().html(data);
+        }
     }
 });

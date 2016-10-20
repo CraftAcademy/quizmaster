@@ -12,7 +12,7 @@ Then(/^I should see a quiz code$/) do
 end
 
 Given(/^I receive the first question$/) do
-  steps %Q{
+  steps %q{
     Given there is a "team_id" cookie set to "Craft Academy"
     When I am on the quiz page for "Trivia"
     And I switch to a new window
@@ -23,6 +23,8 @@ Given(/^I receive the first question$/) do
 end
 
 Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, team_name|
+  sleep(2)
   team = Team.find_by(name: team_name)
-  expect(team.answers.count).to eq count
+  expect(team.answers.count).to eq count.to_i
+  sleep(2)
 end

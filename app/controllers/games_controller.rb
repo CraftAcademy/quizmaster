@@ -6,7 +6,7 @@ class GamesController < ApplicationController
 
   def show
     @team = Team.find(cookies['team_id']) unless cookies['team_id'].nil?
-    render :show, locals:{message: "Welcome to quiz: #{@quiz.name}"}
+    render :show, locals: {message: "Welcome to quiz: #{@quiz.name}"}
   end
 
   def access_quiz
@@ -25,7 +25,8 @@ class GamesController < ApplicationController
     question = Question.find(params[:question_id])
     team = Team.find(params[:team_id])
     @answer = Answer.create(body: params[:body], question: question, team: team)
-    render nothing: true
+    BroadcastMessageJob.perform_now({message: 'Answer submitted!', welcome: 'true'})
+    head :ok
   end
 
   private
