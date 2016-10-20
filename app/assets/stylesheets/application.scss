@@ -52,4 +52,29 @@ body {
 .box h1, .big-box h1  {
   font-family: 'Creepster', sans-serif;
 }
-
+#message {
+  font-family: 'Creepster', sans-serif;
+  font-size:35px;
+}
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  padding:0;
+}
+#send_question { display: inline-block; float:right;}
+.question p {
+  font-size: 20px;
+  float:left;
+  height:50px;
+  line-height: 50px;
+  margin-right: 51px;
+}
+.question {
+  padding-top: 10px;
+  border-bottom: 1px solid gainsboro;
+}
+.question:after {
+  content: '';
+  display: block;
+  clear: both;
+}
