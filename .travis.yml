@@ -10,15 +10,16 @@ script:
 services:
   - postgresql
 notifications:
-    email: false
-
+  email: false
+  slack:
+    secure: T/oGYhri1mw515Gy5xitewHs2ASVS/lnDAj6vKJdmU1qwfljXAfiiz+rgl+n3Z4vPO48G5E2xaDPLOL5CDNtl8QYrZXxH1mLrfNgNJ+vKUag1Nh6Cfx6S/DbIBdVq5O38BV84K5yPfIxpiC6bTY9Uj8HUN8J2wu/dq65IUon7musy1mb6lkinN63Zd7yG1uAoRwqfGai0Dk9zJ0IX4C+CteOn3PnNO0Bw23IVkBFrm43ruLxj6ILA8FYWlDmKPR6/ccq2cug/rgOc/h8UW/AXfA0L8Si19LTK/eoUp2S5wuVvzps5BlOb96gn6wsYiAX+azkElCYTYKJ0S8FW9ArBgsU41q/jgiUxpKbabgsg34lLV6aTgF8vDNw8jB/YhGgRZexq5XPcXetqiLrv2jHnjpgFUJPk1VH3hffpz6i5CMVfQVEJydVaMl1JOJex9IgPgC+Buqin5bv1xise0RELnwBZc+tQbTsCqKRYAHqxS6mxWCDxt37caTxVHJyMOgQBGSXN4IuZqhb5WJfV0oJCJVQUUfM3J6jrqS/iXfStYdR6yO+8xFaMFQy26hJXh+fslSaj62/hWatPMzWPsHmdTUgRX2o5I/88+Of1PYkUkecZ7pG7Nhb2LsObxCQVg3gDZ0Xy0loxD54aSuQt9LX6NvjpN4OUGlW8wkQWi3qJUI=
 deploy:
-    provider: heroku
-    api_key:
-      secure: VVdvv74FGX83m1FLqBtTOF5JVEWjPVBCOrPbVO05j7KsM4pMPeZwmZiHECdVa+ZOFqRsw8RZNvoxmz6oZPND9tLCz1gNh8m2qo+1bKAX3GU4Rs8GSni9ROSXl1r3R92/I3ENbDnMbFZH4I3GoBgdzQdFhZ5blOLawTLpFC76Jm57NmaZfL3eXeO8MCHbvxjgwphk+Tf5tu6wSeOOcbFMYjBAw3QFGzkCaQOJTZazFnBzoWH2dBXPstyKnJeOwM/o03HFH11qnzCTZK83SqNzv9wg5M0BOYCpBuqnqj1ppRWSxxQjbmYx3I/TU884dFGjuHfilImDpjeU9CMTGRhVXI6PNdqLCELH9nvhZOftv8M5DvTKEUqDcE1b3+MbQ1X4FnRCbyayDoLqUYEalDYiU+pE20bsf9qiZfp8+8OkBTcgqk5+Ah5Q7lWktDHyAZ5Bd8mty/CvHCPgD1fPHyUaPETq1qALGiKe9e0G9NCb7h3DjBRLqF4TNyKejX7DpTIxUzAPxcDKqKunTBNJ24Szo9NFnCbm4hBQVbhlCmXL+t1UAtO/+zs5MQV5e+EmbCb5sC7IOLdTmTAUw3ejDYBa+vAMx4Zv4d/OsfvU4edNYlI/IffYftxYDlqr19QvTcGkx9B/RD1/4s1/BySupXhuuvOTt2paPTlaIVNZ0A7/P/0=
-    app:
-      develop: quizmasterone
-    on:
-      repo: CraftAcademy/quizmaster
-    run:
-      - "rails db:migrate"
+  provider: heroku
+  api_key:
+    secure: VVdvv74FGX83m1FLqBtTOF5JVEWjPVBCOrPbVO05j7KsM4pMPeZwmZiHECdVa+ZOFqRsw8RZNvoxmz6oZPND9tLCz1gNh8m2qo+1bKAX3GU4Rs8GSni9ROSXl1r3R92/I3ENbDnMbFZH4I3GoBgdzQdFhZ5blOLawTLpFC76Jm57NmaZfL3eXeO8MCHbvxjgwphk+Tf5tu6wSeOOcbFMYjBAw3QFGzkCaQOJTZazFnBzoWH2dBXPstyKnJeOwM/o03HFH11qnzCTZK83SqNzv9wg5M0BOYCpBuqnqj1ppRWSxxQjbmYx3I/TU884dFGjuHfilImDpjeU9CMTGRhVXI6PNdqLCELH9nvhZOftv8M5DvTKEUqDcE1b3+MbQ1X4FnRCbyayDoLqUYEalDYiU+pE20bsf9qiZfp8+8OkBTcgqk5+Ah5Q7lWktDHyAZ5Bd8mty/CvHCPgD1fPHyUaPETq1qALGiKe9e0G9NCb7h3DjBRLqF4TNyKejX7DpTIxUzAPxcDKqKunTBNJ24Szo9NFnCbm4hBQVbhlCmXL+t1UAtO/+zs5MQV5e+EmbCb5sC7IOLdTmTAUw3ejDYBa+vAMx4Zv4d/OsfvU4edNYlI/IffYftxYDlqr19QvTcGkx9B/RD1/4s1/BySupXhuuvOTt2paPTlaIVNZ0A7/P/0=
+  app:
+    develop: quizmasterone
+  on:
+    repo: CraftAcademy/quizmaster
+  run:
+    - rails db:migrate
