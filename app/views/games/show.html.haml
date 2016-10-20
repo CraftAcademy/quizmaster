@@ -1,11 +1,12 @@
-%h3= message
-%p Find me in app/views/games/show.html.haml
-- if cookies['team_id'].blank?
-  = form_tag '#', id: 'create_team', remote: true do
-    = hidden_field_tag 'team[quiz_id]', @quiz.id
-    = text_field_tag 'team[name]'
-    = submit_tag 'Create Team'
-- else
-  %p Welcome back team
+.big-box
+  %h1= message
+  %p Enter your teamname and press the button!
+  - if cookies['team_id'].blank?
+    = form_tag '#', id: 'create_team', remote: true do
+      = hidden_field_tag 'team[quiz_id]', @quiz.id
+      = text_field_tag 'team[name]', 'Team Name', class: 'form-control code'
+      = submit_tag 'Create Team', class: 'btn btn-primary btn-lg btn-block'
+  - else
+    %p Welcome back team
 #message
   Questions will appear here.
