@@ -38,15 +38,3 @@ rails db:migrate
 rails db:seed
 ```
 You also need to have a `redis server` running and a localhost server with two windows open, one on root path and one at `/quizmaster/quiz/#number of quiz` 
-
-
-### UML diagrams
-
-You can also render sequence diagrams like this:
-
-```sequence
-Quizmaster->Player: What is the capital of Spain?
-Note right of Player: Player thinks
-Player-->Quizmaster: Madrid!
-```
-
