@@ -9,4 +9,6 @@ Feature: As a Player
     Given I am on the page for "Trivia"
     When I enter "Eliten"
     And I press the "Create Team" button
+    Then there should be a "team_id" cookie set to "1"
+    And I should not see "Create Team"
     Then I should see "Successfully created team!"
