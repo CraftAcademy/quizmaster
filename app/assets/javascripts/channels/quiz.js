@@ -18,8 +18,14 @@ App.cable.subscriptions.create("QuizChannel", {
     },
 
     printMessage: function(data) {
+      if(data.welcome == "true") {
         return this.collection().html(
-          "<p>" + data + "</p>"
+          "<p>" + data.message + "</p>"
         );
+      } else {
+        return this.collection().html(
+          "<p>" + data.index + ". " + data.question + "</p>"
+        );
+      }
     }
 });

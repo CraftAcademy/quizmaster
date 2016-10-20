@@ -5,15 +5,15 @@ Feature: As a Quizmaster
 
 Background:
   Given there is a quiz called "Trivia"
+  And there is a "team_id" cookie set to "1"
   And the following questions exist in "Trivia":
-    | body            | answer     |
-    | What is 2+2?    | Four       |
-    | Who is awesome? | Not Thomas |
+    | body            | answer       |
+    | What is 2+2?    | Four         |
+    | Who is awesome? | Thomas is ok |
   And I am on the quiz page for "Trivia"
 
 Scenario: Viewing my quiz page
   Then I should see "Welcome to quiz: Trivia"
-
 
 Scenario: Starting the quiz
   And I switch to a new window
