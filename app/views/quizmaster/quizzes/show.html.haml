@@ -17,7 +17,7 @@
         = form_tag '/quizmaster/send_question', id: 'send_question', controller: :quizzes, action: :send_question, remote: true do
           = hidden_field_tag 'id', @quiz.id
           = hidden_field_tag 'welcome', false
-          = hidden_field_tag 'index', (index.to_i + 1) 
+          = hidden_field_tag 'index', (index.to_i + 1)
           = hidden_field_tag 'question_id', question.id
           .btn-group
           = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success'

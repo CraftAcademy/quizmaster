@@ -13,6 +13,7 @@ Background:
 
 Scenario: I submit my answer
   Given I receive the first question
-  When I fill in "answer" with "Four"
-  And click the "Submit" button
+  When I fill in "body" with "Four"
+  And I click the "Submit" button
+  Then there should be "1" answer for the "Craft Academy" team
   Then I should see "Answer submitted!"

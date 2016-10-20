@@ -21,6 +21,13 @@ class GamesController < ApplicationController
     redirect_to quiz_path(quiz)
   end
 
+  def send_answer
+    question = Question.find(params[:question_id])
+    team = Team.find(params[:team_id])
+    @answer = Answer.create(body: params[:body], question: question, team: team)
+    render nothing: true
+  end
+
   private
   def get_quiz
     @quiz = Quiz.find(params[:id])

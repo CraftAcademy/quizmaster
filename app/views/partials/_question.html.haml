@@ -1,4 +1,6 @@
 Here's the partial mothafuckas!
-= form_tag answer_create_path, id: 'answer', remote: true do
-  = text_field_tag 'answer', '', class: 'form-control code'
+= form_tag quiz_send_answer_path(data[:quiz_id]), id: 'answer', remote: true do
+  = hidden_field_tag 'question_id', data[:question_id]
+  = hidden_field_tag 'team_id', data[:team_id]
+  = text_field_tag 'body', '', class: 'form-control code'
   = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block'

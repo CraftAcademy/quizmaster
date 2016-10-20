@@ -21,3 +21,8 @@ Given(/^I receive the first question$/) do
     And I switch to window "1"
   }
 end
+
+Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, team_name|
+  team = Team.find_by(name: team_name)
+  expect(team.answers.count).to eq count
+end

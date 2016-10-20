@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :quiz, controller: :games, only: [:index, :show] do
     post '/create_team', controller: :games, action: :create_team
+    post '/send_answer', controller: :games, action: :send_answer
   end
 
   post 'access_quiz' , controller: :games, action: :access_quiz, as: :access_quiz
