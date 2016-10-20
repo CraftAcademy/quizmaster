@@ -1,12 +1,12 @@
 .big-box
   %h1= message
-  - if cookies['team_id'].blank?
+  - if cookies['team_id'].nil?
     %p Enter your teamname and press the button!
-    = form_tag '#', id: 'create_team', remote: true do
-      = hidden_field_tag 'team[quiz_id]', @quiz.id
+    = form_tag quiz_create_team_path(@quiz), id: 'create_team', remote: true do
       = text_field_tag 'team[name]', 'Team Name', class: 'form-control code'
       = submit_tag 'Create Team', class: 'btn btn-primary btn-lg btn-block'
   - else
+    %p Get ready for the quiz, #{@team.name}!
     %hr/
     #message.question_container
       Questions will appear here.

@@ -9,10 +9,11 @@ Background:
     | body            | answer       |
     | What is 2+2?    | Four         |
     | Who is awesome? | Thomas is ok |
+  And there is a team named "Craft Academy"
   And I am on the quizmaster page for "Trivia"
 
 Scenario: I send the first question
-  Given there is a "team_id" cookie set to "1"
+  Given there is a "team_id" cookie set to "Craft Academy"
   When I am on the quiz page for "Trivia"
   And I switch to a new window
   And I am on the quizmaster page for "Trivia"
