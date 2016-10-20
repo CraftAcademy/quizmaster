@@ -1,3 +1,4 @@
+@javascript @action_cable
 Feature: As a Quizmaster
   in order to give out my Quiz
   I need to generate a code where Players can access the Quiz.
@@ -11,11 +12,13 @@ Background:
   And I am on the quiz page for "Trivia"
 
 Scenario: Viewing my quiz page
-  Then I should see "Trivia"
-  And I should see a quiz code
-  And I should see "Who is awesome?"
+  Then I should see "Welcome to quiz: Trivia"
 
-@javascript
+
 Scenario: Starting the quiz
-  When I click the "Start the Quiz" button
-  # Then I should send a message to Teams
+  And I switch to a new window
+  And I am on the quizmaster page for "Trivia"
+  When I fill in "message" with "The Quiz begins!"
+  And I click the "Start the Quiz" button
+  And I switch to window "1"
+  Then I should see "The Quiz begins!"

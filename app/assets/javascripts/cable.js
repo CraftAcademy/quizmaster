@@ -9,9 +9,5 @@
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
-  console.log('cable.js');
-  // console.log(this.App.cable.subscriptions.subscriptions[0].identifier);
 
 }).call(this);
-
-console.log('after cable.js');

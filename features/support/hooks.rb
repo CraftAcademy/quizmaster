@@ -1,6 +1,5 @@
 
 Before '@action_cable' do
-  Capybara.server = :puma
   RedisTest.start
   RedisTest.configure(:default)
 end

@@ -26,3 +26,5 @@ Capybara.register_server :puma do |app, port, host|
     s.add_tcp_listener host, port
   end.run.join
 end
+
+Capybara.server = :puma

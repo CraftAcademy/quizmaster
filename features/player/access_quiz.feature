@@ -1,4 +1,5 @@
-@javascript
+@javascript @action_cable
+
 Feature: As a Team
   in order to play Quizmaster
   I need to be able to access the Quiz interface.
@@ -40,7 +41,6 @@ Feature: As a Team
     Then I should see "Trivia"
     Then I should have "2" active windows
 
-  @action_cable
   Scenario: Receive initial Quiz welcome message
     Given I am on the quiz "landing" page
     And I enter the code for "Trivia"
