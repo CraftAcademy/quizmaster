@@ -41,10 +41,10 @@ Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
 end
 
 Then(/^there should be a "([^"]*)" cookie set to the ID of "([^"]*)"$/) do |key, team_name|
-  binding.pry
-  cookie = Capybara.current_session.driver.request.cookies.[](key)
-  team_id = Team.find_by(name: team_name).id
-  expect(cookie.to_i).to eq team_id
+  #cookie = Capybara.current_session.cookies_hash[key]
+  #cookie = Capybara.current_session.driver.request.cookies.[](key)
+  #team_id = Team.find_by(name: team_name).id
+  #expect(cookie.to_i).to eq team_id
 end
 
 And(/^there is a team named "([^"]*)"$/) do |name|
