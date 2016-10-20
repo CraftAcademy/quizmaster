@@ -12,6 +12,7 @@ Background:
   And I am on the quizmaster page for "Trivia"
 
 Scenario: I send the first question
+  Given there is a "team_id" cookie set to "1"
   When I am on the quiz page for "Trivia"
   And I switch to a new window
   And I am on the quizmaster page for "Trivia"
