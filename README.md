@@ -84,13 +84,15 @@ https://www.eventbrite.com/e/craft-academy-halloween-party-2016-registration-285
 
 ## Installation (This part is WIP)
 
+Fork or clone the project, then in your project folder run: 
 
 ```
 bundle install
 rails db:create
 rails db:migrate
-rails db:seed
 ```
+
+At the moment you need rails `db:seed` as there is no authoring function of quizzes.
 
 You also need to have a `redis server` running and a localhost server with two windows open, one on root path and one at `/quizmaster/quiz/:id` 
 
