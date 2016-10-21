@@ -1,9 +1,10 @@
 .big-box
   %h1= @question.body
   %h3= @question.answer
+  %hr/
 
   .answers
-    - @question.answers.each do |answer|
-      = answer.team
-      %br/
+    - @question.answers.each_with_index do |answer, index|
+      #answer{id: index}
       = answer.body
+      %hr/
