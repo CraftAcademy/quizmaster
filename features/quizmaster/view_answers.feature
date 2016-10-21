@@ -9,8 +9,8 @@ Background:
     | body            | answer       |
     | What is 2+2?    | Four         |
     | Who is awesome? | Thomas is ok |
-  And there is a team named "Craft Academy"
-  And there is a team named "Amber rocks!"
+  And there is a team named "Craft Academy" playing "Trivia"
+  And there is a team named "Amber Rocks!" playing "Trivia"
   And I am on the quizmaster page for "Trivia"
 
 Scenario: I correct the answers for a question
