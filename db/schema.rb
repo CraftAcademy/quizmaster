@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019143759) do
+ActiveRecord::Schema.define(version: 20161020141421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "body"
+    t.boolean  "is_correct"
+    t.integer  "question_id"
+    t.integer  "team_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
+    t.index ["team_id"], name: "index_answers_on_team_id", using: :btree
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string   "body"
@@ -39,6 +50,8 @@ ActiveRecord::Schema.define(version: 20161019143759) do
     t.index ["quiz_id"], name: "index_teams_on_quiz_id", using: :btree
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "teams"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "teams", "quizzes"
 end

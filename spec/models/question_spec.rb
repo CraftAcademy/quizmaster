@@ -5,6 +5,7 @@ RSpec.describe Question, type: :model do
     it { is_expected.to have_db_column :body }
     it { is_expected.to have_db_column :answer }
     it { is_expected.to belong_to :quiz }
+    it { is_expected.to have_many :answers }
   end
 
   describe 'Validations' do

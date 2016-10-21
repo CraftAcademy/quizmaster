@@ -1,7 +1,12 @@
 class BroadcastQuizJob < ApplicationJob
   queue_as :default
 
-  def perform(message)
-    ActionCable.server.broadcast 'quiz_channel', message
+  def perform(data)
+    ActionCable.server.broadcast 'quiz_channel', create_partial(data)
+  end
+
+  def create_partial(data)
+    ApplicationController.renderer.render(partial: './partials/question', locals: {data: data})
   end
 end
+

@@ -7,14 +7,14 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def start_quiz
     @questions = @quiz.questions
-    content = {message: params[:message], welcome: params[:welcome]}
-    broadcast_content(content)
+    content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
+    BroadcastMessageJob.perform_now(content)
     render :show
   end
 
   def send_question
     question = Question.find(params[:question_id])
-    content = {question: question.body, index: params[:index]}
+    content = {question: question.body, index: params[:index], quiz_id: params[:id], question_id: params[:question_id], team_id: cookies['team_id']}
     broadcast_content(content)
   end
 

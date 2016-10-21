@@ -1,4 +1,4 @@
-App.cable.subscriptions.create("QuizChannel", {
+App.quiz = App.cable.subscriptions.create("QuizChannel", {
     collection: function () {
         return $("#message");
     },
@@ -17,15 +17,22 @@ App.cable.subscriptions.create("QuizChannel", {
 
     },
 
-    printMessage: function(data) {
-      if(data.welcome == "true") {
-        return this.collection().html(
-          "<p>" + data.message + "</p>"
-        );
-      } else {
-        return this.collection().html(
-          "<p>" + data.index + ". " + data.question + "</p>"
-        );
-      }
+    printMessage: function (data) {
+        if (data.welcome == "true") {
+            return this.collection().html(
+                "<p>" + data.message + "</p>"
+            );
+        } else {
+            return this.collection().html(data);
+        }
+    },
+    submitAnswer: function (message) {
+        return this.perform('submit_answer', {
+            message: message
+        });
     }
 });
+
+
+
+

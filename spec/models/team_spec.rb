@@ -4,6 +4,7 @@ RSpec.describe Team, type: :model do
   describe 'DB table' do
     it { is_expected.to have_db_column :name }
     it { is_expected.to belong_to :quiz }
+    it { is_expected.to have_many :answers }
   end
 
   describe 'Validations' do
