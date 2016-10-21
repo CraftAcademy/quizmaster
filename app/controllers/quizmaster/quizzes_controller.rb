@@ -18,6 +18,11 @@ class Quizmaster::QuizzesController < ApplicationController
     broadcast_content(content)
   end
 
+  def correct_answers
+    @question = Question.find(params[:id])
+    render :answers
+  end
+
   def broadcast_content(content)
     # This method will broadcast content to Team
     BroadcastQuizJob.perform_now(content)

@@ -21,7 +21,7 @@
           .btn-group#send{id: "answer#{index}"}
             = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success', onclick: "showAnswers(#{index});"
           .btn-group#correct{id: "answer#{index}"}
-            = link_to 'Correct', '#', id: 'correct_button', class: 'btn btn-sq-sm btn-success'
+            = link_to 'Correct', "answers/#{question.id}", id: 'correct_button', class: 'btn btn-sq-sm btn-success'
 
 
 
@@ -34,7 +34,6 @@
       $('.quiz_started').show();
     };
     this.showAnswers = function(index) {
-    console.log(index);
       $('[id^=send_answer]')[index].style.display = "none";
       $('[id^=correct_answer]')[index].style.display = "inline-block";
     };

@@ -5,5 +5,5 @@ end
 
 Then(/^I should be on the correction page for "([^"]*)"$/) do |question|
   question = Question.find_by(body: question)
-  visit correct_answers_path(question)
+  expect(current_path).to eq "/quizmaster/quiz/answers/#{question.id}"
 end
