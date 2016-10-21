@@ -28,6 +28,11 @@ class Quizmaster::QuizzesController < ApplicationController
     BroadcastQuizJob.perform_now(content)
   end
 
+  def mark_answers
+    answer = Answer.find(params[:id])
+    
+  end
+
   private
 
   def get_quiz
