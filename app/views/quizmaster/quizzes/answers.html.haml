@@ -1,1 +1,9 @@
-Here's the answers page.
+.big-box
+  %h1= @question.body
+  %h3= @question.answer
+
+  .answers
+    - @question.answers.each do |answer|
+      = answer.team
+      %br/
+      = answer.body
