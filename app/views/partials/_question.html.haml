@@ -11,7 +11,7 @@
 :javascript
   $(document).ready(function () {
     $('.wait').hide();
-    this.submitAnswer = function (e) {
+    this.submitAnswer = function () {
       var $this, quiz, answer, question, team ;
       $this = $(this);
       $('.answer_form').hide();
@@ -24,7 +24,7 @@
         App.quiz.submitAnswer({answer: answer.val(), team_id: team.val(), quiz_id: quiz.val(), question_id: question.val()});
         answer.val('');
       }
-      e.preventDefault();
+      //e.preventDefault();
       return false;
     };
   });

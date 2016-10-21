@@ -12,7 +12,9 @@ class QuizChannel < ApplicationCable::Channel
     params = data['message'].symbolize_keys!
     question = Question.find(params[:question_id])
     team = Team.find(params[:team_id])
-    Answer.create(body: params[:answer], question: question, team: team)
+    Answer.create(body: params[:answer],
+                  question: question,
+                  team: team)
     BroadcastMessageJob.perform_now({message: 'Answer submitted!', welcome: 'true'})
   end
 end

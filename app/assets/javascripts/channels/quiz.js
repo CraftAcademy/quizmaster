@@ -33,17 +33,6 @@ App.quiz = App.cable.subscriptions.create("QuizChannel", {
     }
 });
 
-$('#answer').submit(function (e) {
-    var $this, textarea;
-    $this = $(this);
-    textarea = $this.find('#body');
-    if ($.trim(textarea.val()).length > 1) {
-        App.quiz.submitAnswer({message: textarea.val(), answer_id: 2});
-        textarea.val('');
-    }
-    e.preventDefault();
-    return false;
-});
 
 
 
