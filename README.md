@@ -77,6 +77,7 @@ https://www.pivotaltracker.com/n/projects/1901449
 - @diraulo
 
 
-## License (This part is WIP)
+## License
 
-Open source
+Can be found here: 
+[License](../blob/develop/LICENSE.md)
