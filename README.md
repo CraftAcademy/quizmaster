@@ -13,8 +13,7 @@ Pub Quiz made Digital.
 
 It is a work in progress, so at the moment there is no function for authoring quizzes. 
 
-You find the live app on heroku: 
-http://quizmasterone.herokuapp.com/
+You find the live app on [heroku](http://quizmasterone.herokuapp.com/) 
 
 But to be able to play the game you need to have a quiz code and a quiz needs to be live, so that is not doable yet. 
 
@@ -67,8 +66,9 @@ Scenario: I send the first question
 
 ## Contributors
 
-Pivotal tracker: 
-https://www.pivotaltracker.com/n/projects/1901449
+
+[Pivotal tracker](https://www.pivotaltracker.com/n/projects/1901449)
+
 
 - @thesuss 
 - @amberwilkie
