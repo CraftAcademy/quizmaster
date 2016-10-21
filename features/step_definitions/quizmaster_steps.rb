@@ -11,11 +11,11 @@ end
 When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
   question = Answer.find_by(body: answer).question
   question.answers.each_with_index do |response, index|
-    if response == answer
+    if response.body == answer
       position = index
+      within("#answer_#{position}") { click_link_or_button is_correct }
     end
   end
-  within("answer#{position}") { click_link_or_button is_correct }
 end
 
 Then(/^"([^"]*)" should have "([^"]*)" correct answer$/) do |team_name, count|
