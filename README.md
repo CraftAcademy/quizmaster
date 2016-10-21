@@ -27,54 +27,6 @@ But to be able to play the game you need to have a quiz code and a quiz needs to
 - Rails 5 as framework
 
 
-## Code Example
-
-Pushing a question to player:
-
-
-```
-File: app/views/quizmaster/quizzes/show.html.haml
-  .questions
-    - @questions.each_with_index do |question, index|
-      .question{id: "question#{index}"}
-        %p= question.body
-        = form_tag '/quizmaster/send_question', id: 'send_question', controller: :quizzes, action: :send_question, remote: true do
-          = hidden_field_tag 'id', @quiz.id
-          = hidden_field_tag 'welcome', false
-          = hidden_field_tag 'index', (index.to_i + 1) 
-          = hidden_field_tag 'question_id', question.id
-          .btn-group
-          = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success'
-```
-
-```
-File: app/assets/javascriots/channels/quiz.js
-App.cable.subscriptions.create("QuizChannel", {
-    collection: function () {
-        return $("#message");
-    },
-    [..]
-    received: function (data) {
-        // Called when there's incoming data on the websocket for this channel
-        return this.printMessage(data)
-
-    },
-
-    printMessage: function(data) {
-      if(data.welcome == "true") {
-        return this.collection().html(
-          "<p>" + data.message + "</p>"
-        );
-      } else {
-        return this.collection().html(
-          "<p>" + data.index + ". " + data.question + "</p>"
-        );
-      }
-    }
-});
-```
-
-
 
 ## Motivation
 
