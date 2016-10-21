@@ -7,4 +7,9 @@
     - @question.answers.each_with_index do |answer, index|
       #answer{id: index}
       = answer.body
+      = link_to image_tag('x-box.png'),"/quizmaster/quiz/answers/#{answer.id}", class: 'checkbox-right', id: "wrong#{index}"
+      = link_to image_tag('check-box.png'),"/quizmaster/quiz/answers/#{answer.id}", class: 'checkbox-right', id: "right#{index}"
+      %br/
+      %br/
       %hr/
+

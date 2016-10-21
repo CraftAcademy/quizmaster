@@ -19,6 +19,6 @@ Scenario: I correct the answers for a question
   And "Amber Rocks!" has answered question "What is 2+2?" with "4"
   When I click the "Correct" button
   Then I should be on the correction page for "What is 2+2?"
-  When I click "correct" on "4"
+  When I click "right" on "4"
   And I click "incorrect" on "Six"
   Then "Amber Rocks!" should have "1" correct answer
