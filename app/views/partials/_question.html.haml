@@ -1,8 +1,6 @@
 .answer_form
   = data[:question]
-  = hidden_field_tag 'quiz_id', data[:quiz_id]
-  = hidden_field_tag 'question_id', data[:question_id]
-  = hidden_field_tag 'team_id', data[:team_id]
+  #info{data: {quiz_id: data[:quiz_id], question_id: data[:question_id], team_id: data[:team_id]}}
   = text_field_tag 'body', '', class: 'form-control code'
   = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block', onclick: 'submitAnswer();'
 .wait
@@ -12,19 +10,20 @@
   $(document).ready(function () {
     $('.wait').hide();
     this.submitAnswer = function () {
-      var $this, quiz, answer, question, team ;
+      var $this, dataset, quiz, answer, question, team ;
       $this = $(this);
-      $('.answer_form').hide();
-      $('.wait').show();
-      quiz = $this.find('#quiz_id');
-      team = $this.find('#team_id');
+      dataset = $this.find('#info')
+      quiz = dataset.data().quizId;
+      team = dataset.data().teamId;
+      question = dataset.data().questionId;
       answer = $this.find('#body');
-      question = $this.find('#question_id');
-      if ($.trim(answer.val()).length > 1) {
-        App.quiz.submitAnswer({answer: answer.val(), team_id: team.val(), quiz_id: quiz.val(), question_id: question.val()});
-        answer.val('');
+      if ($.trim(answer.val()).length >= 1) {
+        App.quiz.submitAnswer({answer: answer.val(), team_id: team, quiz_id: quiz, question_id: question});
+        $('.answer_form').hide();
+        $('.wait').show();
+      } else {
+        $('#message').append('WTF Dude?!?')
       }
-      //e.preventDefault();
       return false;
     };
   });
