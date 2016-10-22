@@ -9,7 +9,7 @@ Background:
     | body            | answer       |
     | What is 2+2?    | Four         |
     | Who is awesome? | Thomas is ok |
-  And there is a team named "Craft Academy"
+  And there is a team named "Craft Academy" playing "Trivia"
 
 Scenario: I submit my answer
   Given I receive the first question
