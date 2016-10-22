@@ -49,5 +49,5 @@ end
 
 And(/^there is a team named "([^"]*)" playing "([^"]*)"$/) do |team_name, quiz_name|
   quiz = Quiz.find_by(name: quiz_name)
-  Team.create(name: team_name, quiz: quiz)
+  FactoryGirl.create(:team, name: team_name, quiz: quiz)
 end
