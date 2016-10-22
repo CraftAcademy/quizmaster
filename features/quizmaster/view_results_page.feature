@@ -1,3 +1,4 @@
+@action_cable @javascript
 Feature: As a Quizmaster
   in order to declare a winner
   I need to see a tally of Teams' correct Answers.

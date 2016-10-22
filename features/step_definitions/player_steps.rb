@@ -26,7 +26,6 @@ And(/^I should see a Create Team form$/) do
 end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  binding.pry
   team_id = Team.find_by(name: value).id
   case Capybara.current_session.driver
   when Capybara::Poltergeist::Driver
@@ -54,8 +53,8 @@ And(/^there is a team named "([^"]*)" playing "([^"]*)"$/) do |team_name, quiz_n
 end
 
 When(/^"([^"]*)" is looking at the quiz page for "([^"]*)"$/) do |team_name, quiz_name|
-    steps %q{
-      Given there is a "team_id" cookie set to #{team_name}
+    steps %Q{
+      Given there is a "team_id" cookie set to "#{team_name}"
       And I switch to a new window
       And I am on the quiz page for "Trivia"
     }
