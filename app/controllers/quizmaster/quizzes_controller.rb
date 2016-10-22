@@ -20,8 +20,14 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def send_results
     quiz = Quiz.find(params[:id])
-    message = "#{quiz.teams.where(is_winner: true).first} won!"
-    content = {message: message, welcome: true, quiz_id: quiz.id}
+    scores = []
+    quiz.teams.each do |team|
+      points = team.answers.where(is_correct: true).count
+      scores << {team: team, score: points}
+    end
+    scores.sort_by! {|_key, value| value}
+    message = "#{scores.last[:team].name} won!"
+    content = {message: message, welcome: 'true', quiz_id: quiz.id}
     BroadcastMessageJob.perform_now(content)
     head :ok
   end
