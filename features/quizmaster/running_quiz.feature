@@ -17,6 +17,6 @@ Scenario: I send the first question
   When I am on the quiz page for "Trivia"
   And I switch to a new window
   And I am on the quizmaster page for "Trivia"
-  When I press the "Send" button for question "1"
+  When I press the "Send" button for question "What is 2+2?"
   And I switch to window "1"
   Then I should see "What is 2+2?"

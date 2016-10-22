@@ -14,7 +14,8 @@ Background:
   And I am on the quizmaster page for "Trivia"
 
 Scenario: I correct the answers for a question
-  Given I press the "Send" button for question "1"
+  Given I press the "Send" button for question "What is 2+2?"
+  And show me the page
   And "Amber Rocks!" has answered question "What is 2+2?" with "4"
   And "Craft Academy" has answered question "What is 2+2?" with "Six"
   When I click the "Correct" button
@@ -26,7 +27,7 @@ Scenario: I correct the answers for a question
   And I should see "Undo?"
 
 Scenario: The back button takes me back to my Quiz
-  Given I press the "Send" button for question "1"
+  Given I press the "Send" button for question "What is 2+2?"
   And I click the "Correct" button
   When I click the "Back to Questions" button
   Then I should be on the quizmaster page for "Trivia"
