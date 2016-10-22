@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :quiz, controller: :quizzes, only: [:show]
     post '/quiz/:id', controller: :quizzes, action: :start_quiz
     post '/send_question', controller: :quizzes, action: :send_question
+    get 'quiz/answers/:id', controller: :quizzes, action: :correct_answers, as: :correct_answers
+    get 'quiz/answers/mark/:id', controller: :quizzes, action: :mark_answers, as: :mark_answers
   end
 
   resources :quiz, controller: :games, only: [:index, :show] do

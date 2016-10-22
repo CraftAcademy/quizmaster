@@ -18,16 +18,23 @@
           = hidden_field_tag 'welcome', false
           = hidden_field_tag 'index', (index.to_i + 1)
           = hidden_field_tag 'question_id', question.id
-          .btn-group
-            = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success'
+          .btn-group#send{id: "answer#{index}"}
+            = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success', onclick: "showAnswers(#{index});"
+          .btn-group#correct{id: "answer#{index}"}
+            = link_to 'Correct', quizmaster_correct_answers_path(question), id: 'correct_button', class: 'btn btn-sq-sm btn-success'
 
 
 
 :javascript
   $(document).ready( function() {
     $('.quiz_started').hide();
+    $('[id^=correct_answer]').hide();
     this.showSuccess = function() {
       $('.activate_quiz').hide();
       $('.quiz_started').show();
+    };
+    this.showAnswers = function(index) {
+      $('[id^=send_answer]')[index].style.display = "none";
+      $('[id^=correct_answer]')[index].style.display = "inline-block";
     };
   });

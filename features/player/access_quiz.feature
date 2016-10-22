@@ -7,7 +7,7 @@ Feature: As a Team
   Background:
     Given there is a quiz called "Trivia"
     And there is a quiz called "Trivia 2"
-    And there is a team named "Craft Academy"
+    And there is a team named "Craft Academy" playing "Trivia"
 
   Scenario: Access quiz and subscribe to channel
     Given I am on the quiz "landing" page
