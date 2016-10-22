@@ -55,7 +55,7 @@ end
 
 When(/^"([^"]*)" is looking at the quiz page for "([^"]*)"$/) do |team_name, quiz_name|
     steps %q{
-      Given there is a "team_id" cookie set to "#{team_name}"
+      Given there is a "team_id" cookie set to #{team_name}
       And I switch to a new window
       And I am on the quiz page for "Trivia"
     }
