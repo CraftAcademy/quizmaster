@@ -12,7 +12,7 @@
             = link_to image_tag('x-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=false", id: "wrong", remote: true
             = link_to image_tag('check-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=true", id: "right", remote: true
 
-        %divr{id: 'undo', class: 'undo'}
+        %divr{id: 'undo', class: 'undo btn btn-sq-sm btn-success'}
           Undo?
       %br/
       %br/
