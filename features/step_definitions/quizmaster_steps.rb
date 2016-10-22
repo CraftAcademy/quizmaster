@@ -8,6 +8,11 @@ Then(/^I should be on the correction page for "([^"]*)"$/) do |question|
   expect(current_path).to eq "/quizmaster/quiz/answers/#{question.id}"
 end
 
+Then(/^I should be on the quizmaster page for "([^"]*)"$/) do |quiz|
+  quiz = Quiz.find_by(name: quiz)
+  expect(current_path).to eq quizmaster_quiz_path(quiz)
+end
+
 When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
   question = Answer.find_by(body: answer).question
   question.answers.each do |response|

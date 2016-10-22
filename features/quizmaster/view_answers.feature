@@ -24,3 +24,9 @@ Scenario: I correct the answers for a question
   Then "Amber Rocks!" should have "1" correct answer
   And "Craft Academy" should have "0" correct answers
   And I should see "Undo?"
+
+Scenario: The back button takes me back to my Quiz
+  Given I press the "Send" button for question "1"
+  And I click the "Correct" button
+  When I click the "Back to Questions" button
+  Then I should be on the quizmaster page for "Trivia"
