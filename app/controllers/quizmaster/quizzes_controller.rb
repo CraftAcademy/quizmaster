@@ -19,8 +19,9 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def send_results
-    # what if two teams have the same score?
-    message = "#{get_scores.last[:team].name} won!"
+    winner = Team.find_by(name: get_scores.last[:team].name)
+    winner.update_attribute(:is_winner, true)
+    message = "#{winner.name} won!"
     content = {message: message, welcome: 'true', quiz_id: @quiz.id}
     BroadcastMessageJob.perform_now(content)
     head :ok

@@ -6,6 +6,5 @@
       = team.name
       .score
         = team.answers.where(is_correct: true).count
-        -# we should get this logic out of the view
   .send_results_button
     = link_to 'Send Results', quizmaster_send_results_path(@quiz), method: :post, class: 'btn btn-sq-sm btn-success', remote: true
