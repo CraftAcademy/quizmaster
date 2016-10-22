@@ -1,5 +1,5 @@
 class Quizmaster::QuizzesController < ApplicationController
-  before_action :get_quiz, only: [:show, :start_quiz, :send_question]
+  before_action :get_quiz, only: [:show, :start_quiz, :send_question, :results, :send_results]
 
   def show
     @questions = @quiz.questions
@@ -19,15 +19,9 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def send_results
-    quiz = Quiz.find(params[:id])
-    scores = []
-    quiz.teams.each do |team|
-      points = team.answers.where(is_correct: true).count
-      scores << {team: team, score: points}
-    end
-    scores.sort_by! {|_key, value| value}
-    message = "#{scores.last[:team].name} won!"
-    content = {message: message, welcome: 'true', quiz_id: quiz.id}
+    # what if two teams have the same score?
+    message = "#{get_scores.last[:team].name} won!"
+    content = {message: message, welcome: 'true', quiz_id: @quiz.id}
     BroadcastMessageJob.perform_now(content)
     head :ok
   end
@@ -53,12 +47,20 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def results
-    @quiz = Quiz.find(params[:id])
   end
 
   private
 
   def get_quiz
     @quiz = Quiz.find(params[:id])
+  end
+
+  def get_scores
+    scores = []
+    @quiz.teams.each do |team|
+      points = team.answers.where(is_correct: true).count
+      scores << {team: team, score: points}
+    end
+    scores.sort_by! {|score, points| points}
   end
 end
