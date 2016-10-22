@@ -31,11 +31,9 @@ class Quizmaster::QuizzesController < ApplicationController
   def mark_answers
     answer = Answer.find(params[:id])
     if params[:correct] == 'true'
-      answer.is_correct = true
-      answer.save
+      answer.update_attribute(:is_correct, true)
     elsif params[:correct] == 'false'
-      answer.is_correct = false
-      answer.save
+      answer.update_attribute(:is_correct, false)
     end
     head :ok
   end

@@ -24,6 +24,5 @@ end
 
 Then(/^"([^"]*)" should have "([^"]*)" correct (?:answer|answers)$/) do |team_name, count|
   team = Team.find_by(name: team_name)
-  # binding.pry
   expect(team.answers.where(is_correct: true).count).to eq count.to_i
 end
