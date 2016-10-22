@@ -18,6 +18,14 @@ class Quizmaster::QuizzesController < ApplicationController
     broadcast_content(content)
   end
 
+  def send_results
+    quiz = Quiz.find(params[:id])
+    message = "#{quiz.teams.where(is_winner: true).first} won!"
+    content = {message: message, welcome: true, quiz_id: quiz.id}
+    BroadcastMessageJob.perform_now(content)
+    head :ok
+  end
+
   def correct_answers
     @question = Question.find(params[:id])
     render :answers
