@@ -26,6 +26,7 @@ And(/^I should see a Create Team form$/) do
 end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
+  binding.pry
   team_id = Team.find_by(name: value).id
   case Capybara.current_session.driver
   when Capybara::Poltergeist::Driver

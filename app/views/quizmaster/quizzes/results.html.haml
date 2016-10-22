@@ -1,0 +1,9 @@
+.big-box
+  %h1= @quiz.name
+
+  .results_div
+    - @quiz.teams.each do |team|
+      = team.name
+      .score
+        = team.answers.where(is_correct: true).count
+        -# we should get this logic out of the view

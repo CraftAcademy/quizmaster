@@ -38,6 +38,10 @@ class Quizmaster::QuizzesController < ApplicationController
     head :ok
   end
 
+  def results
+    @quiz = Quiz.find(params[:id])
+  end
+
   private
 
   def get_quiz
