@@ -5,10 +5,6 @@ Feature: As a Quizmaster
 
 Background:
   Given there is a quiz called "Trivia"
-  # And the following questions exist in "Trivia":
-  #   | body            | answer       |
-  #   | What is 2+2?    | Four         |
-  #   | Who is awesome? | Thomas is ok |
   And there is a team named "Craft Academy" playing "Trivia"
   And there is a team named "Amber Rocks!" playing "Trivia"
   And "Craft Academy" has answered "10" questions right

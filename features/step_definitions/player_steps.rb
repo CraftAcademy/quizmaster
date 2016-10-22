@@ -57,14 +57,13 @@ When(/^"([^"]*)" is looking at the quiz page for "([^"]*)"$/) do |team_name, qui
       Given there is a "team_id" cookie set to "#{team_name}"
       And I switch to a new window
       And I am on the quiz page for "Trivia"
+      And I switch to window "1"
     }
 end
 
 Then(/^"([^"]*)" should see "([^"]*)"$/) do |team_name, content|
   steps %q{
-    Given there is a "team_id" cookie set to "#{team_name}"
-    And I switch to a new window
-    And I am on the quiz page for "Trivia"
+    Given I switch to window "2"
   }
   expect(page).to have_content content
 end
