@@ -10,10 +10,9 @@ end
 
 When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
   question = Answer.find_by(body: answer).question
-  question.answers.each_with_index do |response, index|
+  question.answers.each do |response|
     if response.body == answer
-      position = index
-      within("#answer_#{position}") { find("##{is_correct}").trigger('click') }
+      within("#answer_#{response.id}") { find("##{is_correct}").trigger('click') }
     end
   end
 end

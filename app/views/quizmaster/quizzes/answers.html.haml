@@ -4,11 +4,29 @@
   %hr/
 
   .answers
-    - @question.answers.each_with_index do |answer, index|
-      #answer{id: index}
+    - @question.answers.each do |answer|
+      %divr{id: "answer_#{answer.id}"}
         = answer.body
-        = link_to image_tag('x-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=false", id: "wrong", remote: true
-        = link_to image_tag('check-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=true", id: "right", remote: true
+        %divr{id: "right_or_wrong_#{answer.id}", class: "answer_div"}
+          %divr{class: "correct_buttons"}
+            = link_to image_tag('x-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=false", id: "wrong", remote: true
+            = link_to image_tag('check-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=true", id: "right", remote: true
+
+        %divr{id: 'undo', class: 'undo'}
+          Undo?
       %br/
       %br/
       %hr/
+
+:javascript
+  $(document).ready(function () {
+    $('.answer_div').click( function(){
+      $(this).find('.correct_buttons').hide();
+      $(this).parent().find('#undo').show();
+    });
+    $('.undo').click(function(){
+      $(this)[0].style.display = "none";
+      $(this).parent().find('.correct_buttons').show();
+    })
+
+  });
