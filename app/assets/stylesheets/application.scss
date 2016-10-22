@@ -93,3 +93,23 @@ body {
   float: right;
   display: none;
 }
+
+.links {
+  margin: 2%;
+  padding: 1%;
+  font-size: 110%;
+  color: #ffffff;
+  align-self: center;
+  text-align: center;
+}
+
+.score {
+  font-size: 130%;
+  font-weight: bold;
+  background-color: #ffc501;
+  color: #fff;
+  max-width: 30px;
+  display: block;
+  float: right;
+  padding: 1%;
+}
