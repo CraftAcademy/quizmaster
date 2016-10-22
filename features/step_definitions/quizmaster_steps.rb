@@ -18,7 +18,7 @@ When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
   end
 end
 
-Then(/^"([^"]*)" should have "([^"]*)" correct answer$/) do |team_name, count|
+Then(/^"([^"]*)" should have "([^"]*)" correct (?:answer|answers)$/) do |team_name, count|
   team = Team.find_by(name: team_name)
   expect(team.answers.where(is_correct: true).count).to eq count.to_i
 end
