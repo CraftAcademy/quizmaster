@@ -23,7 +23,4 @@ Scenario: I correct the answers for a question
   And I click "wrong" on "Six"
   Then "Amber Rocks!" should have "1" correct answer
   And "Craft Academy" should have "0" correct answers
-  When I click "undo" on "Six"
-  And I click "right" on "Six"
-  Then show me the page
-  Then "Craft Academy" should have "1" correct answers
+  And I should see "Undo?"
