@@ -13,12 +13,12 @@ When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
   question.answers.each_with_index do |response, index|
     if response.body == answer
       position = index
-      within("#answer_#{position}") { click_link_or_button is_correct }
+      within("#answer_#{position}") { find("##{is_correct}").trigger('click') }
     end
   end
 end
 
 Then(/^"([^"]*)" should have "([^"]*)" correct answer$/) do |team_name, count|
   team = Team.find_by(name: team_name)
-  expect(team.answers.count.where(is_correct: true)).to eq count
+  expect(team.answers.where(is_correct: true).count).to eq count.to_i
 end

@@ -20,5 +20,5 @@ Scenario: I correct the answers for a question
   When I click the "Correct" button
   Then I should be on the correction page for "What is 2+2?"
   When I click "right" on "4"
-  And I click "incorrect" on "Six"
+  And I click "wrong" on "Six"
   Then "Amber Rocks!" should have "1" correct answer

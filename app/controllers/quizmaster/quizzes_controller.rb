@@ -30,7 +30,14 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def mark_answers
     answer = Answer.find(params[:id])
-    
+    if params[:correct] == 'true'
+      answer.is_correct = true
+      answer.save
+    elsif params[:correct] == 'false'
+      answer.is_correct = false
+      answer.save
+    end
+    head :ok
   end
 
   private

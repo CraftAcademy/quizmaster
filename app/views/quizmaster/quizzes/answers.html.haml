@@ -6,10 +6,9 @@
   .answers
     - @question.answers.each_with_index do |answer, index|
       #answer{id: index}
-      = answer.body
-      = link_to image_tag('x-box.png'),"/quizmaster/quiz/answers/#{answer.id}", class: 'checkbox-right', id: "wrong#{index}"
-      = link_to image_tag('check-box.png'),"/quizmaster/quiz/answers/#{answer.id}", class: 'checkbox-right', id: "right#{index}"
+        = answer.body
+        = link_to image_tag('x-box.png', class: 'square-button'), "/quizmaster/quiz/answers/mark/#{answer.id}?correct=false", id: "wrong"
+        = link_to image_tag('check-box.png', class: 'square-button'),"/quizmaster/quiz/answers/mark/#{answer.id}?correct=true", id: "right"
       %br/
       %br/
       %hr/
-
