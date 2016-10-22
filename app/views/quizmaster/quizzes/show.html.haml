@@ -5,38 +5,36 @@
     = form_tag quizmaster_path(@quiz), id: 'start_quiz', remote: true do
       = hidden_field_tag 'welcome', true
       = text_field_tag 'message', nil, placeholder: 'Welcome message', class: 'form-control code'
-      = submit_tag 'Start the Quiz', id: 'start_button', class: 'btn btn-primary btn-lg btn-block', onclick: 'showSuccess();'
+      = submit_tag 'Start the Quiz', id: 'start_button', class: 'btn btn-primary btn-lg btn-block'
   .quiz_started
     %p You have started the quiz!
 
   .questions
     - @questions.each_with_index do |question, index|
-      .question{id: "question#{index}"}
+      .question{id: "question#{question.id}"}
         %p= question.body
         = form_tag quizmaster_send_question_path, id: 'send_question', remote: true do
           = hidden_field_tag 'id', @quiz.id
           = hidden_field_tag 'welcome', false
           = hidden_field_tag 'index', (index.to_i + 1)
           = hidden_field_tag 'question_id', question.id
-          .btn-group#send{id: "answer#{index}"}
-            = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success', onclick: "showAnswers(#{index});"
-          .btn-group#correct{id: "answer#{index}"}
+          .btn-group#send
+            = submit_tag 'Send', id: 'send_button', class: 'btn btn-sq-sm btn-success'
+          .btn-group#correct{style: 'display: none;'}
             = link_to 'Correct', quizmaster_correct_answers_path(question), id: 'correct_button', class: 'btn btn-sq-sm btn-success'
 
   = link_to 'Results', quizmaster_results_path(@quiz), class: 'btn-sq-sm btn-success links'
 
 
-
 :javascript
-  $(document).ready( function() {
+  $(document).ready(function () {
     $('.quiz_started').hide();
-    $('[id^=correct_answer]').hide();
-    this.showSuccess = function() {
+    $('#start_button').click( function(){
       $('.activate_quiz').hide();
       $('.quiz_started').show();
-    };
-    this.showAnswers = function(index) {
-      $('[id^=send_answer]')[index].style.display = "none";
-      $('[id^=correct_answer]')[index].style.display = "inline-block";
-    };
+    });
+    $('#send_button').click(function(){
+      $(this)[0].style.display = "none";
+      $(this).parent().parent().find('#correct')[0].style.display = "inline-block";
+    });
   });
