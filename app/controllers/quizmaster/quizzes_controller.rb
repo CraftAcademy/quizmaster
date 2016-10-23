@@ -19,7 +19,7 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def send_results
-    winner = Team.find_by(name: get_scores.last[:team].name)
+    winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
     winner.update_attribute(:is_winner, true)
     message = "#{winner.name} won!"
     content = {message: message, welcome: 'true', quiz_id: @quiz.id}
@@ -56,12 +56,4 @@ class Quizmaster::QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
   end
 
-  def get_scores
-    scores = []
-    @quiz.teams.each do |team|
-      points = team.answers.where(is_correct: true).count
-      scores << {team: team, score: points}
-    end
-    scores.sort_by! {|score, points| points}
-  end
 end

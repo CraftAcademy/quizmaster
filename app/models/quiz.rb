@@ -5,6 +5,15 @@ class Quiz < ApplicationRecord
   has_many :questions
   has_many :teams
 
+  def get_scores
+    scores = []
+    self.teams.each do |team|
+      points = team.answers.where(is_correct: true).count
+      scores << {team: team, score: points}
+    end
+    scores.sort_by! {|score, points| points}
+  end
+
   private
 
   def generate_random_code
