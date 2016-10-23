@@ -17,7 +17,7 @@ Scenario: I correct the answers for a question
   Given I press the "Send" button for question "What is 2+2?"
   And "Amber Rocks!" has answered question "What is 2+2?" with "4"
   And "Craft Academy" has answered question "What is 2+2?" with "Six"
-  When I press the correct button for question "What is 2+2?"
+  When I click the "Correct" button
   Then I should be on the correction page for "What is 2+2?"
   When I click "right" on "4"
   And I click "wrong" on "Six"

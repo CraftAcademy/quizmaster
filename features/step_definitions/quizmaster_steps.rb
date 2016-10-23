@@ -6,8 +6,6 @@ end
 When(/^I press the correct button for question "([^"]*)"$/) do |question|
   question = Question.find_by(body: question)
   find("#correct_button_#{question.id}").trigger('click')
-  # click_link_or_button "#correct_button_#{question.id}"
-  # within("#question#{question.id}") { click_link_or_button button }
 end
 
 Then(/^I should be on the correction page for "([^"]*)"$/) do |question|
