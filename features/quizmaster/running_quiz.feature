@@ -20,3 +20,10 @@ Scenario: I send the first question
   When I press the "Send" button for question "What is 2+2?"
   And I switch to window "1"
   Then I should see "What is 2+2?"
+
+Scenario: I send multiple questions
+  Given I have sent the first question
+  And I click the "Correct" button
+  When I click the "Back to Questions" link
+  And I wait
+  And I click the "Correct" button

@@ -31,3 +31,10 @@ Then(/^"([^"]*)" should have "([^"]*)" correct (?:answer|answers)$/) do |team_na
   team = Team.find_by(name: team_name)
   expect(team.answers.where(is_correct: true).count).to eq count.to_i
 end
+
+Given(/^I have sent the first question$/) do
+  steps %{
+    Given I am on the quizmaster page for "Trivia"
+    And I press the "Send" button for question "What is 2+2?"
+  }
+end
