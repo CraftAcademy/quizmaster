@@ -26,4 +26,9 @@ Scenario: I send multiple questions
   And I click the "Correct" button
   When I click the "Back to Questions" link
   And I wait
-  And I click the "Correct" button
+  And I should see "Correct"
+
+Scenario: Resetting the quiz
+  Given I have sent the first question
+  When I press the "Reset the Quiz" button
+  Then I should not see "Correct"

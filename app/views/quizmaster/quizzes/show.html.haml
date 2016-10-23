@@ -18,10 +18,12 @@
           = hidden_field_tag 'welcome', false
           = hidden_field_tag 'index', (index.to_i + 1)
           = hidden_field_tag 'question_id', question.id
-          .btn-group#send
-            = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-success'
-          .btn-group#correct
-            = link_to 'Correct', quizmaster_correct_answers_path(question), id: "correct_button_#{question.id}", class: 'btn btn-sq-sm btn-success'
+          - if question.is_sent == false
+            .btn-group#send
+              = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-success'
+          - else
+            .btn-group#correct
+              = link_to 'Correct', quizmaster_correct_answers_path(question), id: "correct_button_#{question.id}", class: 'btn btn-sq-sm btn-success'
 
   = link_to 'Results', quizmaster_results_path(@quiz), class: 'btn-sq-sm btn-success links'
 
