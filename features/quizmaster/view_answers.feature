@@ -14,7 +14,7 @@ Background:
   And I am on the quizmaster page for "Trivia"
 
 Scenario: I correct the answers for a question
-  Given I press the "Send" button for question "1"
+  Given I press the "Send" button for question "What is 2+2?"
   And "Amber Rocks!" has answered question "What is 2+2?" with "4"
   And "Craft Academy" has answered question "What is 2+2?" with "Six"
   When I click the "Correct" button
@@ -25,8 +25,15 @@ Scenario: I correct the answers for a question
   And "Craft Academy" should have "0" correct answers
   And I should see "Undo?"
 
+Scenario: I see multiple Correct links
+  Given I press the "Send" button for question "What is 2+2?"
+  And I press the "Send" button for question "Who is awesome?"
+  And "Craft Academy" has answered question "Who is awesome?" with "Thomas"
+  When I press the correct button for question "Who is awesome?"
+  Then I should see "Thomas"
+
 Scenario: The back button takes me back to my Quiz
-  Given I press the "Send" button for question "1"
+  Given I press the "Send" button for question "What is 2+2?"
   And I click the "Correct" button
   When I click the "Back to Questions" button
   Then I should be on the quizmaster page for "Trivia"

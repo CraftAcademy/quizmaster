@@ -1,5 +1,5 @@
 class Quizmaster::QuizzesController < ApplicationController
-  before_action :get_quiz, only: [:show, :start_quiz, :send_question]
+  before_action :get_quiz, only: [:show, :start_quiz, :send_question, :results, :send_results]
 
   def show
     @questions = @quiz.questions
@@ -16,6 +16,12 @@ class Quizmaster::QuizzesController < ApplicationController
     question = Question.find(params[:question_id])
     content = {question: question.body, index: params[:index], quiz_id: params[:id], question_id: params[:question_id], team_id: cookies['team_id']}
     broadcast_content(content)
+  end
+
+  def send_results
+    content = {message: get_winner_message, welcome: 'true', quiz_id: @quiz.id}
+    BroadcastMessageJob.perform_now(content)
+    head :ok
   end
 
   def correct_answers
@@ -38,9 +44,19 @@ class Quizmaster::QuizzesController < ApplicationController
     head :ok
   end
 
+  def results
+  end
+
   private
 
   def get_quiz
     @quiz = Quiz.find(params[:id])
   end
+
+  def get_winner_message
+    winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
+    winner.update_attribute(:is_winner, true)
+    message = "#{winner.name} won!"
+  end
+
 end

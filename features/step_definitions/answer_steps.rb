@@ -3,3 +3,10 @@ Given(/^"([^"]*)" has answered question "([^"]*)" with "([^"]*)"$/) do |team_nam
   question = Question.find_by(body: question)
   answer = FactoryGirl.create(:answer, team: team, question: question, body: answer)
 end
+
+Given(/^"([^"]*)" has answered "([^"]*)" questions right$/) do |team_name, count|
+  team = Team.find_by(name: team_name)
+  count.to_i.times do
+    FactoryGirl.create(:answer, team: team, is_correct: true)
+  end
+end

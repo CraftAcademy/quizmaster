@@ -17,8 +17,8 @@
       %br/
       %br/
       %hr/
-  %divr{class: 'btn-sq-sm btn-success'}
-    = link_to 'Back to Questions', quizmaster_quiz_path(@question.quiz)
+  %divr
+    = link_to 'Back to Questions', quizmaster_quiz_path(@question.quiz), class: 'btn-sq-sm btn-success links'
 
 :javascript
   $(document).ready(function () {

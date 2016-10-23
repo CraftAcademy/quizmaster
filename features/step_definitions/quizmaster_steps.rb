@@ -1,6 +1,11 @@
-When(/^I press the "([^"]*)" button for question "([^"]*)"$/) do |button, position|
-  index = position.to_i - 1
-  within("#question#{index}") { click_link_or_button button }
+When(/^I press the "([^"]*)" button for question "([^"]*)"$/) do |button, question|
+  question = Question.find_by(body: question)
+  within("#question#{question.id}") { click_link_or_button button }
+end
+
+When(/^I press the correct button for question "([^"]*)"$/) do |question|
+  question = Question.find_by(body: question)
+  find("#correct_button_#{question.id}").trigger('click')
 end
 
 Then(/^I should be on the correction page for "([^"]*)"$/) do |question|
