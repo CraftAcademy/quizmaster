@@ -19,10 +19,7 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def send_results
-    winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
-    winner.update_attribute(:is_winner, true)
-    message = "#{winner.name} won!"
-    content = {message: message, welcome: 'true', quiz_id: @quiz.id}
+    content = {message: get_winner_message, welcome: 'true', quiz_id: @quiz.id}
     BroadcastMessageJob.perform_now(content)
     head :ok
   end
@@ -54,6 +51,12 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def get_quiz
     @quiz = Quiz.find(params[:id])
+  end
+
+  def get_winner_message
+    winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
+    winner.update_attribute(:is_winner, true)
+    message = "#{winner.name} won!"
   end
 
 end
