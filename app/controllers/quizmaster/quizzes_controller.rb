@@ -9,7 +9,8 @@ class Quizmaster::QuizzesController < ApplicationController
     # @questions = @quiz.questions
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
     BroadcastMessageJob.perform_now(content)
-    render :show
+    @quiz.update_attribute(:is_started, true)
+    # render :show
   end
 
   def send_question
