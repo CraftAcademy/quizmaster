@@ -25,6 +25,16 @@ class Quizmaster::QuizzesController < ApplicationController
     head :ok
   end
 
+  def reset_quiz
+    @quiz = Quiz.find(params[:id])
+    @quiz.is_started = false
+    @quiz.questions.each do |question|
+      question.update_attribute(:is_sent, false)
+    end
+    @questions = @quiz.questions.sort
+    render :show
+  end
+
   def correct_answers
     @question = Question.find(params[:id])
     render :answers

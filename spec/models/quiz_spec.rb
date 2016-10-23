@@ -4,6 +4,7 @@ RSpec.describe Quiz, type: :model do
   describe 'DB table' do
     it { is_expected.to have_db_column :name }
     it { is_expected.to have_db_column :code }
+    it { is_expected.to have_db_column :is_started }
     it { is_expected.to have_many :questions }
   end
 
