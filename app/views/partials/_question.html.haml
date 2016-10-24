@@ -1,4 +1,6 @@
 .answer_form
+  = data[:index]
+  \. 
   = data[:question]
   #info{data: {quiz_id: data[:quiz_id], question_id: data[:question_id], team_id: data[:team_id]}}
   = text_field_tag 'body', '', class: 'form-control code'
