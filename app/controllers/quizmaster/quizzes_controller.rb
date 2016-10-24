@@ -22,8 +22,8 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def send_results
-    message = @quiz.get_scores
-    content = {message: message, welcome: 'false', quiz_id: @quiz.id}
+    list = @quiz.get_scores
+    content = {list: list, welcome: 'false', quiz_id: @quiz.id}
     BroadcastWinnerJob.perform_now(content)
     head :ok
   end
