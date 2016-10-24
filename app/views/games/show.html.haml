@@ -10,6 +10,7 @@
     %hr/
     #message.question_container
       Questions will appear here.
+    #team_id{data: {team_id: cookies['team_id']}}
 
 :javascript
   $(document).ready(function () {
@@ -18,13 +19,14 @@
       $this = $(this);
       dataset = $this.find('#info')
       quiz = dataset.data().quizId;
-      team = dataset.data().teamId;
+      team = $this.find('#team_id').data().teamId
       question = dataset.data().questionId;
       answer = $this.find('#body');
+
       if ($.trim(answer.val()).length >= 1) {
         App.quiz.submitAnswer({answer: answer.val(), team_id: team, quiz_id: quiz, question_id: question});
         $('.answer_form').hide();
-        $('.wait').show();
+        $('.answer_submitted').show();
       } else {
         $('#message').append('WTF Dude?!?')
       }
