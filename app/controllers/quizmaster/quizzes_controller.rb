@@ -64,8 +64,17 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def get_winner_message
     winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
+    list = @quiz.get_scores
     winner.update_attribute(:is_winner, true)
-    message = "#{winner.name} won!"
+    # message = "#{winner.name} won!"
+    message = ''
+    list.each do |team|
+    message = message + "#{team[:team].name} got #{team[:score]} points"
+    end
+    return message
   end
+
+  # list[0][:team].name
+  # list[0][:score]
 
 end
