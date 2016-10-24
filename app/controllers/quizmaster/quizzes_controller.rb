@@ -1,10 +1,8 @@
 class Quizmaster::QuizzesController < ApplicationController
-  before_action :get_quiz, only: [:show,
-                                  :start_quiz,
-                                  :send_question,
-                                  :results,
-                                  :send_results,
-                                  :reset_quiz]
+  before_action :get_quiz, except: [:correct_answers,
+                                    :broadcast_content,
+                                    :mark_answers,
+                                    :get_winner_message]
 
   def show
     @questions = @quiz.questions.sort
