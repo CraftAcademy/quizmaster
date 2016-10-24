@@ -10,10 +10,11 @@ Background:
   And "Craft Academy" has answered "10" questions right
   And "Amber Rocks!" has answered "11" questions right
 
-Scenario: I view and send results 
+Scenario: I view and send results
   And I am on the quizmaster page for "Trivia"
   When I click the "Results" button
   Then I should see "10"
   When "Amber Rocks!" is looking at the quiz page for "Trivia"
   And I click the "Send Results" button
   Then "Amber Rocks!" should see "Amber Rocks! got 11 points"
+  And "Craft Academy" should see "Craft Academy got 10 points"
