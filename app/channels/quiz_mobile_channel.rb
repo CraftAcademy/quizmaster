@@ -1,6 +1,6 @@
-class QuizChannelMobile < ApplicationCable::Channel
+class QuizMobileChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'quiz_channel_mobile'
+    stream_from 'quiz_mobile_channel'
   end
 
   def unsubscribed

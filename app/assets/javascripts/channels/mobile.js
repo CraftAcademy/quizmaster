@@ -1,4 +1,4 @@
-App.quiz = App.cable.subscriptions.create("QuizChannelMobil", {
+App.quiz_mobile = App.mobile.subscriptions.create("QuizMobileChannel", {
     collection: function () {
         return $("#message");
     },
