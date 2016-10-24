@@ -4,10 +4,7 @@ class Question < ApplicationRecord
   has_many :answers
 
   def is_sent?
-    if self.is_sent == true
-      true
-    else
-      false
-    end
+    self.is_sent
   end
+
 end

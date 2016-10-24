@@ -33,4 +33,4 @@ Scenario: Resetting the quiz
   And "Craft Academy" has answered question "What is 2+2?" with "Six"
   When I press the "Reset the Quiz" button
   Then I should not see "Correct"
-  And there should be "0" answers for "What is 2+2?"
+  And there should be 0 answers for "What is 2+2?"

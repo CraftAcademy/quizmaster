@@ -23,11 +23,7 @@ class Quiz < ApplicationRecord
   end
 
   def is_started?
-    if self.is_started == true
-      true
-    else
-      false
-    end
+    self.is_started
   end
 
   private
