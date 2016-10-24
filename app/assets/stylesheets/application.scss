@@ -21,6 +21,7 @@ $gray-dark:                 #03001C;
 @import url('https://fonts.googleapis.com/css?family=Creepster');
 html, body { height:100vh; margin:0; padding:0;}
 body {
+  padding-top:60px;
   background: #ffc501;
   background: -moz-linear-gradient(top, #ffc501 0%, #fe9600 100%);
   background: -webkit-gradient(linear,left top, left bottom, color-stop(0%, #ffc501), color-stop(100%, #fe9600));
@@ -116,4 +117,10 @@ body {
   display: block;
   float: right;
   padding: 1%;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 10px;
+  }
 }
