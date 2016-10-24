@@ -23,7 +23,7 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def send_results
     list = @quiz.get_scores
-    content = {list: list, welcome: 'false', quiz_id: @quiz.id}
+    content = {winner: get_winner, list: list, welcome: 'false', quiz_id: @quiz.id}
     BroadcastWinnerJob.perform_now(content)
     head :ok
   end
@@ -64,16 +64,10 @@ class Quizmaster::QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
   end
 
-  def get_winner_message
+  def get_winner
     winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
-    list = @quiz.get_scores
     winner.update_attribute(:is_winner, true)
-    # message = "#{winner.name} won!"
-    message = ''
-    list.each do |team|
-    message = message + "#{team[:team].name} got #{team[:score]} points"
-    end
-    return message
+    winner
   end
 
 end
