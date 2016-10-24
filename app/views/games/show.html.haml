@@ -10,3 +10,24 @@
     %hr/
     #message.question_container
       Questions will appear here.
+
+:javascript
+  $(document).ready(function () {
+    this.submitAnswer = function () {
+      var $this, dataset, quiz, answer, question, team ;
+      $this = $(this);
+      dataset = $this.find('#info')
+      quiz = dataset.data().quizId;
+      team = dataset.data().teamId;
+      question = dataset.data().questionId;
+      answer = $this.find('#body');
+      if ($.trim(answer.val()).length >= 1) {
+        App.quiz.submitAnswer({answer: answer.val(), team_id: team, quiz_id: quiz, question_id: question});
+        $('.answer_form').hide();
+        $('.wait').show();
+      } else {
+        $('#message').append('WTF Dude?!?')
+      }
+      return false;
+    };
+  });
