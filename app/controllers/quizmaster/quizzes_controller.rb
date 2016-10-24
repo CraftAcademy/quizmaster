@@ -22,8 +22,9 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def send_results
-    content = {message: get_winner_message, welcome: 'true', quiz_id: @quiz.id}
-    BroadcastMessageJob.perform_now(content)
+    message = @quiz.get_scores
+    content = {message: message, welcome: 'false', quiz_id: @quiz.id}
+    BroadcastWinnerJob.perform_now(content)
     head :ok
   end
 
@@ -42,6 +43,7 @@ class Quizmaster::QuizzesController < ApplicationController
     # This method will broadcast content to Team
     BroadcastQuizJob.perform_now(content)
   end
+
 
   def mark_answers
     answer = Answer.find(params[:id])
@@ -73,8 +75,5 @@ class Quizmaster::QuizzesController < ApplicationController
     end
     return message
   end
-
-  # list[0][:team].name
-  # list[0][:score]
 
 end
