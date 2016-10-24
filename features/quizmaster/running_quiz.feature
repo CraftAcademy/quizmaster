@@ -25,7 +25,7 @@ Scenario: I send multiple questions
   Given I have sent the first question
   And I click the "Correct" button
   When I click the "Back to Questions" link
-  And I wait
+  And I wait for the page to load
   And I should see "Correct"
 
 Scenario: Resetting the quiz
