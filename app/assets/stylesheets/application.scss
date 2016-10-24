@@ -119,7 +119,7 @@ body {
   padding: 1%;
 }
 
-@media screen and (min-width: 480px) {
+@media (max-width: 480px) {
   body {
     padding-top: 10px;
   }
