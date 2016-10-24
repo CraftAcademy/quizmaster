@@ -16,4 +16,5 @@ Scenario: I view and send results
   Then I should see "10"
   When "Amber Rocks!" is looking at the quiz page for "Trivia"
   And I click the "Send Results" button
-  Then "Amber Rocks!" should see "Amber Rocks! won!"
+  And show me the page
+  Then "Amber Rocks!" should see "Amber Rocks! got 11 points"
