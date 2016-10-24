@@ -1,9 +1,10 @@
-App.quiz = App.cable.subscriptions.create("QuizChannel", {
+App.quiz = App.cable.subscriptions.create("QuizChannelMobil", {
     collection: function () {
         return $("#message");
     },
 
     connected: function () {
+      console.log('mobile connected');
         // Called when the subscription is ready for use on the server
     },
 
