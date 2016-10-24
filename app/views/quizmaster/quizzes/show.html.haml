@@ -1,7 +1,7 @@
 .big-box
   %h1= @quiz.name
   %h3= @quiz.code
-  - if @quiz.is_started == false
+  - unless @quiz.is_started?
     .activate_quiz
       = form_tag quizmaster_path(@quiz), id: 'start_quiz', remote: true do
         = hidden_field_tag 'welcome', true
@@ -22,7 +22,7 @@
           = hidden_field_tag 'welcome', false
           = hidden_field_tag 'index', (index.to_i + 1)
           = hidden_field_tag 'question_id', question.id
-          - if question.is_sent == false
+          - unless question.is_sent?
             .btn-group#send
               = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-success'
           - else

@@ -22,6 +22,14 @@ class Quiz < ApplicationRecord
     end
   end
 
+  def is_started?
+    if self.is_started == true
+      true
+    else
+      false
+    end
+  end
+
   private
 
   def generate_random_code
