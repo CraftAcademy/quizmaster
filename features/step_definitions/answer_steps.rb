@@ -10,3 +10,8 @@ Given(/^"([^"]*)" has answered "([^"]*)" questions right$/) do |team_name, count
     FactoryGirl.create(:answer, team: team, is_correct: true)
   end
 end
+
+Then(/^there should be "([^"]*)" answers for "([^"]*)"$/) do |count, question_body|
+  question = Question.find_by(body: question_body)
+  expect(question.answers.count).to eq count.to_i
+end

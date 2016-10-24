@@ -18,6 +18,7 @@ class Quiz < ApplicationRecord
     self.update_attribute(:is_started, false)
     self.questions.each do |question|
       question.update_attribute(:is_sent, false)
+      question.answers.destroy_all
     end
   end
 
