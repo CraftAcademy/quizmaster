@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :quizmaster do
     resources :quiz, controller: :quizzes, only: [:show]
     post '/quiz/:id', controller: :quizzes, action: :start_quiz
+    get '/quiz/reset/:id', controller: :quizzes, action: :reset_quiz, as: :reset_quiz
     post '/send_question', controller: :quizzes, action: :send_question
     get 'quiz/answers/:id', controller: :quizzes, action: :correct_answers, as: :correct_answers
     get 'quiz/answers/mark/:id', controller: :quizzes, action: :mark_answers, as: :mark_answers

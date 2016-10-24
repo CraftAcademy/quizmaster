@@ -14,6 +14,18 @@ class Quiz < ApplicationRecord
     scores.sort_by! {|score, points| points}
   end
 
+  def reset_quiz_actions
+    self.update_attribute(:is_started, false)
+    self.questions.each do |question|
+      question.update_attribute(:is_sent, false)
+      question.answers.destroy_all
+    end
+  end
+
+  def is_started?
+    self.is_started
+  end
+
   private
 
   def generate_random_code

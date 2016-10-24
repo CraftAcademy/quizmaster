@@ -1,27 +1,36 @@
 class Quizmaster::QuizzesController < ApplicationController
-  before_action :get_quiz, only: [:show, :start_quiz, :send_question, :results, :send_results]
+  before_action :get_quiz, except: [:correct_answers,
+                                    :broadcast_content,
+                                    :mark_answers,
+                                    :get_winner_message]
 
   def show
-    @questions = @quiz.questions
+    @questions = @quiz.questions.sort
   end
 
   def start_quiz
-    @questions = @quiz.questions
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
     BroadcastMessageJob.perform_now(content)
-    render :show
+    @quiz.update_attribute(:is_started, true)
   end
 
   def send_question
     question = Question.find(params[:question_id])
     content = {question: question.body, index: params[:index], quiz_id: params[:id], question_id: params[:question_id], team_id: cookies['team_id']}
     broadcast_content(content)
+    question.update_attribute(:is_sent, true)
   end
 
   def send_results
     content = {message: get_winner_message, welcome: 'true', quiz_id: @quiz.id}
     BroadcastMessageJob.perform_now(content)
     head :ok
+  end
+
+  def reset_quiz
+    @quiz.reset_quiz_actions
+    @questions = @quiz.questions.sort
+    render :show
   end
 
   def correct_answers

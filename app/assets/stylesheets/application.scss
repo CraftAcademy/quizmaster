@@ -57,10 +57,10 @@ body {
   font-size:35px;
 }
 .btn-sq-sm {
-  width: 50px !important;
-  height: 50px !important;
-  line-height: 50px;
-  padding:0;
+  max-height: 50px;
+  padding-right:5px;
+  padding-left:5px;
+  font-size: 130%;
 }
 #send_question { display: inline-block; float:right;}
 .question p {

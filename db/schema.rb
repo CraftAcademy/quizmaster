@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022175950) do
+ActiveRecord::Schema.define(version: 20161023160023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,17 +29,19 @@ ActiveRecord::Schema.define(version: 20161022175950) do
   create_table "questions", force: :cascade do |t|
     t.string   "body"
     t.string   "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "quiz_id"
+    t.boolean  "is_sent",    default: false
     t.index ["quiz_id"], name: "index_questions_on_quiz_id", using: :btree
   end
 
   create_table "quizzes", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "is_started", default: false
   end
 
   create_table "teams", force: :cascade do |t|

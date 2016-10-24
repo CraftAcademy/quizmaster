@@ -26,3 +26,7 @@ end
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, content|
   fill_in element, with: content
 end
+
+When(/^I wait for the page to load$/) do
+  sleep(1)
+end
