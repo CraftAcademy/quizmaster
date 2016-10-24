@@ -16,7 +16,9 @@
   .questions
     - @questions.each_with_index do |question, index|
       .question{id: "question#{question.id}"}
-        %p= question.body
+        %p
+          = "#{index}."
+          = question.body
         = form_tag quizmaster_send_question_path, id: 'send_question', remote: true do
           = hidden_field_tag 'id', @quiz.id
           = hidden_field_tag 'welcome', false
