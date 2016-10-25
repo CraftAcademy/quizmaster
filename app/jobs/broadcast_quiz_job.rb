@@ -3,7 +3,6 @@ class BroadcastQuizJob < ApplicationJob
 
   def perform(data)
     ActionCable.server.broadcast 'quiz_channel', create_partial(data)
-    # ActionCable.server.broadcast 'quiz_channel', 'Hello there!'
   end
 
   def create_partial(data)
