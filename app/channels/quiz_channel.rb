@@ -9,10 +9,6 @@ class QuizChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def start_listening
-    stream_for Quiz.find(params[:id])
-  end
-
   def submit_answer(data)
     params = data['message'].symbolize_keys!
     question = Question.find(params[:question_id])
