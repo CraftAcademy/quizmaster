@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class QuizChannel < ApplicationCable::Channel
   def subscribed
-    id = params[:quiz]
+    id = self.connection.connection_identifier
     stream_from "quiz_channel_#{id}"
   end
 

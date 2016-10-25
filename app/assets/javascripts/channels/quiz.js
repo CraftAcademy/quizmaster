@@ -1,10 +1,9 @@
-<% Quiz.all.each do |quiz| %>
-App['quiz' + <%=quiz.id%>] = App.cable.subscriptions.create({channel: 'QuizChannel', quiz: <%=quiz.id%>}, {
+App.quiz = App.cable.subscriptions.create({channel: 'QuizChannel'}, {
   collection: function () {
     return $("#message");
   },
 
-  connected: function () {
+  connected: function (data) {
     // Called when the subscription is ready for use on the server
   },
 
@@ -18,9 +17,9 @@ App['quiz' + <%=quiz.id%>] = App.cable.subscriptions.create({channel: 'QuizChann
 
   },
 
-  setQuizId: function(quizId) {
-    this.quizId = quizId
-  },
+  // setQuizId: function(quizId) {
+  //   this.quizId = quizId
+  // },
 
   printMessage: function (data) {
     if (data.welcome == "true") {
@@ -28,8 +27,8 @@ App['quiz' + <%=quiz.id%>] = App.cable.subscriptions.create({channel: 'QuizChann
           "<p>" + data.message + "</p>"
     );
     } else {
-      var quizId = <%= quiz.id %>
-      this.setQuizId(quizId);
+      // var quizId = <%= quiz.id %>
+      // this.setQuizId(quizId);
       return this.collection().html(data);
       //return this.collection().html(data);
     }
@@ -40,7 +39,3 @@ App['quiz' + <%=quiz.id%>] = App.cable.subscriptions.create({channel: 'QuizChann
     });
   }
 });
-<% end %>
-
-
-
