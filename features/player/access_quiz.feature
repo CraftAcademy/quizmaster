@@ -16,6 +16,12 @@ Feature: As a Team
     And I should see "Welcome to quiz: Trivia"
     And I should see a Create Team form
 
+  Scenario: I put in the wrong code
+    Given I am on the quiz "landing" page
+    And I enter a bad code
+    Then I should be on the quiz "landing" page
+    And I should see "Invalid code. Talk to your Quizmaster."
+
   Scenario: Access quiz and subscribe to channel
     Given there is a "team_id" cookie set to "Craft Academy"
     Given I am on the quiz "landing" page
