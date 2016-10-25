@@ -14,7 +14,6 @@ App.quiz = App.cable.subscriptions.create("QuizChannel", {
     received: function (data) {
         // Called when there's incoming data on the websocket for this channel
         return this.printMessage(data)
-
     },
 
     printMessage: function (data) {
@@ -32,7 +31,3 @@ App.quiz = App.cable.subscriptions.create("QuizChannel", {
         });
     }
 });
-
-
-
-

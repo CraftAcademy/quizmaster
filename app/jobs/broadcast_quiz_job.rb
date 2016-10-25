@@ -9,4 +9,3 @@ class BroadcastQuizJob < ApplicationJob
     ApplicationController.renderer.render(partial: './partials/question', locals: {data: data})
   end
 end
-
