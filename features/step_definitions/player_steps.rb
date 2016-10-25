@@ -26,13 +26,16 @@ And(/^I should see a Create Team form$/) do
 end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  team_id = Team.find_by(name: value).id
+  team = Team.find_by(name: value)
+  team_id = team.id
+  quiz_id = team.quiz.id
   case Capybara.current_session.driver
   when Capybara::Poltergeist::Driver
     page.driver.set_cookie(key, team_id)
+    page.driver.set_cookie('quiz_id', quiz_id)
   when Capybara::RackTest::Driver
     headers = {}
-    Rack::Utils.set_cookie_header!(headers, key, team_id)
+    Rack::Utils.set_cookie_header!(headers, key, team_id, quiz_id)
     cookie_string = headers['Set-Cookie']
     Capybara.current_session.driver.browser.set_cookie(cookie_string)
   else
