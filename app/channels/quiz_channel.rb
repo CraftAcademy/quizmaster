@@ -15,6 +15,5 @@ class QuizChannel < ApplicationCable::Channel
     Answer.create(body: params[:answer],
                   question: question,
                   team: team)
-    BroadcastMessageJob.perform_now({message: 'Answer submitted!', welcome: 'true'})
   end
 end
