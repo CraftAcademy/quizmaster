@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'redis'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'sprockets-rails'
+gem 'rails-assets-tether', '>= 1.1.0'
 
 
 
