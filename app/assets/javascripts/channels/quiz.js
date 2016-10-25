@@ -17,20 +17,13 @@ App.quiz = App.cable.subscriptions.create({channel: 'QuizChannel'}, {
 
   },
 
-  // setQuizId: function(quizId) {
-  //   this.quizId = quizId
-  // },
-
   printMessage: function (data) {
     if (data.welcome == "true") {
       return this.collection().html(
           "<p>" + data.message + "</p>"
     );
     } else {
-      // var quizId = <%= quiz.id %>
-      // this.setQuizId(quizId);
       return this.collection().html(data);
-      //return this.collection().html(data);
     }
   },
   submitAnswer: function (message) {
