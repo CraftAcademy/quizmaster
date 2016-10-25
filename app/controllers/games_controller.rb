@@ -11,7 +11,12 @@ class GamesController < ApplicationController
 
   def access_quiz
     quiz = Quiz.find_by(code: params[:code])
-    redirect_to quiz_path(quiz)
+    if quiz.nil?
+      flash.now[:notice] = "Invalid code. Talk to your Quizmaster."
+      render :index
+    else
+      redirect_to quiz_path(quiz)
+    end
   end
 
   def create_team

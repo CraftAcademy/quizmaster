@@ -5,14 +5,6 @@ Given(/^I am on the quiz "([^"]*)" page$/) do |page|
   end
 end
 
-Then(/^I should be on the quiz "([^"]*)" page$/) do |page|
-  case page
-  when 'landing'
-    path = quiz_index_path
-  end
-  expect(current_path).to eq path
-end
-
 And(/^I enter the code for "([^"]*)"$/) do |quiz|
   quiz = Quiz.find_by(name: quiz)
   fill_in :code, with: quiz.code

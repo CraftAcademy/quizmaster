@@ -19,7 +19,6 @@ Feature: As a Team
   Scenario: I put in the wrong code
     Given I am on the quiz "landing" page
     And I enter a bad code
-    Then I should be on the quiz "landing" page
     And I should see "Invalid code. Talk to your Quizmaster."
 
   Scenario: Access quiz and subscribe to channel
