@@ -18,7 +18,6 @@ class Quizmaster::QuizzesController < ApplicationController
     question = Question.find(params[:question_id])
     content = {question: question.body, index: params[:index], quiz_id: params[:id], question_id: params[:question_id], team_id: cookies['team_id']}
     broadcast_content(content)
-    BroadcastMobileJob.perform_now({data: 'a string'})
     question.update_attribute(:is_sent, true)
   end
 

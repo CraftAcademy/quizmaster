@@ -9,6 +9,5 @@
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
-  App.mobile = ActionCable.createConsumer();
 
 }).call(this);
