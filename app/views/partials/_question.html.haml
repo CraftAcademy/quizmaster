@@ -1,7 +1,8 @@
 .answer_form
-  = data[:index]
-  \.
-  = data[:question]
+  .question_headline
+    = data[:index]
+    \.
+    = data[:question]
   #info{data: {quiz_id: data[:quiz_id], question_id: data[:question_id]}}
   = text_field_tag 'body', '', class: 'form-control code'
   = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block', onclick: 'submitAnswer();'
