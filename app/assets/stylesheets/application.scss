@@ -15,6 +15,7 @@
  */
 $brand-primary:             #77477E;
 $brand-success:             #FFC501;
+$brand-warning:             #fe9600;
 $gray-dark:                 #03001C;
 
 @import 'bootstrap';
@@ -126,7 +127,7 @@ body {
 
 @media (max-width: 730px) {
   .question p {
-    font-size: 15px;
+    margin-top:10px;
     float:none;
     line-height:18px;
   }

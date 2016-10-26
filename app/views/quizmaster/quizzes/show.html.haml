@@ -26,7 +26,7 @@
           = hidden_field_tag 'question_id', question.id
           - unless question.is_sent?
             .btn-group#send
-              = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-success'
+              = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-warning'
           - else
             .btn-group
               = link_to 'Correct', quizmaster_correct_answers_path(question), id: "correct_button_#{question.id}", class: 'btn btn-sq-sm btn-success'
