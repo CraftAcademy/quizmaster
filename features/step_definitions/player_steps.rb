@@ -11,6 +11,11 @@ And(/^I enter the code for "([^"]*)"$/) do |quiz|
   click_link_or_button 'Submit'
 end
 
+Given(/^I enter a bad code$/) do
+  fill_in :code, with: 'nonsense'
+  click_link_or_button 'Submit'
+end
+
 Then(/^I should be on the quiz page for "([^"]*)"$/) do |quiz|
   quiz = Quiz.find_by(name: quiz)
   expect(current_path).to eq quiz_path(quiz)
