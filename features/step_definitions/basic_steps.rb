@@ -19,6 +19,10 @@ Given(/^I am on the page for "([^"]*)"$/) do |name|
   visit quiz_path(quiz)
 end
 
+Given(/^I am on the landing page for quizmaster$/) do
+  visit root_path
+end
+
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
 end

@@ -3,3 +3,4 @@
   = form_tag access_quiz_path, method: :post do
     = text_field_tag :code, nil, placeholder: 'Enter your code', class: 'form-control code'
     = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block'
+    = link_to "Register as a Quizmaster", new_user_registration_path
