@@ -21,4 +21,8 @@ class QuizChannel < ApplicationCable::Channel
                   question: question,
                   team: team)
   end
+
+  def get_quiz(code)
+    quiz = Quiz.find_by(code: code['message'])
+  end
 end
