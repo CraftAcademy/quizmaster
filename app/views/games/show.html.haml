@@ -1,0 +1,35 @@
+.big-box
+  %h1= message
+  - if cookies['team_id'].nil?
+    %p Enter your teamname and press the button!
+    = form_tag quiz_create_team_path(@quiz), id: 'create_team', remote: true do
+      = text_field_tag 'team[name]', nil, placeholder: 'Team Name', class: 'form-control code'
+      = submit_tag 'Create Team', class: 'btn btn-primary btn-lg btn-block'
+  - else
+    %p Get ready for the quiz, #{@team.name}!
+    %hr/
+    #message.question_container
+      Questions will appear here.
+    #team_id{data: {team_id: cookies['team_id']}}
+
+:javascript
+  $(document).ready(function () {
+    this.submitAnswer = function () {
+      var $this, dataset, quiz, answer, question, team ;
+      $this = $(this);
+      dataset = $this.find('#info')
+      quiz = dataset.data().quizId;
+      team = $this.find('#team_id').data().teamId
+      question = dataset.data().questionId;
+      answer = $this.find('#body');
+
+      if ($.trim(answer.val()).length >= 1) {
+        App.quiz.submitAnswer({answer: answer.val(), team_id: team, quiz_id: quiz, question_id: question});
+        $('.answer_form').hide();
+        $('.answer_submitted').show();
+      } else {
+        $('#message').append('WTF Dude?!?')
+      }
+      return false;
+    };
+  });

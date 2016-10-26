@@ -1,0 +1,126 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+$brand-primary:             #77477E;
+$brand-success:             #FFC501;
+$gray-dark:                 #03001C;
+
+@import 'bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Creepster');
+html, body { height:100vh; margin:0; padding:0;}
+body {
+  padding-top:60px;
+  background: #ffc501;
+  background: -moz-linear-gradient(top, #ffc501 0%, #fe9600 100%);
+  background: -webkit-gradient(linear,left top, left bottom, color-stop(0%, #ffc501), color-stop(100%, #fe9600));
+  background: -webkit-linear-gradient(top, #ffc501 0%, #fe9600 100%);
+  background: -o-linear-gradient(top, #ffc501 0%, #fe9600 100%);
+  background: -ms-linear-gradient(top, #ffc501 0%, #fe9600 100%);
+  background: linear-gradient(to bottom, #ffc501 0%, #fe9600 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc501', endColorstr='#fe9600', GradientType=0 );
+}
+.big-box {
+  margin: 0px auto;
+  padding:20px;
+  border: 4px solid #ffc501;
+  border-radius: 10px;
+  background:#FFF;
+  width:70%;
+}
+.box {
+  max-width:400px;
+  margin: 0px auto;
+  padding:20px;
+  border: 4px solid #ffc501;
+  border-radius: 10px;
+  background:#FFF;
+}
+.code {
+  margin-bottom:10px;
+}
+.box h1, .big-box h1  {
+  font-family: 'Creepster', sans-serif;
+}
+.question_container {
+  font-family: 'Creepster', sans-serif;
+  font-size:35px;
+}
+.btn-sq-sm {
+  max-height: 50px;
+  padding-right:5px;
+  padding-left:5px;
+  font-size: 130%;
+}
+#send_question { display: inline-block; float:right;}
+.question p {
+  font-size: 20px;
+  float:left;
+  min-height:50px;
+  line-height: 50px;
+  margin-right: 51px;
+}
+.question {
+  padding-top: 10px;
+  border-bottom: 1px solid gainsboro;
+}
+.question:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.col-center-block {
+  display: block;
+  margin: 20px auto;
+}
+
+.square-button {
+  max-height: 50px;
+  display: block;
+  float: right;
+}
+
+#undo {
+  float: right;
+  display: none;
+}
+#correct {
+  display: none;
+}
+
+.links {
+  margin: 2%;
+  padding: 1%;
+  font-size: 110%;
+  color: #ffffff;
+  align-self: center;
+  text-align: center;
+}
+
+.score {
+  font-size: 130%;
+  font-weight: bold;
+  background-color: #ffc501;
+  color: #fff;
+  max-width: 30px;
+  display: block;
+  float: right;
+  padding: 1%;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 10px;
+  }
+}

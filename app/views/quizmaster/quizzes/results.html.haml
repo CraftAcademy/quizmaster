@@ -1,0 +1,13 @@
+.big-box
+  %h1= @quiz.name
+
+  .results_div
+    - @quiz.teams.each do |team|
+      = team.name
+      .score{class: 'score'}
+        = team.answers.where(is_correct: true).count
+      %hr/
+  %divr
+    = link_to 'Send Results', quizmaster_send_results_path(@quiz), method: :post, remote: true, class: 'btn-sq-sm btn-success links', id: 'send_results', onclick:"javascript:$(this).text('Resend Results');"
+  %divr
+    = link_to 'Back to Questions', quizmaster_quiz_path(@quiz), class: 'btn-sq-sm btn-success links'

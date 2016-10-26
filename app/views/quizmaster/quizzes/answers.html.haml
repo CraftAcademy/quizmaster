@@ -1,0 +1,34 @@
+.big-box
+  %h1= @question.body
+  %h3= @question.answer
+  %hr/
+
+  .answers
+    - @question.answers.each do |answer|
+      %divr{id: "answer_#{answer.id}"}
+        = answer.body
+        %divr{id: "right_or_wrong_#{answer.id}", class: "answer_div"}
+          %divr{class: "correct_buttons"}
+            = link_to image_tag('x-box.png', class: 'square-button'), quizmaster_mark_answers_path(correct: false, id: answer.id), id: "wrong", remote: true
+            = link_to image_tag('check-box.png', class: 'square-button'), quizmaster_mark_answers_path(correct: true, id: answer.id), id: "right", remote: true
+
+        %divr{id: 'undo', class: 'undo btn btn-sq-sm btn-success'}
+          Undo?
+      %br/
+      %br/
+      %hr/
+  %divr
+    = link_to 'Back to Questions', quizmaster_quiz_path(@question.quiz), class: 'btn-sq-sm btn-success links'
+
+:javascript
+  $(document).ready(function () {
+    $('.answer_div').click( function(){
+      $(this).find('.correct_buttons').hide();
+      $(this).parent().find('#undo').show();
+    });
+    $('.undo').click(function(){
+      $(this)[0].style.display = "none";
+      $(this).parent().find('.correct_buttons').show();
+    })
+
+  });

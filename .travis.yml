@@ -1,0 +1,25 @@
+language: ruby
+rvm:
+  - 2.3.0
+before_script:
+  - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+  - bundle exec rake db:create --all
+  - bundle exec rake db:migrate
+script:
+  - bundle exec rake ci:tests
+services:
+  - postgresql
+notifications:
+  email: false
+  slack:
+    secure: T/oGYhri1mw515Gy5xitewHs2ASVS/lnDAj6vKJdmU1qwfljXAfiiz+rgl+n3Z4vPO48G5E2xaDPLOL5CDNtl8QYrZXxH1mLrfNgNJ+vKUag1Nh6Cfx6S/DbIBdVq5O38BV84K5yPfIxpiC6bTY9Uj8HUN8J2wu/dq65IUon7musy1mb6lkinN63Zd7yG1uAoRwqfGai0Dk9zJ0IX4C+CteOn3PnNO0Bw23IVkBFrm43ruLxj6ILA8FYWlDmKPR6/ccq2cug/rgOc/h8UW/AXfA0L8Si19LTK/eoUp2S5wuVvzps5BlOb96gn6wsYiAX+azkElCYTYKJ0S8FW9ArBgsU41q/jgiUxpKbabgsg34lLV6aTgF8vDNw8jB/YhGgRZexq5XPcXetqiLrv2jHnjpgFUJPk1VH3hffpz6i5CMVfQVEJydVaMl1JOJex9IgPgC+Buqin5bv1xise0RELnwBZc+tQbTsCqKRYAHqxS6mxWCDxt37caTxVHJyMOgQBGSXN4IuZqhb5WJfV0oJCJVQUUfM3J6jrqS/iXfStYdR6yO+8xFaMFQy26hJXh+fslSaj62/hWatPMzWPsHmdTUgRX2o5I/88+Of1PYkUkecZ7pG7Nhb2LsObxCQVg3gDZ0Xy0loxD54aSuQt9LX6NvjpN4OUGlW8wkQWi3qJUI=
+deploy:
+  provider: heroku
+  api_key:
+    secure: uLfH8vlEdY+O2l06iQIA/WLxo1Gl+HDyKME7/tUlCkHo9UvnpO6okevSnwRBBLwHEKyvWS2gthlMOhvUc6J/GzXbmIdJHh0ZtW/CdrPb+nRrxBleMQ5CrS8CXFplQWptSy701FXEQXAm6nyxtybDzAb+oFC2325JF+YyX7YisOrcDP7nyFizrhIzlcQOEog/RiYWvtpoXJs1puiZIGlFXlPD4pkWvPviiVRnAoQHOQ5kcbxA4Vf9ButSSA7ItbjPhihwFK9W/9SpIAFbdYqwDOGSrM2PdrJBKBr77G4E6w1mBGVqBz6sEHZ5rfGeC1sOPo6EJ3mpwQ1UqxMCAZjSKvzW+vF1SqOepzyMwRO+t7Ftt9Ie7fBYXoZuXqCm0B/g3vA8tCqz58XqqFydXg5kZrz1sA605h284GCB6dBqIx4HvNEyy7/uXKHVv4b2h9TB0DCM11x9QHK7E+ZLmECjwMTXOxoHIdMLMo2hP2bKxzSNNhQ/qr4MvpS1LzLpq6CjfEimIPkRnv6nwCRpwGQosaWW2QMizWOx0mqxzCtjY1yys9WMQSvDwqA4OL/rkATFyKxtuKMJ3smrl8fqcBY3zBwv/Fbi/0jPoVF6WTLVI4+H7l3hWoRM5n7yryCKaaehXd3PN3Lf4xU6kmsBdppxenxZ2yUkKbbd7kUT2O+9+2g=
+  app:
+    develop: quizmasterone
+  on:
+    repo: CraftAcademy/quizmaster
+  run:
+    - rails db:migrate
