@@ -24,5 +24,10 @@ class QuizChannel < ApplicationCable::Channel
 
   def get_quiz(code)
     quiz = Quiz.find_by(code: code['message'])
+    ActionCable.server.broadcast "quiz_channel_", quiz
+  end
+
+  def create_team(data)
+    Team.create(name: data['message']['team_name'], quiz_id: data['message']['quiz_id'])
   end
 end
