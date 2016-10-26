@@ -5,5 +5,5 @@ Feature: As a Quizmaster
 Scenario: I register a new account
   Given I am on the landing page for quizmaster
   Then I should see "Register as a Quizmaster"
-  When I click the link
-  Then I should be on the "Register" page
+  When I click the "Register as a Quizmaster" link
+  Then I should be on the Register page

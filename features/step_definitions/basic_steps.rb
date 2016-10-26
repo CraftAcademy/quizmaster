@@ -23,6 +23,11 @@ Given(/^I am on the landing page for quizmaster$/) do
   visit root_path
 end
 
+Then(/^I should be on the Register page$/) do
+  expect(current_path).to eq new_user_registration_path
+end
+
+
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
 end
