@@ -16,7 +16,11 @@ class QuizChannel < ApplicationCable::Channel
   def submit_answer(data)
     params = data['message'].symbolize_keys!
     question = Question.find(params[:question_id])
-    team = Team.find(params[:team_id])
+    if params[:team_id].nil?
+      team = Team.find_by(name: params[:team_name], quiz: params[:quiz_id])
+    else
+      team = Team.find(params[:team_id])
+    end
     Answer.create(body: params[:answer],
                   question: question,
                   team: team)
