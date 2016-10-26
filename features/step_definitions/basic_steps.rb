@@ -23,8 +23,8 @@ Given(/^I am on the landing page for quizmaster$/) do
   visit root_path
 end
 
-Then(/^I should be on the Register page$/) do
-  expect(current_path).to eq new_user_registration_path
+Then(/^I should be on the Log in page$/) do
+  expect(current_path).to eq new_user_session_path
 end
 
 
