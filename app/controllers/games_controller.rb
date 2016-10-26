@@ -23,6 +23,7 @@ class GamesController < ApplicationController
     team = Team.create(name: params[:team][:name], quiz_id: params[:quiz_id])
     quiz = Quiz.find(params[:quiz_id])
     cookies['team_id'] = team.id
+    cookies['quiz_id'] = quiz.id
     redirect_to quiz_path(quiz)
   end
 

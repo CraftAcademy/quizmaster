@@ -16,5 +16,4 @@ Scenario: I view and send results
   Then I should see "10"
   When "Amber Rocks" is looking at the quiz page for "Trivia"
   And I click the "Send Results" button
-  Then "Amber Rocks" should see "Amber Rocks got 11 points"
-  And "Craft Academy" should see "Craft Academy got 10 points"
+  Then window 2 should see "Amber Rocks got 11 points Craft Academy got 10 points"
