@@ -22,6 +22,7 @@ $gray-dark:                 #03001C;
 @import url('https://fonts.googleapis.com/css?family=Creepster');
 html, body { height:100vh; margin:0; padding:0;}
 body {
+  font-family: 'Open Sans', sans-serif;
   padding-top:60px;
   background: #ffc501;
   background: -moz-linear-gradient(top, #ffc501 0%, #fe9600 100%);
@@ -54,7 +55,7 @@ body {
 .box h1, .big-box h1  {
   font-family: 'Creepster', sans-serif;
 }
-.question_container {
+.question_header {
   font-family: 'Creepster', sans-serif;
   font-size:35px;
 }
@@ -129,7 +130,7 @@ body {
   .question p {
     margin-top:10px;
     float:none;
-    line-height:18px;
+    line-height:22px;
   }
   .btn-sq-sm {
     width:100% !important;

@@ -8,8 +8,9 @@
   - else
     %p Get ready for the quiz, #{@team.name}!
     %hr/
-    #message.question_container
-      Questions will appear here.
+    #message
+      %span.question_header
+        Questions will appear here.
     #team_id{data: {team_id: cookies['team_id']}}
 
 :javascript
