@@ -1,6 +1,6 @@
 Feature: As a Quizmaster
   in order create a quiz
-  I need to be able to log in.
+  I need to be able to Sign up.
 
 Scenario: I register a new account
   Given I am on the landing page for quizmaster
