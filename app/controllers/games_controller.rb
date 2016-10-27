@@ -11,13 +11,19 @@ class GamesController < ApplicationController
 
   def access_quiz
     quiz = Quiz.find_by(code: params[:code])
-    redirect_to quiz_path(quiz)
+    if quiz.nil?
+      flash.now[:notice] = "Invalid code. Talk to your Quizmaster."
+      render :index
+    else
+      redirect_to quiz_path(quiz)
+    end
   end
 
   def create_team
     team = Team.create(name: params[:team][:name], quiz_id: params[:quiz_id])
     quiz = Quiz.find(params[:quiz_id])
     cookies['team_id'] = team.id
+    cookies['quiz_id'] = quiz.id
     redirect_to quiz_path(quiz)
   end
 

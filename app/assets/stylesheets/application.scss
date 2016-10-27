@@ -15,12 +15,14 @@
  */
 $brand-primary:             #77477E;
 $brand-success:             #FFC501;
+$brand-warning:             #fe9600;
 $gray-dark:                 #03001C;
 
 @import 'bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Creepster');
 html, body { height:100vh; margin:0; padding:0;}
 body {
+  padding-top:60px;
   background: #ffc501;
   background: -moz-linear-gradient(top, #ffc501 0%, #fe9600 100%);
   background: -webkit-gradient(linear,left top, left bottom, color-stop(0%, #ffc501), color-stop(100%, #fe9600));
@@ -62,13 +64,16 @@ body {
   padding-left:5px;
   font-size: 130%;
 }
-#send_question { display: inline-block; float:right;}
+#send_question {
+  display: inline-block;
+  float:right;
+}
 .question p {
   font-size: 20px;
   float:left;
-  min-height:50px;
-  line-height: 50px;
-  margin-right: 51px;
+  line-height: 45px;
+  margin-right: 100px;
+  margin-bottom: 10px;
 }
 .question {
   padding-top: 10px;
@@ -99,21 +104,41 @@ body {
 }
 
 .links {
-  margin: 2%;
-  padding: 1%;
-  font-size: 110%;
-  color: #ffffff;
-  align-self: center;
-  text-align: center;
+  margin-top: 10px;
 }
 
 .score {
   font-size: 130%;
   font-weight: bold;
-  background-color: #ffc501;
+  background-color: #77477E;
   color: #fff;
-  max-width: 30px;
+  max-width: 50px;
   display: block;
   float: right;
-  padding: 1%;
+  padding: 7px 14px;
+}
+
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 730px) {
+  .question p {
+    margin-top:10px;
+    float:none;
+    line-height:18px;
+  }
+  .btn-sq-sm {
+    width:100% !important;
+  }
+  .btn-group {
+    width:100% !important;
+  }
+  #send_question {
+    width:100% !important;
+  }
+
 }

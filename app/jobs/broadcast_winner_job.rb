@@ -1,4 +1,4 @@
-class BroadcastQuizJob < ApplicationJob
+class BroadcastWinnerJob < ApplicationJob
   queue_as :default
 
   def perform(data)
@@ -6,7 +6,6 @@ class BroadcastQuizJob < ApplicationJob
   end
 
   def create_partial(data)
-    ApplicationController.renderer.render(partial: './partials/question', locals: {data: data})
+    ApplicationController.renderer.render(partial: './partials/winner', locals: {data: data})
   end
 end
-

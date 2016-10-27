@@ -16,7 +16,9 @@
   .questions
     - @questions.each_with_index do |question, index|
       .question{id: "question#{question.id}"}
-        %p= question.body
+        %p
+          = "#{index.to_i + 1}."
+          = question.body
         = form_tag quizmaster_send_question_path, id: 'send_question', remote: true do
           = hidden_field_tag 'id', @quiz.id
           = hidden_field_tag 'welcome', false
@@ -24,15 +26,15 @@
           = hidden_field_tag 'question_id', question.id
           - unless question.is_sent?
             .btn-group#send
-              = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-success'
+              = submit_tag 'Send', id: "send_button#{question.id}", class: 'btn btn-sq-sm btn-warning'
           - else
             .btn-group
               = link_to 'Correct', quizmaster_correct_answers_path(question), id: "correct_button_#{question.id}", class: 'btn btn-sq-sm btn-success'
           .btn-group#correct
             = link_to 'Correct', quizmaster_correct_answers_path(question), id: "correct_button_#{question.id}", class: 'btn btn-sq-sm btn-success'
-
-  = link_to 'Results', quizmaster_results_path(@quiz), class: 'btn-sq-sm btn-success links'
-  = link_to 'Reset the Quiz', quizmaster_reset_quiz_path(@quiz), class: 'btn-sq-sm btn-success links', data: {confirm: 'Are you sure? Resetting the quiz will delete all answers.'}
+  .links
+    = link_to 'Results', quizmaster_results_path(@quiz), class: 'btn btn-primary'
+    = link_to 'Reset the Quiz', quizmaster_reset_quiz_path(@quiz), class: 'btn btn-success', data: {confirm: 'Are you sure? Resetting the quiz will delete all answers.'}
 
 
 :javascript

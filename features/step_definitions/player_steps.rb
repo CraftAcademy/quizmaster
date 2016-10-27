@@ -11,6 +11,11 @@ And(/^I enter the code for "([^"]*)"$/) do |quiz|
   click_link_or_button 'Submit'
 end
 
+Given(/^I enter a bad code$/) do
+  fill_in :code, with: 'nonsense'
+  click_link_or_button 'Submit'
+end
+
 Then(/^I should be on the quiz page for "([^"]*)"$/) do |quiz|
   quiz = Quiz.find_by(name: quiz)
   expect(current_path).to eq quiz_path(quiz)
@@ -26,13 +31,16 @@ And(/^I should see a Create Team form$/) do
 end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
-  team_id = Team.find_by(name: value).id
+  team = Team.find_by(name: value)
+  team_id = team.id
+  quiz_id = team.quiz.id
   case Capybara.current_session.driver
   when Capybara::Poltergeist::Driver
     page.driver.set_cookie(key, team_id)
+    page.driver.set_cookie('quiz_id', quiz_id)
   when Capybara::RackTest::Driver
     headers = {}
-    Rack::Utils.set_cookie_header!(headers, key, team_id)
+    Rack::Utils.set_cookie_header!(headers, key, team_id, quiz_id)
     cookie_string = headers['Set-Cookie']
     Capybara.current_session.driver.browser.set_cookie(cookie_string)
   else
@@ -56,14 +64,21 @@ When(/^"([^"]*)" is looking at the quiz page for "([^"]*)"$/) do |team_name, qui
     steps %Q{
       Given there is a "team_id" cookie set to "#{team_name}"
       And I switch to a new window
-      And I am on the quiz page for "Trivia"
+      And I am on the quiz page for "#{quiz_name}"
       And I switch to window "1"
     }
 end
 
-Then(/^"([^"]*)" should see "([^"]*)"$/) do |team_name, content|
-  steps %q{
-    Given I switch to window "2"
+Then(/^window (\d+) should see "([^"]*)"$/) do |window, content|
+  steps %Q{
+    Given I switch to window "#{window.to_i}"
   }
   expect(page).to have_content content
+end
+
+Then(/^window (\d+) should not see "([^"]*)"$/) do |window, content|
+  steps %Q{
+    Given I switch to window "#{window.to_i}"
+  }
+  expect(page).not_to have_content content
 end

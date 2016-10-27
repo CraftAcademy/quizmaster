@@ -13,6 +13,8 @@ gem 'redis'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'sprockets-rails'
 gem 'devise'
+gem 'rails-assets-tether', '>= 1.1.0'
+
 
 
 

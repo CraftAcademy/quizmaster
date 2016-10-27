@@ -1,4 +1,5 @@
 .box
+  %h4= notice
   %h1 Play the game
   = form_tag access_quiz_path, method: :post do
     = text_field_tag :code, nil, placeholder: 'Enter your code', class: 'form-control code'
