@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @team = Team.find(cookies['team_id']) unless cookies['team_id'].nil?
+    @team = Team.find(cookies['team_id']) unless cookies['team_id'].nil? || cookies['team_id'].empty?
     render :show, locals: {message: "Welcome to quiz: #{@quiz.name}"}
   end
 
@@ -15,6 +15,8 @@ class GamesController < ApplicationController
       flash.now[:notice] = "Invalid code. Talk to your Quizmaster."
       render :index
     else
+      cookies['team_id'] = nil
+      cookies['quiz_id'] = quiz.id
       redirect_to quiz_path(quiz)
     end
   end

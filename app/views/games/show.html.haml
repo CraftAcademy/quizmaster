@@ -1,6 +1,6 @@
 .big-box
   %h1= message
-  - if cookies['team_id'].nil?
+  - if cookies['team_id'].nil? || cookies['team_id'].empty?
     %p Enter your teamname and press the button!
     = form_tag quiz_create_team_path(@quiz), id: 'create_team', remote: true do
       = text_field_tag 'team[name]', nil, placeholder: 'Team Name', class: 'form-control code'
