@@ -1,5 +1,13 @@
 .big-box
-  %h1= @quiz.name
+  .row
+    .col-sm-12.col-md-4
+      %h4 Quizmaster
+    .col-sm-12.col-md-4
+      %h1= @quiz.name
+    .col-sm-12.col-md-4
+      %h4
+        Code:
+        %code= @quiz.code
   .results_div
     - @quiz.teams.each do |team|
       .question
