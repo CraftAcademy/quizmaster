@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   namespace :quizmaster do
     resources :quiz, controller: :quizzes, only: [:show]
     post '/quiz/:id', controller: :quizzes, action: :start_quiz

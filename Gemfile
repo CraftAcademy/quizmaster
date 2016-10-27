@@ -12,7 +12,9 @@ gem 'haml-rails'
 gem 'redis'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'sprockets-rails'
+gem 'devise'
 gem 'rails-assets-tether', '>= 1.1.0'
+
 
 
 
@@ -36,4 +38,5 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'erb2haml'
 end
