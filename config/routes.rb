@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get '/results/:id', controller: :quizzes, action: :results, as: :results
     post '/results/:id', controller: :quizzes, action: :send_results, as: :send_results
     get '/', controller: :quizzes, action: :index, as: :dashboard
-    get '/quiz', controller: :quizzes, action: :edit, as: :edit
+    get '/add_quiz', controller: :quizzes, action: :add_quiz, as: :add_quiz
   end
 
   resources :quiz, controller: :games, only: [:index, :show] do
