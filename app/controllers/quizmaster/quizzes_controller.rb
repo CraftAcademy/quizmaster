@@ -2,10 +2,15 @@ class Quizmaster::QuizzesController < ApplicationController
   before_action :get_quiz, except: [:correct_answers,
                                     :broadcast_content,
                                     :mark_answers,
-                                    :get_winner_message]
+                                    :get_winner_message,
+                                    :index]
 
   def show
     @questions = @quiz.questions.sort
+  end
+
+  def index
+    render :index
   end
 
   def start_quiz

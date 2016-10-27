@@ -50,5 +50,7 @@ Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
     visit new_user_registration_path
   when 'Log in'
     visit new_user_session_path
+  when 'Dashboard'
+    visit quizmaster_dashboard_path
   end
 end
