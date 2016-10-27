@@ -38,3 +38,10 @@ Given(/^I have sent the first question$/) do
     And I press the "Send" button for question "What is 2+2?"
   }
 end
+
+Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
+  case page
+  when 'Sign up'
+    visit new_user_registration_path
+  end
+end

@@ -14,3 +14,9 @@ Scenario: I register a new account
   And I fill in "Password confirmation" with "password"
   And I click the "Sign up" button
   Then I should see "Welcome! You have signed up successfully."
+
+Scenario: I try to sign up with an invalid email
+  Given I am on the quizmaster "Sign up" page
+  And I fill in "Email" with "viktoria"
+  And I click the "Sign up" button
+  Then I should see "Email is invalid"
