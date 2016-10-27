@@ -19,6 +19,15 @@ Given(/^I am on the page for "([^"]*)"$/) do |name|
   visit quiz_path(quiz)
 end
 
+Given(/^I am on the landing page for quizmaster$/) do
+  visit root_path
+end
+
+Then(/^I should be on the Log in page$/) do
+  expect(current_path).to eq new_user_session_path
+end
+
+
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
 end
