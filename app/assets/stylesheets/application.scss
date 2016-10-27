@@ -15,12 +15,14 @@
  */
 $brand-primary:             #77477E;
 $brand-success:             #FFC501;
+$brand-warning:             #fe9600;
 $gray-dark:                 #03001C;
 
 @import 'bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Creepster');
 html, body { height:100vh; margin:0; padding:0;}
 body {
+  font-family: 'Open Sans', sans-serif;
   padding-top:60px;
   background: #ffc501;
   background: -moz-linear-gradient(top, #ffc501 0%, #fe9600 100%);
@@ -30,6 +32,9 @@ body {
   background: -ms-linear-gradient(top, #ffc501 0%, #fe9600 100%);
   background: linear-gradient(to bottom, #ffc501 0%, #fe9600 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc501', endColorstr='#fe9600', GradientType=0 );
+}
+.logo{
+  width: 200px;
 }
 .big-box {
   margin: 0px auto;
@@ -53,7 +58,7 @@ body {
 .box h1, .big-box h1  {
   font-family: 'Creepster', sans-serif;
 }
-.question_container {
+.question_header {
   font-family: 'Creepster', sans-serif;
   font-size:35px;
 }
@@ -63,13 +68,16 @@ body {
   padding-left:5px;
   font-size: 130%;
 }
-#send_question { display: inline-block; float:right;}
+#send_question {
+  display: inline-block;
+  float:right;
+}
 .question p {
   font-size: 20px;
   float:left;
-  min-height:50px;
-  line-height: 50px;
-  margin-right: 51px;
+  line-height: 45px;
+  margin-right: 100px;
+  margin-bottom: 10px;
 }
 .question {
   padding-top: 10px;
@@ -79,6 +87,9 @@ body {
   content: '';
   display: block;
   clear: both;
+}
+.question:last-of-type {
+  border-bottom: none;
 }
 .col-center-block {
   display: block;
@@ -100,27 +111,41 @@ body {
 }
 
 .links {
-  margin: 2%;
-  padding: 1%;
-  font-size: 110%;
-  color: #ffffff;
-  align-self: center;
-  text-align: center;
+  margin-top: 10px;
 }
 
 .score {
   font-size: 130%;
   font-weight: bold;
-  background-color: #ffc501;
+  background-color: #77477E;
   color: #fff;
-  max-width: 30px;
+  max-width: 50px;
   display: block;
   float: right;
-  padding: 1%;
+  padding: 7px 14px;
 }
+
 
 @media (max-width: 480px) {
   body {
     padding-top: 10px;
   }
+}
+
+@media (max-width: 730px) {
+  .question p {
+    margin-top:10px;
+    float:none;
+    line-height:22px;
+  }
+  .btn-sq-sm {
+    width:100% !important;
+  }
+  .btn-group {
+    width:100% !important;
+  }
+  #send_question {
+    width:100% !important;
+  }
+
 }
