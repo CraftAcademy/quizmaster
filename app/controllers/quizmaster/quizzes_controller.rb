@@ -3,7 +3,8 @@ class Quizmaster::QuizzesController < ApplicationController
                                     :broadcast_content,
                                     :mark_answers,
                                     :get_winner_message,
-                                    :index]
+                                    :index,
+                                    :edit]
 
   def show
     @questions = @quiz.questions.sort
@@ -11,6 +12,9 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def index
     render :index
+  end
+
+  def edit
   end
 
   def start_quiz
