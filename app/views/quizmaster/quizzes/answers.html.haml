@@ -1,4 +1,13 @@
 .big-box
+  .row
+    .col-sm-12.col-md-4
+      %h4 Quizmaster
+    .col-sm-12.col-md-4
+      %h1= @question.quiz.name
+    .col-sm-12.col-md-4
+      %h4
+        Code:
+        %code= @question.quiz.code
   %h1= @question.body
   %h3= @question.answer
   %hr/
@@ -18,7 +27,7 @@
       %br/
       %hr/
   %divr
-    = link_to 'Back to Questions', quizmaster_quiz_path(@question.quiz), class: 'btn-sq-sm btn-success links'
+    = link_to 'Back to Questions', quizmaster_quiz_path(@question.quiz), class: 'btn btn-success'
 
 :javascript
   $(document).ready(function () {

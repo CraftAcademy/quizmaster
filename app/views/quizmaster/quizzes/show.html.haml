@@ -1,6 +1,13 @@
 .big-box
-  %h1= @quiz.name
-  %h3= @quiz.code
+  .row
+    .col-sm-12.col-md-4
+      %h4 Quizmaster
+    .col-sm-12.col-md-4
+      %h1= @quiz.name
+    .col-sm-12.col-md-4
+      %h4
+        Code:
+        %code= @quiz.code
   - unless @quiz.is_started?
     .activate_quiz
       = form_tag quizmaster_path(@quiz), id: 'start_quiz', remote: true do
