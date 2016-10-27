@@ -39,9 +39,16 @@ Given(/^I have sent the first question$/) do
   }
 end
 
+Given(/^there is a user with email "([^"]*)"$/) do |email|
+  FactoryGirl.create(:user, email: email)
+end
+
+
 Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
   case page
   when 'Sign up'
     visit new_user_registration_path
+  when 'Log in'
+    visit new_user_session_path
   end
 end
