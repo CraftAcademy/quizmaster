@@ -84,6 +84,9 @@ body {
   display: block;
   clear: both;
 }
+.question:last-of-type {
+  border-bottom: none;
+}
 .col-center-block {
   display: block;
   margin: 20px auto;
