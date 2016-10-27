@@ -6,6 +6,7 @@ RSpec.describe Quiz, type: :model do
     it { is_expected.to have_db_column :code }
     it { is_expected.to have_db_column :is_started }
     it { is_expected.to have_many :questions }
+    it { is_expected.to belong_to :user }
   end
 
   describe 'Validations' do

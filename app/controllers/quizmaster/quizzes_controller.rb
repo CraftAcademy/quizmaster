@@ -11,7 +11,6 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def index
-    render :index
   end
 
   def edit

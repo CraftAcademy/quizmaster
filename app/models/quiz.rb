@@ -4,6 +4,7 @@ class Quiz < ApplicationRecord
   before_validation :generate_random_code
   has_many :questions
   has_many :teams
+  belongs_to :user
 
   def get_scores
     scores = []

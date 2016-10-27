@@ -28,3 +28,9 @@ Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, tea
   expect(team.answers.count).to eq count.to_i
   sleep(2)
 end
+
+Given(/^I have the following quiz$/) do |table|
+    table.hashes.each do |quiz|
+    FactoryGirl.create(:quiz, name: quiz[:name])
+  end
+end
