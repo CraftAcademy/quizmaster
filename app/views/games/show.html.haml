@@ -1,6 +1,6 @@
 .big-box
   %h1= message
-  - if cookies['team_id'].nil?
+  - if cookies['team_id'].nil? || cookies['team_id'].empty?
     %p Enter your teamname and press the button!
     = form_tag quiz_create_team_path(@quiz), id: 'create_team', remote: true do
       = text_field_tag 'team[name]', nil, placeholder: 'Team Name', class: 'form-control code'
@@ -8,8 +8,9 @@
   - else
     %p Get ready for the quiz, #{@team.name}!
     %hr/
-    #message.question_container
-      Questions will appear here.
+    #message
+      %span.question_header
+        Questions will appear here.
     #team_id{data: {team_id: cookies['team_id']}}
 
 :javascript
@@ -28,7 +29,7 @@
         $('.answer_form').hide();
         $('.answer_submitted').show();
       } else {
-        $('#message').append('WTF Dude?!?')
+        $('#message').append('<br> Enter an answer.')
       }
       return false;
     };
