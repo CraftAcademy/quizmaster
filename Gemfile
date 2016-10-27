@@ -31,6 +31,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'redis_test'
+  gem 'faker'
 end
 
 group :development do
