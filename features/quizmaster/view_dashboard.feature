@@ -4,12 +4,14 @@ Feature: As a Quizmaster
 
 Background:
   Given there is a user with email "viktoria@quizmaster.com"
-  And I have the following quiz
+  And "viktoria@quizmaster.com" have the following quiz
   | name    |
   | General |
 
+
 Scenario: I view my dashboard
-  Given I am on the quizmaster "Dashboard" page
+  Given I log in as "viktoria@quizmaster.com"
+  And I am on the quizmaster "Dashboard" page
   Then I should see "General"
   When I click the "Create a new quiz" button
   Then I should see "Create a new quiz"

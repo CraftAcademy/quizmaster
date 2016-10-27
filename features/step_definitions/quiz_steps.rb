@@ -29,8 +29,9 @@ Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, tea
   sleep(2)
 end
 
-Given(/^I have the following quiz$/) do |table|
+Given(/^"([^"]*)" have the following quiz$/) do |email, table|
+    user = User.find_by(email: email)
     table.hashes.each do |quiz|
-    FactoryGirl.create(:quiz, name: quiz[:name])
+    FactoryGirl.create(:quiz, name: quiz[:name], user: user)
   end
 end

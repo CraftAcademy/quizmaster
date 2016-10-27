@@ -2,6 +2,8 @@
 .box
   %h1 Dashboard
 
-  %p Here's where there should be some previous quizzes
+  - current_user.quizzes.each do |quiz|
+
+    %strong= quiz.name
 
   = link_to 'Create a new quiz', quizmaster_edit_path, class: 'btn btn-primary'
