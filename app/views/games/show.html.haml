@@ -8,8 +8,9 @@
   - else
     %p Get ready for the quiz, #{@team.name}!
     %hr/
-    #message.question_container
-      Questions will appear here.
+    #message
+      %span.question_header
+        Questions will appear here.
     #team_id{data: {team_id: cookies['team_id']}}
 
 :javascript
@@ -28,7 +29,7 @@
         $('.answer_form').hide();
         $('.answer_submitted').show();
       } else {
-        $('#message').append('WTF Dude?!?')
+        $('#message').append('<br> You need to enter some text to submit yor answer')
       }
       return false;
     };

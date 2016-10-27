@@ -11,6 +11,8 @@
 
   <body>
     <%= yield %>
-    <%= link_to image_tag('logo.png', class: 'col-center-block'), 'http://www.craftacademy.se', target: '_blank' %>
+    <div class='logo col-center-block'>
+      <%= link_to image_tag('logo.png'), 'http://www.craftacademy.se', target: '_blank' %>
+    </div>
   </body>
 </html>
