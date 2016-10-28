@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-quiz1 = Quiz.create(name: "Quiz One")
-quiz2 = Quiz.create(name: "Quiz Two")
+user = User.create(email: 'qm@quizmaster.com', password: 'password')
+
+quiz1 = Quiz.create(name: "Quiz One", user: user)
+quiz2 = Quiz.create(name: "Quiz Two", user: user)
 
 question1 = 'What is the tastiest food ever?'
 answer1 = 'French Fries'
