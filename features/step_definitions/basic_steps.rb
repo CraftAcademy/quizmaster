@@ -39,6 +39,10 @@ When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
 end
 
+When(/^I click on "([^"]*)"$/) do |element|
+  page.find(:xpath,"//*[text()='#{element}']").click
+end
+
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, content|
   fill_in element, with: content
 end
