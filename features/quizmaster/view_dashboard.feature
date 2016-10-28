@@ -20,3 +20,8 @@ Scenario: Amber should not see my quizzes
   Given I log in as "amber@quizmaster.com"
   And I am on the quizmaster "Dashboard" page
   Then I should not see "General"
+
+Scenario: I try to visit the quizmaster page without logging in
+  Given I am not logged in
+  When I am on the quizmaster "Dashboard" page
+  Then I should be on the "index" page
