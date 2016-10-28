@@ -11,6 +11,7 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def index
+    redirect_to root_path unless current_user
   end
 
   def add_quiz
