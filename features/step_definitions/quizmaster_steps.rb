@@ -39,7 +39,7 @@ Given(/^I have sent the first question$/) do
   }
 end
 
-Given(/^there is a user with email "([^"]*)"$/) do |email|
+Given(/^there is a quizmaster with email "([^"]*)"$/) do |email|
   FactoryGirl.create(:user, email: email)
 end
 

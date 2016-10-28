@@ -3,12 +3,11 @@ Feature: As a Quizmaster
   I must be able to view my dashboard.
 
 Background:
-  Given there is a user with email "viktoria@quizmaster.com"
-  And there is a user with email "amber@quizmaster.com"
-  And "viktoria@quizmaster.com" have the following quiz
+  Given there is a quizmaster with email "viktoria@quizmaster.com"
+  And there is a quizmaster with email "amber@quizmaster.com"
+  And "viktoria@quizmaster.com" has the following quiz
   | name    |
   | General |
-
 
 Scenario: I view my dashboard
   Given I log in as "viktoria@quizmaster.com"
