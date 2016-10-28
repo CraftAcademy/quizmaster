@@ -3,7 +3,7 @@ Feature: As a Quizmaster
   I need to be able to Login.
 
 Background:
-Given there is a user with email "viktoria@quizmaster.com"
+Given there is a quizmaster with email "viktoria@quizmaster.com"
 
 Scenario: I Login
   Given I am on the quizmaster "Log in" page
