@@ -100,6 +100,8 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
+    faker (1.6.6)
+      i18n (~> 0.5)
     ffi (1.9.14)
     gherkin (4.0.0)
     globalid (0.3.7)
@@ -280,6 +282,7 @@ DEPENDENCIES
   devise
   erb2haml
   factory_girl_rails
+  faker
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
