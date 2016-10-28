@@ -3,9 +3,12 @@
     %p #{team[:team].name}: #{team[:score]}
 %span{id: 'see_answers', class: 'btn btn-primary btn-lg btn-block'} See Answers
 .results{id: 'answers'}
-  - data[:quiz].questions.each do |question|
-    = question.body
+  - data[:quiz].questions.each_with_index do |question, index|
+    %span{style: "font-weight: bold"}
+      = "#{index.to_i + 1}."
+      = question.body
     %br/
+    Answer:
     = question.answer
     %hr/
 
