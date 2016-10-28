@@ -3,7 +3,11 @@
     %p #{team[:team].name}: #{team[:score]}
 %span{id: 'see_answers', class: 'btn btn-primary btn-lg btn-block'} See Answers
 .results{id: 'answers'}
-  Answers!
+  - data[:quiz].questions.each do |question|
+    = question.body
+    %br/
+    = question.answer
+    %hr/
 
 :javascript
   $('#answers').hide();

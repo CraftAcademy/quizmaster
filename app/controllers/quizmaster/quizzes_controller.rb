@@ -32,7 +32,7 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def send_results
     list = @quiz.get_scores
-    content = {winner: get_winner, list: list, welcome: 'false', quiz_id: @quiz.id}
+    content = {winner: get_winner, list: list, welcome: 'false', quiz: @quiz}
     BroadcastWinnerJob.perform_now(content)
     head :ok
   end
