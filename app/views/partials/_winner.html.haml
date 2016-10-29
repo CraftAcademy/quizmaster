@@ -1,3 +1,21 @@
 .results
   - data[:list].reverse.each do |team|
-    %p #{team[:team].name} got #{team[:score]} points
+    %p #{team[:team].name}: #{team[:score]}
+%span{id: 'see_answers', class: 'btn btn-primary btn-lg btn-block'} See Answers
+.results{id: 'answers'}
+  - data[:quiz].questions.each_with_index do |question, index|
+    %span{style: "font-weight: bold"}
+      = "#{index.to_i + 1}."
+      = question.body
+    %br/
+    Answer:
+    = question.answer
+    %hr/
+
+:javascript
+  $('#answers').hide();
+  $(document).on('click', '#see_answers', function(e)
+    {
+      $('#answers').show();
+      $('#see_answers').hide();
+    });

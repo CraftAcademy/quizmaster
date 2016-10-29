@@ -52,6 +52,9 @@ Given(/^I log in as "([^"]*)"$/) do |email|
   }
 end
 
+Given(/^I am not logged in$/) do
+  logout
+end
 
 Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
   case page
