@@ -2,10 +2,19 @@ class Quizmaster::QuizzesController < ApplicationController
   before_action :get_quiz, except: [:correct_answers,
                                     :broadcast_content,
                                     :mark_answers,
-                                    :get_winner_message]
+                                    :get_winner_message,
+                                    :index,
+                                    :add_quiz]
 
   def show
     @questions = @quiz.questions.sort
+  end
+
+  def index
+    redirect_to root_path unless current_user
+  end
+
+  def add_quiz
   end
 
   def start_quiz
@@ -23,7 +32,7 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def send_results
     list = @quiz.get_scores
-    content = {winner: get_winner, list: list, welcome: 'false', quiz_id: @quiz.id}
+    content = {winner: get_winner, list: list, welcome: 'false', quiz: @quiz}
     BroadcastWinnerJob.perform_now(content)
     head :ok
   end

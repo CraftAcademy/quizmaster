@@ -27,9 +27,20 @@ Then(/^I should be on the Log in page$/) do
   expect(current_path).to eq new_user_session_path
 end
 
+Then(/^I should be on the "([^"]*)" page$/) do |page|
+  case page
+  when 'index'
+    expect(current_path).to eq root_path
+  end
+end
+
 
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
+end
+
+When(/^I click on "([^"]*)"$/) do |element|
+  page.find(:xpath,"//*[text()='#{element}']").click
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, content|

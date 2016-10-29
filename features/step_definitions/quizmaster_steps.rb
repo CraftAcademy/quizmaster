@@ -39,10 +39,22 @@ Given(/^I have sent the first question$/) do
   }
 end
 
-Given(/^there is a user with email "([^"]*)"$/) do |email|
+Given(/^there is a quizmaster with email "([^"]*)"$/) do |email|
   FactoryGirl.create(:user, email: email)
 end
 
+Given(/^I log in as "([^"]*)"$/) do |email|
+  steps %Q{
+    Given I am on the quizmaster "Log in" page
+    Then I fill in "Email" with "#{email}"
+    And I fill in "Password" with "password"
+    And I click the "Log in" button
+  }
+end
+
+Given(/^I am not logged in$/) do
+  logout
+end
 
 Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
   case page
@@ -50,5 +62,7 @@ Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
     visit new_user_registration_path
   when 'Log in'
     visit new_user_session_path
+  when 'Dashboard'
+    visit quizmaster_dashboard_path
   end
 end

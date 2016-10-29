@@ -1,0 +1,8 @@
+.big-box
+  %h1 My Quizzes
+
+  - current_user.quizzes.each do |quiz|
+
+    %strong= quiz.name
+
+  = link_to 'Create a new quiz', quizmaster_add_quiz_path, class: 'btn btn-primary'
