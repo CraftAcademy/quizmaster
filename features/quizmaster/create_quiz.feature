@@ -7,6 +7,6 @@ Background:
 
 Scenario: I create a quiz
   Given I am on the quizmaster "Create quiz" page
-  When I fill in "Question" with "Is Viktoria awesome?"
+  When I fill in "Quiz name" with "Team Craft Academy"
   And I click the "Create quiz" button
-  Then I should see "You just created a new quiz! Nice!"
+  Then I should see "Add questions"
