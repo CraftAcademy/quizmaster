@@ -4,7 +4,8 @@ class Quizmaster::QuizzesController < ApplicationController
                                     :mark_answers,
                                     :get_winner_message,
                                     :index,
-                                    :create_quiz]
+                                    :create_quiz,
+                                    :add_questions]
 
   def show
     @questions = @quiz.questions.sort

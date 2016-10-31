@@ -2,4 +2,4 @@
   %h1 Create a new quiz
 
   = text_field_tag 'Quiz Name', nil, placeholder: 'Quiz name', class: 'form-control code'
-  = submit_tag 'Create quiz', id: 'create_quiz_button', class: 'btn btn-primary btn-lg btn-block'
+  = link_to 'Create quiz', quizmaster_add_questions_path, class: 'btn btn-primary'
