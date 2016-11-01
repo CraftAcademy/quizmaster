@@ -1,10 +1,11 @@
 class Quizmaster::QuizzesController < ApplicationController
-  before_action :get_quiz, except: [:correct_answers,
+  before_action :get_quiz, :authenticate_user!, except: [:correct_answers,
                                     :broadcast_content,
                                     :mark_answers,
                                     :get_winner_message,
                                     :index,
-                                    :create_quiz,
+                                    :new,
+                                    :create,
                                     :add_questions]
 
   def show
@@ -15,7 +16,19 @@ class Quizmaster::QuizzesController < ApplicationController
     redirect_to root_path unless current_user
   end
 
+  def new
+    @quiz = Quiz.new
+  end
+
+  def create
+    @quiz = current_user.quizzes.create(quiz_params)
+  end
+
   def add_quiz
+  end
+
+  def add_questions
+    @question = Question.new
   end
 
   def start_quiz
@@ -78,6 +91,10 @@ class Quizmaster::QuizzesController < ApplicationController
     winner = Team.find_by(name: @quiz.get_scores.last[:team].name)
     winner.update_attribute(:is_winner, true)
     winner
+  end
+
+  def quiz_params
+    params.permit(:name)
   end
 
 end
