@@ -29,8 +29,9 @@ Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, tea
   sleep(2)
 end
 
-Then(/^I should have (\d+) quiz$/) do |count|
-  expect(current_user.quizzes.count).to eq count
+Then(/^"([^"]*)" should have (\d+) quiz$/) do |email, count|
+  user = User.find_by(email: email)
+  expect(user.quizzes.count).to eq count.to_i
 end
 
 Given(/^"([^"]*)" (?:have|has) the following (?:quiz|quizzes)$/) do |email, table|

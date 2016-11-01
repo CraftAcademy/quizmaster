@@ -1,5 +1,7 @@
 class Quizmaster::QuizzesController < ApplicationController
-  before_action :get_quiz, :authenticate_user!, except: [:correct_answers,
+  before_action :authenticate_user!, only: [:create]
+
+  before_action :get_quiz, except: [:correct_answers,
                                     :broadcast_content,
                                     :mark_answers,
                                     :get_winner_message,
