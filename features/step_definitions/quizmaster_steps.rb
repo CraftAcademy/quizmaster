@@ -57,7 +57,6 @@ Given(/^I am not logged in$/) do
 end
 
 Given(/^I am logged in as "([^"]*)"$/) do |email|
-  #user = FactoryGirl.create(:user, email: email)
   user = User.find_by(email: email)
   login_as(user)
 end
