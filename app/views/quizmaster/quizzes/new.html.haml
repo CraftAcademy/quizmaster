@@ -1,14 +1,14 @@
 .box
   %h1 Create a new quiz
 
-  = form_tag action: 'create', remote: true, class: 'form-group' do |f|
+  = form_tag action: 'create', remote: true do |f|
     .form-group
       = label_tag :name
-      = text_field_tag :name
+      = text_field_tag :name, nil, class: 'form-control code'
 
-      = label_tag :question
-      = text_field_tag :question
-      = label_tag :answer
-      = text_field_tag :answer
+      -#= label_tag :question
+      -#= text_field_tag :question, nil,  class: 'form-control code'
+      -#= label_tag :answer
+      -#= text_field_tag :answer, nil, class: 'form-control code'
 
       = submit_tag 'Create', id: 'create', class: 'btn btn-primary'

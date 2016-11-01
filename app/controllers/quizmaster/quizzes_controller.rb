@@ -26,9 +26,6 @@ class Quizmaster::QuizzesController < ApplicationController
     @quiz = current_user.quizzes.create(quiz_params)
   end
 
-  def add_quiz
-  end
-
   def add_questions
     @question = Question.new
   end
