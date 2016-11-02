@@ -3,18 +3,17 @@
 
   = form_tag action: 'create', remote: true do |f|
     .form-group
-      = label_tag :name
+      = label_tag :name, 'Quiz Name'
       = text_field_tag :name, nil, class: 'form-control code'
+      %hr/
 
     .fields
       #questions_choices
         = render partial: 'form'
-        -#= render partial: 'form'
-        -#= render partial: 'form'
-        -#= render partial: 'form'
-      %a{id:'addNewQuestion', class: 'btn btn-primary'}Add New Question
+      .right
+        %a{id:'addNewQuestion', class: 'btn btn-primary btn-warning', style:'color:#ffffff;'}Add Another Question
       %br
-      = submit_tag 'Create', id: 'create', class: 'btn btn-primary'
+      = submit_tag 'Create', id: 'create', class: 'btn btn-primary btn-lg btn-block'
 
       #new_questions_form{style: 'display: none;'}
         = render partial: 'form'
