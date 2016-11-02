@@ -31,8 +31,7 @@ class Quizmaster::QuizzesController < ApplicationController
 
         else
           # This is not working
-          flash[:alert] = 'Your quiz was created.. but there was a problem with one or more of your questions:'
-            + quest.errors.full_messages.first
+          flash[:alert] = "Your quiz was created.. but there was a problem with one or more of your questions: #{quest.errors.full_messages.first}"
           redirect_to quizmaster_dashboard_path and return
         end
       end
