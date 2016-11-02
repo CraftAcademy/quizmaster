@@ -1,10 +1,14 @@
 class Quizmaster::QuizzesController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+
   before_action :get_quiz, except: [:correct_answers,
                                     :broadcast_content,
                                     :mark_answers,
                                     :get_winner_message,
                                     :index,
-                                    :add_quiz]
+                                    :new,
+                                    :create]
+                                    # :add_questions]
 
   def show
     @questions = @quiz.questions.sort
@@ -14,8 +18,23 @@ class Quizmaster::QuizzesController < ApplicationController
     redirect_to root_path unless current_user
   end
 
-  def add_quiz
+  def new
+    @quiz = Quiz.new
   end
+
+  def create
+    @quiz = current_user.quizzes.create(quiz_params)
+    if @quiz.save
+      render :new
+    else
+      flash[:alert] = @quiz.errors.full_messages.first
+      render :new
+    end
+  end
+
+  # def add_questions
+  #   @question = Question.new
+  # end
 
   def start_quiz
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
@@ -79,4 +98,7 @@ class Quizmaster::QuizzesController < ApplicationController
     winner
   end
 
+  def quiz_params
+    params.permit(:name)
+  end
 end

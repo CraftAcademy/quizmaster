@@ -12,7 +12,7 @@ class Quiz < ApplicationRecord
       points = team.answers.where(is_correct: true).count
       scores << {team: team, score: points}
     end
-    scores.sort_by! {|score, points| points}
+    scores.sort_by! {|team| team[:score]}
   end
 
   def reset_quiz_actions

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   namespace :quizmaster do
-    resources :quiz, controller: :quizzes, only: [:show]
+    resources :quiz, controller: :quizzes, only: [:show, :new, :create]
     post '/quiz/:id', controller: :quizzes, action: :start_quiz
     get '/quiz/reset/:id', controller: :quizzes, action: :reset_quiz, as: :reset_quiz
     post '/send_question', controller: :quizzes, action: :send_question
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get '/results/:id', controller: :quizzes, action: :results, as: :results
     post '/results/:id', controller: :quizzes, action: :send_results, as: :send_results
     get '/', controller: :quizzes, action: :index, as: :dashboard
-    get '/add_quiz', controller: :quizzes, action: :add_quiz, as: :add_quiz
   end
 
   resources :quiz, controller: :games, only: [:index, :show] do

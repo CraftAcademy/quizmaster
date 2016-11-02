@@ -34,6 +34,10 @@ Then(/^I should be on the "([^"]*)" page$/) do |page|
   end
 end
 
+Given(/^I am on the quizmaster Add questions page for "([^"]*)"$/) do |quiz|
+  quiz = Quiz.find_by(name: name)
+  visit quizmaster_add_questions_path(quiz)
+end
 
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
