@@ -23,14 +23,12 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def create
+    # I want to refactor this one, but the 'and return' seems to need to be here... Need help (or at least an internet connection)
     @quiz = current_user.quizzes.create(quiz_params)
     if @quiz.save
       questions_params[:questions].each do |question|
         quest = @quiz.questions.create(question)
-        if quest.save
-
-        else
-          # This is not working
+        unless quest.save || quest.body.blank? && quest.answer.blank?
           flash[:alert] = "Your quiz was created.. but there was a problem with one or more of your questions: #{quest.errors.full_messages.first}"
           redirect_to quizmaster_dashboard_path and return
         end
