@@ -26,9 +26,16 @@ class Quizmaster::QuizzesController < ApplicationController
     @quiz = current_user.quizzes.create(quiz_params)
     if @quiz.save
       questions_params[:questions].each do |question|
-        @quiz.questions.create(question)
-      end
+        quest = @quiz.questions.create(question)
+        if quest.save
 
+        else
+          # This is not working
+          flash[:alert] = 'Your quiz was created.. but there was a problem with one or more of your questions:'
+            + quest.errors.full_messages.first
+          redirect_to quizmaster_dashboard_path and return
+        end
+      end
       flash[:alert] = 'Successfully created quiz'
       render :index
     else
