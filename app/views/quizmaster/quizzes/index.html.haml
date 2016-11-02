@@ -1,8 +1,11 @@
-.big-box
+.box
   %h1 My Quizzes
 
   - current_user.quizzes.each do |quiz|
 
-    %strong= quiz.name
+    = link_to quiz.name, quizmaster_quiz_path(quiz)
+    %br/
+
+  %hr/
 
   = link_to 'Create a new quiz', new_quizmaster_quiz_path, class: 'btn btn-primary'
