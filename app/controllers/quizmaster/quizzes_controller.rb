@@ -25,6 +25,11 @@ class Quizmaster::QuizzesController < ApplicationController
   def create
     @quiz = current_user.quizzes.create(quiz_params)
     if @quiz.save
+      questions_params[:questions].each do |question|
+        @quiz.questions.create(question)
+      end
+      binding.pry
+
       render :new
     else
       flash[:alert] = @quiz.errors.full_messages.first
@@ -100,5 +105,9 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def quiz_params
     params.permit(:name)
+  end
+
+  def questions_params
+    params.permit(questions: [:body, :answer])
   end
 end

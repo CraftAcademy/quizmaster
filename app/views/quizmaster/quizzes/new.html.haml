@@ -6,9 +6,20 @@
       = label_tag :name
       = text_field_tag :name, nil, class: 'form-control code'
 
-      -#= label_tag :question
-      -#= text_field_tag :question, nil,  class: 'form-control code'
-      -#= label_tag :answer
-      -#= text_field_tag :answer, nil, class: 'form-control code'
-
+    .fields
+      #questions_choices
+        = render partial: 'form'
+        -#= render partial: 'form'
+        -#= render partial: 'form'
+        -#= render partial: 'form'
+      %a{id:'addNewQuestion'}Add New Question
       = submit_tag 'Create', id: 'create', class: 'btn btn-primary'
+
+:javascript
+  this.removeChoice = function(element) {
+    return element.parent().remove();
+  };
+
+  $("#addNewQuestion").on("click", function() {
+    return $('#questions_choices').append($('#new_question_form').html("#{j render partial: 'form'}"));
+  });
