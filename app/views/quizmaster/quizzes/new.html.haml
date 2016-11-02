@@ -12,14 +12,21 @@
         -#= render partial: 'form'
         -#= render partial: 'form'
         -#= render partial: 'form'
-      %a{id:'addNewQuestion'}Add New Question
+      %a{id:'addNewQuestion', class: 'btn btn-primary'}Add New Question
+      %br
       = submit_tag 'Create', id: 'create', class: 'btn btn-primary'
 
-:javascript
-  this.removeChoice = function(element) {
-    return element.parent().remove();
-  };
+      #new_questions_form{style: 'display: none;'}
+        = render partial: 'form'
 
-  $("#addNewQuestion").on("click", function() {
-    return $('#questions_choices').append($('#new_question_form').html("#{j render partial: 'form'}"));
+
+:javascript
+  $(document).ready(function () {
+    this.removeChoice = function(element) {
+      return element.parent().remove();
+    };
+
+    $("#addNewQuestion").on("click", function() {
+      $('#questions_choices').append($('#new_questions_form').html());
+    });
   });

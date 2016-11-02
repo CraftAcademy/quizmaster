@@ -8,7 +8,7 @@ class Quizmaster::QuizzesController < ApplicationController
                                     :index,
                                     :new,
                                     :create]
-                                    # :add_questions]
+
 
   def show
     @questions = @quiz.questions.sort
@@ -36,10 +36,6 @@ class Quizmaster::QuizzesController < ApplicationController
       render :new
     end
   end
-
-  # def add_questions
-  #   @question = Question.new
-  # end
 
   def start_quiz
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
