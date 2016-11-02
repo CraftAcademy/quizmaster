@@ -7,8 +7,8 @@ class Quizmaster::QuizzesController < ApplicationController
                                     :get_winner_message,
                                     :index,
                                     :new,
-                                    :create,
-                                    :add_questions]
+                                    :create]
+                                    # :add_questions]
 
   def show
     @questions = @quiz.questions.sort
@@ -26,9 +26,9 @@ class Quizmaster::QuizzesController < ApplicationController
     @quiz = current_user.quizzes.create(quiz_params)
   end
 
-  def add_questions
-    @question = Question.new
-  end
+  # def add_questions
+  #   @question = Question.new
+  # end
 
   def start_quiz
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
