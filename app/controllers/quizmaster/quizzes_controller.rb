@@ -28,9 +28,9 @@ class Quizmaster::QuizzesController < ApplicationController
       questions_params[:questions].each do |question|
         @quiz.questions.create(question)
       end
-      binding.pry
 
-      render :new
+      flash[:alert] = 'Successfully created quiz'
+      render :index
     else
       flash[:alert] = @quiz.errors.full_messages.first
       render :new
