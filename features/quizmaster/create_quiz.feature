@@ -12,3 +12,10 @@ Scenario: I create a quiz
   When I fill in "Name" with "Team Craft Academy"
   And I click the "Create" button
   Then "viktoria@quizmaster.com" should have 1 quiz
+
+Scenario: I create a quiz without a name
+  Given I am on the quizmaster "Create quiz" page
+  When I fill in "Name" with " "
+  And I click the "Create" button
+  Then I should see "Name can't be blank"
+
