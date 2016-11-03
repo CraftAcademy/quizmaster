@@ -10,7 +10,7 @@
     .fields
       #questions_choices
         = render partial: 'form'
-      .right
+      .right.top_space
         %a{id:'addNewQuestion', class: 'btn btn-primary btn-warning', style:'color:#ffffff;'}Add Another Question
       %br
       = submit_tag 'Create', id: 'create', class: 'btn btn-primary btn-lg btn-block'

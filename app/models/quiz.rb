@@ -6,9 +6,6 @@ class Quiz < ApplicationRecord
   has_many :teams
   belongs_to :user
 
-  #accepts_nested_attributes_for :questions
-
-
   def get_scores
     scores = []
     self.teams.each do |team|
