@@ -28,7 +28,7 @@ class Quizmaster::QuizzesController < ApplicationController
     if @quiz.save
       questions_params[:questions].each do |question|
         quest = @quiz.questions.create(question)
-        unless quest.save || quest.body.blank? && quest.answer.blank?
+        unless quest.save || (quest.body.blank? && quest.answer.blank?)
           flash[:alert] = "Your quiz was created.. but there was a problem with one or more of your questions: #{quest.errors.full_messages.first}"
           redirect_to quizmaster_dashboard_path and return
         end
