@@ -3,12 +3,29 @@
 
   = form_tag action: 'create', remote: true do |f|
     .form-group
-      = label_tag :name
+      = label_tag :name, 'Quiz Name'
       = text_field_tag :name, nil, class: 'form-control code'
+      %hr/
 
-      -#= label_tag :question
-      -#= text_field_tag :question, nil,  class: 'form-control code'
-      -#= label_tag :answer
-      -#= text_field_tag :answer, nil, class: 'form-control code'
+    .fields
+      #questions_choices
+        = render partial: 'form'
+      .right.top_space
+        %a{id:'addNewQuestion', class: 'btn btn-primary btn-warning', style:'color:#ffffff;'}Add Another Question
+      %br
+      = submit_tag 'Create', id: 'create', class: 'btn btn-primary btn-lg btn-block'
 
-      = submit_tag 'Create', id: 'create', class: 'btn btn-primary'
+      #new_questions_form{style: 'display: none;'}
+        = render partial: 'form'
+
+
+:javascript
+  $(document).ready(function () {
+    this.removeChoice = function(element) {
+      return element.parent().remove();
+    };
+
+    $("#addNewQuestion").on("click", function() {
+      $('#questions_choices').append($('#new_questions_form').html());
+    });
+  });

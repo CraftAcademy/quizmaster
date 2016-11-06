@@ -1,0 +1,7 @@
+.questions-form
+  -# %a.remove-question{href: '#', onclick: 'removeQuestion($(this))'} Remove
+  = label_tag 'questions[][body]', 'Question'
+  = text_field_tag 'questions[][body]', nil, class: 'form-control'
+  = label_tag 'questions[][answer]', 'Answer'
+  = text_field_tag 'questions[][answer]', nil, class: 'form-control'
+  %hr/

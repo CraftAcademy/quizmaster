@@ -19,3 +19,5 @@
 /coverage
 
 .idea/
+
+dump.rdb

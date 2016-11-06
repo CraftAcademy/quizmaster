@@ -8,7 +8,7 @@ class Quizmaster::QuizzesController < ApplicationController
                                     :index,
                                     :new,
                                     :create]
-                                    # :add_questions]
+
 
   def show
     @questions = @quiz.questions.sort
@@ -23,18 +23,23 @@ class Quizmaster::QuizzesController < ApplicationController
   end
 
   def create
+    # I want to refactor this one, but the 'and return' seems to need to be here... Need help (or at least an internet connection)
     @quiz = current_user.quizzes.create(quiz_params)
     if @quiz.save
-      render :new
+      questions_params[:questions].each do |question|
+        quest = @quiz.questions.create(question)
+        unless quest.save || (quest.body.blank? && quest.answer.blank?)
+          flash[:alert] = "Your quiz was created.. but there was a problem with one or more of your questions: #{quest.errors.full_messages.first}"
+          redirect_to quizmaster_dashboard_path and return
+        end
+      end
+      flash[:alert] = 'Successfully created quiz'
+      render :index
     else
       flash[:alert] = @quiz.errors.full_messages.first
       render :new
     end
   end
-
-  # def add_questions
-  #   @question = Question.new
-  # end
 
   def start_quiz
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
@@ -100,5 +105,9 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def quiz_params
     params.permit(:name)
+  end
+
+  def questions_params
+    params.permit(questions: [:body, :answer])
   end
 end
