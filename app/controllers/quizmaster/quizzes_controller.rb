@@ -1,10 +1,14 @@
 class Quizmaster::QuizzesController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+
   before_action :get_quiz, except: [:correct_answers,
                                     :broadcast_content,
                                     :mark_answers,
                                     :get_winner_message,
                                     :index,
-                                    :add_quiz]
+                                    :new,
+                                    :create]
+
 
   def show
     @questions = @quiz.questions.sort
@@ -14,7 +18,27 @@ class Quizmaster::QuizzesController < ApplicationController
     redirect_to root_path unless current_user
   end
 
-  def add_quiz
+  def new
+    @quiz = Quiz.new
+  end
+
+  def create
+    # I want to refactor this one, but the 'and return' seems to need to be here... Need help (or at least an internet connection)
+    @quiz = current_user.quizzes.create(quiz_params)
+    if @quiz.save
+      questions_params[:questions].each do |question|
+        quest = @quiz.questions.create(question)
+        unless quest.save || (quest.body.blank? && quest.answer.blank?)
+          flash[:alert] = "Your quiz was created.. but there was a problem with one or more of your questions: #{quest.errors.full_messages.first}"
+          redirect_to quizmaster_dashboard_path and return
+        end
+      end
+      flash[:alert] = 'Successfully created quiz'
+      render :index
+    else
+      flash[:alert] = @quiz.errors.full_messages.first
+      render :new
+    end
   end
 
   def start_quiz
@@ -79,4 +103,11 @@ class Quizmaster::QuizzesController < ApplicationController
     winner
   end
 
+  def quiz_params
+    params.permit(:name)
+  end
+
+  def questions_params
+    params.permit(questions: [:body, :answer])
+  end
 end

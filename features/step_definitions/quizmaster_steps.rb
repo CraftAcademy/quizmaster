@@ -56,6 +56,11 @@ Given(/^I am not logged in$/) do
   logout
 end
 
+Given(/^I am logged in as "([^"]*)"$/) do |email|
+  user = User.find_by(email: email)
+  login_as(user)
+end
+
 Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
   case page
   when 'Sign up'
@@ -64,5 +69,7 @@ Given(/^I am on the quizmaster "([^"]*)" page$/) do |page|
     visit new_user_session_path
   when 'Dashboard'
     visit quizmaster_dashboard_path
+  when 'Create quiz'
+    visit new_quizmaster_quiz_path
   end
 end

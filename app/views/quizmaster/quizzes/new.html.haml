@@ -1,0 +1,31 @@
+.box
+  %h1 Create a new quiz
+
+  = form_tag action: 'create', remote: true do |f|
+    .form-group
+      = label_tag :name, 'Quiz Name'
+      = text_field_tag :name, nil, class: 'form-control code'
+      %hr/
+
+    .fields
+      #questions_choices
+        = render partial: 'form'
+      .right.top_space
+        %a{id:'addNewQuestion', class: 'btn btn-primary btn-warning', style:'color:#ffffff;'}Add Another Question
+      %br
+      = submit_tag 'Create', id: 'create', class: 'btn btn-primary btn-lg btn-block'
+
+      #new_questions_form{style: 'display: none;'}
+        = render partial: 'form'
+
+
+:javascript
+  $(document).ready(function () {
+    this.removeChoice = function(element) {
+      return element.parent().remove();
+    };
+
+    $("#addNewQuestion").on("click", function() {
+      $('#questions_choices').append($('#new_questions_form').html());
+    });
+  });
