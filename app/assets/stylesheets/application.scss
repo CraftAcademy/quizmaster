@@ -38,7 +38,16 @@ body {
 }
 
 .logo{
-  width: 200px;
+  width: 100%;
+}
+.logo p {
+  color:#FFF;
+  padding-top:10px;
+}
+.logo a {
+  color:#FFF;
+  text-decoration: underline;
+  padding-top:10px;
 }
 .center {
   text-align: center;
