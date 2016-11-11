@@ -13,26 +13,30 @@
  *= require_tree .
  *= require_self
  */
-$brand-primary:             #77477E;
-$brand-success:             #FFC501;
-$brand-warning:             #fe9600;
+$brand-primary:             #4fa8bb;
+$brand-success:             #943a7f;
+$brand-warning:             #72BB4F;
 $gray-dark:                 #03001C;
 
 @import 'bootstrap';
-@import url('https://fonts.googleapis.com/css?family=Creepster');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 html, body { height:100vh; margin:0; padding:0;}
 body {
   font-family: 'Open Sans', sans-serif;
   padding-top:60px;
-  background: #ffc501;
-  background: -moz-linear-gradient(top, #ffc501 0%, #fe9600 100%);
-  background: -webkit-gradient(linear,left top, left bottom, color-stop(0%, #ffc501), color-stop(100%, #fe9600));
-  background: -webkit-linear-gradient(top, #ffc501 0%, #fe9600 100%);
-  background: -o-linear-gradient(top, #ffc501 0%, #fe9600 100%);
-  background: -ms-linear-gradient(top, #ffc501 0%, #fe9600 100%);
-  background: linear-gradient(to bottom, #ffc501 0%, #fe9600 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc501', endColorstr='#fe9600', GradientType=0 );
+  background-color: #4fa8bb;
+  background-size: cover;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAYklEQVQYVwFXAKj/AW1miP8ROSsARCQhAOO1zwAuGCAA6uH4ALHAwQAB0LnQ/6zY5wADA/kARjIeAOD17gAsHicA2KPSAAGVPoL/7CsWACBXKgALCv0A7v39AOP59gA9FioACjQjYhQi4kEAAAAASUVORK5CYII=");
+  background-attachment: fixed;
 }
+
+/* IE8- CSS hack */
+@media \0screen\,screen\9 {
+  body {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffaccdd4",endColorstr="#ff70c0d1",GradientType=0);
+  }
+}
+
 .logo{
   width: 200px;
 }
@@ -48,16 +52,16 @@ body {
 .big-box {
   margin: 0px auto;
   padding:20px;
-  border: 4px solid #ffc501;
+  border: 4px solid #fff;
   border-radius: 10px;
   background:#FFF;
-  width:70%;
+  width:80%;
 }
 .box {
   max-width:400px;
   margin: 0px auto;
   padding:20px;
-  border: 4px solid #ffc501;
+  border: 4px solid #fff;
   border-radius: 10px;
   background:#FFF;
 }
@@ -65,10 +69,10 @@ body {
   margin-bottom:10px;
 }
 .box h1, .big-box h1  {
-  font-family: 'Creepster', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 .question_header {
-  font-family: 'Creepster', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size:35px;
 }
 .btn-sq-sm {
@@ -126,7 +130,7 @@ body {
 .score {
   font-size: 130%;
   font-weight: bold;
-  background-color: #77477E;
+  background-color: #4fa8bb;
   color: #fff;
   max-width: 50px;
   display: block;
