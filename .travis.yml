@@ -12,6 +12,7 @@ install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
 before_script:
+  - bundle install
   - bundle exec rake db:create --all
   - bundle exec rake db:migrate
 script:
