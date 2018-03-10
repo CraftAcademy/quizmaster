@@ -16,13 +16,13 @@ RSpec.describe Quiz, type: :model do
 
   describe 'Factory' do
     it 'should have a valid Factory' do
-      expect(FactoryGirl.create(:quiz)).to be_valid
+      expect(create(:quiz)).to be_valid
     end
   end
 
   describe 'instance methods' do
     it 'should return true if quiz has been started' do
-      quiz = FactoryGirl.create(:quiz)
+      quiz = create(:quiz)
       quiz.update_attribute(:is_started, true)
       expect(quiz.is_started?).to eq true
     end

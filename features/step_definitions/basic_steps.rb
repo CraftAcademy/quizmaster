@@ -41,6 +41,7 @@ end
 
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
+  sleep 1
 end
 
 When(/^I click on "([^"]*)"$/) do |element|
@@ -53,4 +54,9 @@ end
 
 When(/^I wait for the page to load$/) do
   sleep(1)
+end
+
+
+And(/^the application is running$/) do
+  visit root_path
 end

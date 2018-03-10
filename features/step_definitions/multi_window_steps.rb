@@ -5,6 +5,7 @@ end
 
 Given(/^I switch to window "([^"]*)"$/) do |index|
   switch_to_window(windows[index.to_i - 1])
+  sleep 2
 end
 
 Then(/^I should have "([^"]*)" active windows$/) do |count|

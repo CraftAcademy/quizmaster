@@ -15,7 +15,7 @@ RSpec.describe Team, type: :model do
 
   describe 'Factory' do
     it 'should have a valid Factory' do
-      expect(FactoryGirl.create(:team)).to be_valid
+      expect(create(:team)).to be_valid
     end
   end
 end

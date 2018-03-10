@@ -5,7 +5,7 @@ end
 
 When(/^I press the correct button for question "([^"]*)"$/) do |question|
   question = Question.find_by(body: question)
-  find("#correct_button_#{question.id}").trigger('click')
+  find("#correct_button_#{question.id}").click
 end
 
 Then(/^I should be on the correction page for "([^"]*)"$/) do |question|
@@ -40,7 +40,7 @@ Given(/^I have sent the first question$/) do
 end
 
 Given(/^there is a quizmaster with email "([^"]*)"$/) do |email|
-  FactoryGirl.create(:user, email: email)
+  create(:user, email: email)
 end
 
 Given(/^I log in as "([^"]*)"$/) do |email|

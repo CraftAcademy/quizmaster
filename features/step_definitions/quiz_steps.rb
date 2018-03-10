@@ -1,5 +1,5 @@
 Given(/^there is a quiz called "([^"]*)"$/) do |name|
-  FactoryGirl.create(:quiz, name: name)
+  create(:quiz, name: name)
 end
 
 Given(/^I am on the quizmaster page for "([^"]*)"$/) do |quiz_name|
@@ -37,6 +37,6 @@ end
 Given(/^"([^"]*)" (?:have|has) the following (?:quiz|quizzes)$/) do |email, table|
     user = User.find_by(email: email)
     table.hashes.each do |quiz|
-    FactoryGirl.create(:quiz, name: quiz[:name], user: user)
+    create(:quiz, name: quiz[:name], user: user)
   end
 end

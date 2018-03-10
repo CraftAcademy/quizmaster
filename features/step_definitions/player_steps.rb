@@ -32,32 +32,16 @@ end
 
 Given /^there is a "([^\"]+)" cookie set to "([^\"]+)"$/ do |key, value|
   team = Team.find_by(name: value)
-  team_id = team.id
-  quiz_id = team.quiz.id
-  case Capybara.current_session.driver
-  when Capybara::Poltergeist::Driver
-    page.driver.set_cookie(key, team_id)
-    page.driver.set_cookie('quiz_id', quiz_id)
-  when Capybara::RackTest::Driver
-    headers = {}
-    Rack::Utils.set_cookie_header!(headers, key, team_id, quiz_id)
-    cookie_string = headers['Set-Cookie']
-    Capybara.current_session.driver.browser.set_cookie(cookie_string)
-  else
-    raise "no cookie-setter implemented for driver #{Capybara.current_session.driver.class.name}"
-  end
-end
+  team_id = team.id.to_s
+  quiz_id = team.quiz.id.to_s
 
-Then(/^there should be a "([^"]*)" cookie set to the ID of "([^"]*)"$/) do |key, team_name|
-  #cookie = Capybara.current_session.cookies_hash[key]
-  #cookie = Capybara.current_session.driver.request.cookies.[](key)
-  #team_id = Team.find_by(name: team_name).id
-  #expect(cookie.to_i).to eq team_id
+  page.driver.browser.manage.add_cookie(name: key, value: team_id)
+  page.driver.browser.manage.add_cookie(name: 'quiz_id', value: quiz_id)
 end
 
 And(/^there is a team named "([^"]*)" playing "([^"]*)"$/) do |team_name, quiz_name|
   quiz = Quiz.find_by(name: quiz_name)
-  FactoryGirl.create(:team, name: team_name, quiz: quiz)
+  create(:team, name: team_name, quiz: quiz)
 end
 
 When(/^"([^"]*)" is looking at the quiz page for "([^"]*)"$/) do |team_name, quiz_name|

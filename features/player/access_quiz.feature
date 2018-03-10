@@ -1,12 +1,12 @@
-@javascript @action_cable
-
-Feature: As a Team
-  in order to play Quizmaster
+Feature: Team can access the Quiz
+  As a Team
+  In order to play Quizmaster
   I need to be able to access the Quiz interface.
 
   Background:
     Given there is a quiz called "Trivia"
     And there is a quiz called "Trivia 2"
+    And the application is running
     And there is a team named "Craft Academy" playing "Trivia"
     And there is a team named "Amber Rocks" playing "Trivia 2"
 
@@ -48,7 +48,6 @@ Feature: As a Team
 
   Scenario: Receive initial Quiz welcome message
     Given I am on the quiz "landing" page
-    # And there is a "team_id" cookie set to "Craft Academy"
     And I enter the code for "Trivia"
     Then I should be on the quiz page for "Trivia"
     And I fill in "Team Name" with "Craft Academy"

@@ -43,7 +43,8 @@ class Quizmaster::QuizzesController < ApplicationController
 
   def start_quiz
     content = {message: params[:message], welcome: params[:welcome], quiz_id: params[:id]}
-    BroadcastMessageJob.perform_now(content)
+    ActionCable.server.broadcast "quiz_channel_#{params[:id]}", content
+    #BroadcastMessageJob.perform_now(content)
     @quiz.update_attribute(:is_started, true)
   end
 
