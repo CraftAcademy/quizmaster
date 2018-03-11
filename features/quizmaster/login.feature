@@ -14,7 +14,8 @@ Scenario: I Login
 
 Scenario: I attempt to log in with the wrong credentials
   Given I am on the quizmaster "Log in" page
-  Then I fill in "Email" with "viktoria"
+  Then I fill in "Email" with "viktoria@quizrunner.com"
   And I fill in "Password" with "password"
   And I click the "Log in" button
-  Then I should see "Invalid Email or password."
+  Then I should be on the "quizmaster login" page
+  And I should see "Invalid Email or password."
