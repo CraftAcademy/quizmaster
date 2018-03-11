@@ -9,6 +9,7 @@ Feature: Team can play the game
       | body            | answer       |
       | What is 2+2?    | Four         |
       | Who is awesome? | Thomas is ok |
+    And I close all active windows
     And the application is running
     And there is a team named "Craft Academy" playing "Trivia"
 

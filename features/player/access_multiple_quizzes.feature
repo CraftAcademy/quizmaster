@@ -6,6 +6,7 @@ Feature: Team can access the Quiz
   Background:
     Given there is a quiz called "Trivia"
     And there is a quiz called "Trivia 2"
+    And I close all active windows
     And the application is running
     And there is a team named "Craft Academy" playing "Trivia"
     And there is a team named "Amber Rocks" playing "Trivia 2"

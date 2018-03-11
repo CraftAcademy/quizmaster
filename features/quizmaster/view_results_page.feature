@@ -9,6 +9,8 @@ Background:
     | body            | answer        |
     | What is 2+2?    | Four          |
     | Who is awesome? | Craft Academy |
+  And I close all active windows
+  And the application is running
   And there is a team named "Craft Academy" playing "Trivia"
   And there is a team named "Amber Rocks" playing "Trivia"
   And "Craft Academy" has answered "10" questions right

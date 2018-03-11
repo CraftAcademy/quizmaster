@@ -47,7 +47,11 @@ When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
 end
 
 When(/^I click on "([^"]*)"$/) do |element|
-  page.find(:xpath, "//*[text()='#{element}']").click
+  begin
+    click_on element
+  rescue
+    page.find(:xpath, "//*[text()='#{element}']").click
+  end
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, content|
@@ -56,10 +60,4 @@ end
 
 When(/^I wait for the page to load$/) do
   sleep(1)
-end
-
-
-And(/^the application is running$/) do
-  visit root_path
-  page.driver.browser.manage.delete_all_cookies
 end
