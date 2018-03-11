@@ -1,4 +1,5 @@
-Feature: As a Quizmaster
+Feature: Visitor can register as Quizmaster
+  As a Quizmaster
   in order create a quiz
   I need to be able to Sign up.
 
@@ -15,8 +16,4 @@ Scenario: I register a new account
   And I click the "Sign up" button
   Then I should see "Welcome! You have signed up successfully."
 
-Scenario: I try to sign up with an invalid email
-  Given I am on the quizmaster "Sign up" page
-  And I fill in "Email" with "viktoria"
-  And I click the "Sign up" button
-  Then I should see "Email is invalid"
+
