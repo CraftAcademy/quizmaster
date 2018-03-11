@@ -24,7 +24,6 @@ When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
     if response.body == answer
       page.execute_script("$('#answer_#{response.id} ##{is_correct}').click()")
     end
-      binding.pry
   end
 end
 

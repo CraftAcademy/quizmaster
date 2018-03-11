@@ -57,7 +57,6 @@ Then(/^window (\d+) should see "([^"]*)"$/) do |window, content|
   steps %Q{
     Given I switch to window "#{window.to_i}"
   }
-  sleep 1
   expect(page).to have_content content
 end
 

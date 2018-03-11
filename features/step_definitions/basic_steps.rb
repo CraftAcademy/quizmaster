@@ -61,4 +61,5 @@ end
 
 And(/^the application is running$/) do
   visit root_path
+  page.driver.browser.manage.delete_all_cookies
 end
