@@ -22,8 +22,9 @@ When(/^I click "([^"]*)" on "([^"]*)"$/) do |is_correct, answer|
   question = Answer.find_by(body: answer).question
   question.answers.each do |response|
     if response.body == answer
-      within("#answer_#{response.id}") { find("##{is_correct}").trigger('click') }
+      page.execute_script("$('#answer_#{response.id} ##{is_correct}').click()")
     end
+      binding.pry
   end
 end
 
