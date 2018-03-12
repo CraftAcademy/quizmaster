@@ -29,8 +29,10 @@ end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page|
   case page
-  when 'index'
-    expect(current_path).to eq root_path
+    when 'index'
+      expect(current_path).to eq root_path
+    when 'quizmaster login'
+      expect(current_path).to eq new_user_session_path
   end
 end
 
@@ -41,10 +43,15 @@ end
 
 When(/^I (?:press|click) the "([^"]*)" (?:button|link)$/) do |button|
   click_link_or_button button
+  sleep 1
 end
 
 When(/^I click on "([^"]*)"$/) do |element|
-  page.find(:xpath,"//*[text()='#{element}']").click
+  begin
+    click_on element
+  rescue
+    page.find(:xpath, "//*[text()='#{element}']").click
+  end
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, content|

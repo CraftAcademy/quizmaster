@@ -1,11 +1,10 @@
 development:
-  adapter: redis
-  url: redis://localhost:6379/1
+  adapter: async
 
 test:
-  adapter: redis
-  url: redis://localhost:9736
+  adapter: async
 
 production:
   adapter: redis
-  url: <%= ENV['REDIS_URL']  %>
+  url: <%= ENV['REDISTOGO_URL']  %>
+  #channel_prefix: pay_wall_demo_production

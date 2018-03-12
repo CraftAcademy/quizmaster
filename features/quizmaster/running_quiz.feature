@@ -32,5 +32,6 @@ Scenario: Resetting the quiz
   Given I have sent the first question
   And "Craft Academy" has answered question "What is 2+2?" with "Six"
   When I press the "Reset the Quiz" button
+  And I accept the alert
   Then I should not see "Correct"
   And there should be 0 answers for "What is 2+2?"

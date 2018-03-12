@@ -15,7 +15,7 @@ RSpec.describe Answer, type: :model do
 
   describe 'Factory' do
     it 'should have a valid Factory' do
-      expect(FactoryGirl.create(:answer)).to be_valid
+      expect(create(:answer)).to be_valid
     end
   end
 end
