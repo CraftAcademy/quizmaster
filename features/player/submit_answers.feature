@@ -12,10 +12,17 @@ Feature: Team can play the game
     And I close all active windows
     And the application is running
     And there is a team named "Craft Academy" playing "Trivia"
+    And there is a "team_id" cookie set to "Craft Academy"
 
   Scenario: I submit my answer
     Given I receive the first question
     When I fill in "body" with "Four"
     And I click the "Submit" button
+    Then there should be "1" answer for the "Craft Academy" team
+    Then I should see "Answer submitted!"
+
+  Scenario: I submit my answer to late
+    Given I receive the first question
+    And I wait for "31" seconds
     Then there should be "1" answer for the "Craft Academy" team
     Then I should see "Answer submitted!"

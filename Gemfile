@@ -36,6 +36,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'redis_test'
   gem 'faker'
+  gem 'delorean'
 end
 
 group :development do
