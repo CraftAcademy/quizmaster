@@ -25,4 +25,4 @@ Feature: Team can play the game
     Given I receive the first question
     And I wait for "31" seconds
     Then there should be "1" answer for the "Craft Academy" team
-    Then I should see "Answer submitted!"
+

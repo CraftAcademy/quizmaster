@@ -24,7 +24,6 @@ end
 
 Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, team_name|
   team = Team.find_by(name: team_name)
-  binding.pry
   expect(team.answers.count).to eq count.to_i
 end
 
@@ -34,8 +33,8 @@ Then(/^"([^"]*)" should have (\d+) quiz$/) do |email, count|
 end
 
 Given(/^"([^"]*)" (?:have|has) the following (?:quiz|quizzes)$/) do |email, table|
-    user = User.find_by(email: email)
-    table.hashes.each do |quiz|
+  user = User.find_by(email: email)
+  table.hashes.each do |quiz|
     create(:quiz, name: quiz[:name], user: user)
   end
 end
