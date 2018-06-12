@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-$brand-primary:             #4fa8bb;
+$brand-primary:             #f28e24;
 $brand-success:             #943a7f;
 $brand-warning:             #72BB4F;
 $gray-dark:                 #03001C;
@@ -24,9 +24,9 @@ html, body { height:100vh; margin:0; padding:0;}
 body {
   font-family: 'Open Sans', sans-serif;
   padding-top:60px;
-  background-color: #4fa8bb;
+  background-color: #f28e24;
   background-size: cover;
-	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAYklEQVQYVwFXAKj/AW1miP8ROSsARCQhAOO1zwAuGCAA6uH4ALHAwQAB0LnQ/6zY5wADA/kARjIeAOD17gAsHicA2KPSAAGVPoL/7CsWACBXKgALCv0A7v39AOP59gA9FioACjQjYhQi4kEAAAAASUVORK5CYII=");
+	//background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAYklEQVQYVwFXAKj/AW1miP8ROSsARCQhAOO1zwAuGCAA6uH4ALHAwQAB0LnQ/6zY5wADA/kARjIeAOD17gAsHicA2KPSAAGVPoL/7CsWACBXKgALCv0A7v39AOP59gA9FioACjQjYhQi4kEAAAAASUVORK5CYII=");
   background-attachment: fixed;
 }
 
@@ -62,7 +62,7 @@ body {
   margin: 0px auto;
   padding:20px;
   border: 4px solid #fff;
-  border-radius: 10px;
+  //border-radius: 10px;
   background:#FFF;
   width:80%;
 }
@@ -71,7 +71,7 @@ body {
   margin: 0px auto;
   padding:20px;
   border: 4px solid #fff;
-  border-radius: 10px;
+  //border-radius: 10px;
   background:#FFF;
 }
 .code {

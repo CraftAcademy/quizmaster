@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require easy-pie-chart
 //= require turbolinks
 //= require cable
 //= require_tree .

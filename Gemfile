@@ -18,6 +18,8 @@ gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'sprockets-rails'
 gem 'devise'
 gem 'rails-assets-tether', '>= 1.1.0'
+gem 'rails-assets-easy-pie-chart', source: 'https://rails-assets.org'
+
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

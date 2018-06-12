@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.2.0.rc1)
       actionpack (= 5.2.0.rc1)
@@ -209,6 +210,11 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.0.rc1)
       sprockets-rails (>= 2.0.0)
+    rails-assets-easy-pie-chart (2.1.6)
+      rails-assets-jquery (>= 1.9.0)
+      rails-assets-requirejs (~> 2.1.10)
+    rails-assets-jquery (3.3.1)
+    rails-assets-requirejs (2.1.22)
     rails-assets-tether (1.1.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -336,6 +342,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.0.rc1)
+  rails-assets-easy-pie-chart!
   rails-assets-tether (>= 1.1.0)
   redis
   redis_test

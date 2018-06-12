@@ -12,5 +12,4 @@ end
 
 And(/^I wait for "([^"]*)" seconds$/) do |seconds|
   sleep seconds.to_i
-  #page.execute_script(mock_date_add_seconds(seconds.to_i))
 end
