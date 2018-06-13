@@ -22,7 +22,8 @@ Scenario: I view and send results
   Then I should see "10"
   When "Amber Rocks" is looking at the quiz page for "Trivia"
   And I click the "Send Results" button
-  Then window 2 should see "Amber Rocks: 11 Craft Academy: 10"
+  Then window 2 should see "Amber Rocks: 11"
+  And window 2 should see "Craft Academy: 10"
   When I click on "See Answers"
   Then I should not see "See Answers"
   And I should see "What is 2+2?"

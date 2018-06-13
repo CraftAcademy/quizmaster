@@ -32,9 +32,10 @@
     var elem = document.getElementById('countdown');
 
     var timerId = setInterval(countdown, 1000);
+    let answerSubmitted = document.querySelector('.answer_submitted')
 
     function countdown() {
-      if (timeLeft == 0) {
+      if (timeLeft === 0 && window.getComputedStyle(answerSubmitted).display === 'none') {
         clearTimeout(timerId);
         var answerElem = document.getElementById('countdown');
         document.getElementById('body').value = 'No answer submitted';
