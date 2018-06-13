@@ -10,10 +10,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
   %body
     - unless notice.nil?
-      .box
+      .box{style: 'background-color: light-green;'}
         %span.notice= notice
     - unless alert.nil?
-      .box
+      .box{style: 'background-color: red;'}
         %span.alert= alert
     = yield
     .logo.center{style: 'margin-top: 20px;'}
