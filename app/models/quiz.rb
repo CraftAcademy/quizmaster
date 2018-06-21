@@ -21,6 +21,7 @@ class Quiz < ApplicationRecord
       question.update_attribute(:is_sent, false)
       question.answers.destroy_all
     end
+    self.teams.destroy_all
   end
 
   def is_started?

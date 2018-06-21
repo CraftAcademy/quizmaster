@@ -6,8 +6,50 @@
   #info{data: {quiz_id: data[:quiz_id], question_id: data[:question_id]}}
   = text_field_tag 'body', '', class: 'form-control code'
   = submit_tag 'Submit', class: 'btn btn-primary btn-lg btn-block', onclick: 'submitAnswer();'
-.answer_submitted
+.answer_submitted#answer
   Answer submitted!
+%ul
+  %li{class: 'chart', data: {percent: '100'}}
+    %span{id: 'countdown', class: 'countdown'}
 
 :javascript
-  $('.answer_submitted').hide();
+    var element = document.querySelector('.chart');
+      var chart = new EasyPieChart(element, {
+          easing: 'easeOutElastic',
+          delay: 3000,
+          barColor: '#69c',
+          trackColor: '#ace',
+          scaleColor: false,
+          lineWidth: 20,
+          trackWidth: 16,
+          lineCap: 'butt'
+        });
+
+    $('.answer_submitted').hide();
+    var time = 30;
+    var timeLeft = time;
+    var percentLeft = 100;
+    var elem = document.getElementById('countdown');
+
+    var timerId = setInterval(countdown, 1000);
+    answerSubmitted = document.querySelector('.answer_submitted')
+
+    function countdown() {
+      if (timeLeft === 0 && window.getComputedStyle(answerSubmitted).display === 'none') {
+        clearTimeout(timerId);
+        var answerElem = document.getElementById('countdown');
+        document.getElementById('body').value = 'No answer submitted';
+        document.getElementsByName('commit')[0].click();
+        answerElem.hidden=false;
+        chart.el.hidden = true ;
+        answerElem.innerHTML = 'No time left!';
+      } else {
+        percentLeft -= (1/time * 100);
+        elem.innerText = timeLeft;
+        chart.update(percentLeft);
+        timeLeft--;
+
+
+      }
+    }
+

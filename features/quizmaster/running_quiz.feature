@@ -1,5 +1,6 @@
 @javascript @action_cable
-Feature: As a Quizmaster
+Feature: Quizmaster runs quiz 
+  As a Quizmaster
   in order to show individual Questions
   I need to be able to push Questions one by one to the Question page.
 

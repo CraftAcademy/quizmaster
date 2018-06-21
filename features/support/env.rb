@@ -1,6 +1,6 @@
-require 'cucumber/rails'
 require 'coveralls'
 Coveralls.wear_merged!("rails")
+require 'cucumber/rails'
 
 ActionController::Base.allow_rescue = false
 begin
@@ -13,9 +13,12 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Chromedriver.set_version '2.36'
 
+chrome_options = %w(no-sandbox disable-popup-blocking disable-infobars)
+chrome_options << 'headless' if ENV['CI'] == 'true'
+
 Capybara.register_driver :selenium do |app|
   options = Selenium::WebDriver::Chrome::Options.new(
-      args: %w(  headless no-sandbox disable-popup-blocking disable-infobars)
+      args: chrome_options
   )
 
   Capybara::Selenium::Driver.new(

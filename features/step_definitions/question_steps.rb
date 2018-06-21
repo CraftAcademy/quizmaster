@@ -9,3 +9,7 @@ end
 And(/^I accept the alert$/) do
   page.driver.browser.switch_to.alert.accept
 end
+
+And(/^I wait for "([^"]*)" seconds$/) do |seconds|
+  sleep seconds.to_i
+end

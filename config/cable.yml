@@ -7,4 +7,3 @@ test:
 production:
   adapter: redis
   url: <%= ENV['REDISTOGO_URL']  %>
-  #channel_prefix: pay_wall_demo_production

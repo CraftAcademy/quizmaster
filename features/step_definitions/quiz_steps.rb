@@ -13,7 +13,6 @@ end
 
 Given(/^I receive the first question$/) do
   steps %q{
-    Given there is a "team_id" cookie set to "Craft Academy"
     When I am on the quiz page for "Trivia"
     And I switch to a new window
     And I am on the quizmaster page for "Trivia"
@@ -24,10 +23,8 @@ Given(/^I receive the first question$/) do
 end
 
 Then(/^there should be "([^"]*)" answer for the "([^"]*)" team$/) do |count, team_name|
-  sleep(2)
   team = Team.find_by(name: team_name)
   expect(team.answers.count).to eq count.to_i
-  sleep(2)
 end
 
 Then(/^"([^"]*)" should have (\d+) quiz$/) do |email, count|
@@ -36,8 +33,8 @@ Then(/^"([^"]*)" should have (\d+) quiz$/) do |email, count|
 end
 
 Given(/^"([^"]*)" (?:have|has) the following (?:quiz|quizzes)$/) do |email, table|
-    user = User.find_by(email: email)
-    table.hashes.each do |quiz|
+  user = User.find_by(email: email)
+  table.hashes.each do |quiz|
     create(:quiz, name: quiz[:name], user: user)
   end
 end

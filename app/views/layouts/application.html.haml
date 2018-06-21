@@ -10,14 +10,12 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
   %body
     - unless notice.nil?
-      .box
+      .box{style: 'background-color: light-green;'}
         %span.notice= notice
     - unless alert.nil?
-      .box
+      .box{style: 'background-color: red;'}
         %span.alert= alert
     = yield
-    .logo.center
+    .logo.center{style: 'margin-top: 20px;'}
       %p
-        A
-        = link_to 'CRAFT ACADEMY', 'http://www.craftacademy.se', target: '_blank'
-        PRODUCTION
+        = link_to((image_tag 'logo_with_name_black.png', {style: 'width: 100px; height: auto;'}), 'http://www.craftacademy.se', target: '_blank')
